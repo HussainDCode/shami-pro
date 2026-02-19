@@ -17,5 +17,5 @@
     "SESSION_DRIVER": "cookie"
     },
     "buildCommand": "npm run build",
-    "outputDirectory": "shami-pro/public"
+    "outputDirectory": "public"
 }
