@@ -15,5 +15,7 @@
     "LOG_CHANNEL": "stderr",
     "CACHE_DRIVER": "array",
     "SESSION_DRIVER": "cookie"
-    }
+    },
+    "buildCommand": "npm run build",
+    "outputDirectory": "shami-pro"
 }
