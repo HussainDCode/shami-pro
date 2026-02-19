@@ -1,0 +1,1863 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ShamProm — Registration</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <style>
+    :root {
+      --teal: #2BBDB4;
+      --teal-dark: #1a9a92;
+      --teal-light: #e8f9f8;
+      --teal-glow: rgba(43, 189, 180, .18);
+      --navy: #1a2e44;
+      --navy-mid: #243855;
+      --gold: #f0c040;
+      --gold-light: #fdf3cc;
+      --white: #fff;
+      --off-white: #f7fafc;
+      --g100: #f1f5f9;
+      --g200: #e2e8f0;
+      --g400: #94a3b8;
+      --g600: #64748b;
+      --g800: #1e293b;
+      --r: 18px;
+      --rsm: 10px;
+      --shadow: 0 8px 40px rgba(43, 189, 180, .12);
+      --sc: 0 4px 24px rgba(26, 46, 68, .10);
+      --fd: 'Playfair Display', serif;
+      --fb: 'DM Sans', sans-serif;
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0
+    }
+
+    body {
+      font-family: var(--fb);
+      background: linear-gradient(135deg, #e8f9f8 0%, #f7fafc 50%, #e8f0f9 100%);
+      min-height: 100vh;
+      overflow-x: hidden
+    }
+
+    /* BG */
+    .bg-blobs {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      overflow: hidden
+    }
+
+    .blob {
+      position: absolute;
+      border-radius: 50%;
+      animation: blobFloat 8s ease-in-out infinite
+    }
+
+    .blob-1 {
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(43, 189, 180, .16) 0%, transparent 70%);
+      top: -180px;
+      left: -150px;
+      animation-delay: 0s
+    }
+
+    .blob-2 {
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(240, 192, 64, .13) 0%, transparent 70%);
+      bottom: -120px;
+      right: -100px;
+      animation-delay: 3s
+    }
+
+    .blob-3 {
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle, rgba(43, 189, 180, .09) 0%, transparent 70%);
+      top: 50%;
+      right: 10%;
+      animation-delay: 6s
+    }
+
+    @keyframes blobFloat {
+
+      0%,
+      100% {
+        transform: translateY(0) scale(1)
+      }
+
+      50% {
+        transform: translateY(-30px) scale(1.07)
+      }
+    }
+
+    .particles {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none
+    }
+
+    .particle {
+      position: absolute;
+      border-radius: 50%;
+      background: var(--teal);
+      opacity: .1;
+      animation: pDrift linear infinite
+    }
+
+    @keyframes pDrift {
+      0% {
+        transform: translateY(100vh) rotate(0deg);
+        opacity: 0
+      }
+
+      10% {
+        opacity: .1
+      }
+
+      90% {
+        opacity: .06
+      }
+
+      100% {
+        transform: translateY(-100px) rotate(720deg);
+        opacity: 0
+      }
+    }
+
+    /* HEADER */
+    .reg-header {
+      position: relative;
+      z-index: 10;
+      background: rgba(255, 255, 255, .94);
+      backdrop-filter: blur(14px);
+      border-bottom: 1.5px solid var(--g200);
+      padding: 14px 0;
+      box-shadow: 0 2px 20px rgba(43, 189, 180, .07)
+    }
+
+    .reg-logo {
+      font-family: var(--fd);
+      font-size: 1.65rem;
+      font-weight: 700;
+      color: var(--teal);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 9px
+    }
+
+    .reg-logo span {
+      color: var(--navy)
+    }
+
+    .logo-icon {
+      width: 36px;
+      height: 36px;
+      background: linear-gradient(135deg, var(--teal), var(--teal-dark));
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: .9rem;
+      box-shadow: 0 4px 12px rgba(43, 189, 180, .35)
+    }
+
+    .header-tag {
+      font-size: .8rem;
+      color: var(--g600);
+      font-weight: 300
+    }
+
+    /* HERO */
+    .reg-hero {
+      position: relative;
+      z-index: 5;
+      background: linear-gradient(105deg, var(--navy) 0%, var(--navy-mid) 60%, #1a4060 100%);
+      padding: 52px 0 40px;
+      text-align: center;
+      overflow: hidden
+    }
+
+    .reg-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%232BBDB4' fill-opacity='0.06'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/svg%3E")
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(43, 189, 180, .13);
+      border: 1px solid rgba(43, 189, 180, .3);
+      border-radius: 50px;
+      padding: 6px 18px;
+      color: var(--teal);
+      font-size: .76rem;
+      font-weight: 700;
+      letter-spacing: .09em;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+      animation: fid .6s ease both
+    }
+
+    .reg-hero h1 {
+      font-family: var(--fd);
+      font-size: clamp(2rem, 5vw, 3.1rem);
+      color: #fff;
+      font-weight: 700;
+      line-height: 1.22;
+      animation: fid .7s ease .1s both
+    }
+
+    .reg-hero h1 em {
+      font-style: normal;
+      color: var(--teal)
+    }
+
+    .reg-hero p {
+      color: rgba(255, 255, 255, .6);
+      font-size: .97rem;
+      font-weight: 300;
+      margin-top: 10px;
+      animation: fid .7s ease .2s both
+    }
+
+    @keyframes fid {
+      from {
+        opacity: 0;
+        transform: translateY(-18px)
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0)
+      }
+    }
+
+    @keyframes fiup {
+      from {
+        opacity: 0;
+        transform: translateY(24px)
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0)
+      }
+    }
+
+    @keyframes popin {
+      from {
+        transform: scale(0)
+      }
+
+      to {
+        transform: scale(1)
+      }
+    }
+
+    /* TYPE SELECTOR */
+    .type-sec {
+      position: relative;
+      z-index: 5;
+      padding: 60px 0 40px
+    }
+
+    .type-title {
+      text-align: center;
+      font-family: var(--fd);
+      font-size: 1.75rem;
+      color: var(--navy);
+      font-weight: 700;
+      margin-bottom: 8px
+    }
+
+    .type-sub {
+      text-align: center;
+      color: var(--g600);
+      font-size: .95rem;
+      margin-bottom: 40px
+    }
+
+    .type-cards {
+      display: flex;
+      gap: 26px;
+      justify-content: center;
+      flex-wrap: wrap
+    }
+
+    .type-card {
+      width: 275px;
+      background: #fff;
+      border-radius: 24px;
+      padding: 38px 26px;
+      border: 2.5px solid transparent;
+      cursor: pointer;
+      transition: all .38s cubic-bezier(.34, 1.56, .64, 1);
+      box-shadow: var(--sc);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      animation: cardIn .6s ease both
+    }
+
+    .type-card:nth-child(2) {
+      animation-delay: .12s
+    }
+
+    @keyframes cardIn {
+      from {
+        opacity: 0;
+        transform: translateY(28px) scale(.94)
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1)
+      }
+    }
+
+    .type-card::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, var(--teal-light) 0%, transparent 70%);
+      opacity: 0;
+      transition: opacity .3s
+    }
+
+    .type-card:hover,
+    .type-card.sel {
+      border-color: var(--teal);
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 20px 50px rgba(43, 189, 180, .2)
+    }
+
+    .type-card:hover::after,
+    .type-card.sel::after {
+      opacity: 1
+    }
+
+    .tc-chk {
+      display: none;
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      width: 28px;
+      height: 28px;
+      background: var(--teal);
+      border-radius: 50%;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: .74rem;
+      animation: popin .3s cubic-bezier(.34, 1.56, .64, 1);
+      z-index: 2
+    }
+
+    .type-card.sel .tc-chk {
+      display: flex
+    }
+
+    .tc-icon {
+      width: 80px;
+      height: 80px;
+      border-radius: 22px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+      font-size: 2rem;
+      transition: all .3s;
+      position: relative;
+      z-index: 1
+    }
+
+    .type-card:nth-child(1) .tc-icon {
+      background: linear-gradient(135deg, #e8f9f8, #c5f0ed);
+      color: var(--teal-dark)
+    }
+
+    .type-card:nth-child(2) .tc-icon {
+      background: linear-gradient(135deg, #fdf3cc, #fae8a4);
+      color: #b8860b
+    }
+
+    .tc-ttl {
+      font-family: var(--fd);
+      font-size: 1.28rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 8px;
+      position: relative;
+      z-index: 1
+    }
+
+    .tc-desc {
+      font-size: .84rem;
+      color: var(--g600);
+      line-height: 1.55;
+      position: relative;
+      z-index: 1
+    }
+
+    .tc-feats {
+      margin-top: 18px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      justify-content: center;
+      position: relative;
+      z-index: 1
+    }
+
+    .tc-feat {
+      font-size: .71rem;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 20px;
+      background: var(--g100);
+      color: var(--g600);
+      transition: all .3s
+    }
+
+    .type-card.sel .tc-feat {
+      background: var(--teal-light);
+      color: var(--teal-dark)
+    }
+
+    .btn-next-type {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      padding: 14px 34px;
+      background: linear-gradient(135deg, var(--teal), var(--teal-dark));
+      border: none;
+      border-radius: 50px;
+      color: #fff;
+      font-weight: 700;
+      cursor: pointer;
+      font-family: var(--fb);
+      font-size: .92rem;
+      box-shadow: 0 6px 24px rgba(43, 189, 180, .35);
+      transition: all .3s cubic-bezier(.34, 1.56, .64, 1)
+    }
+
+    .btn-next-type:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px rgba(43, 189, 180, .45)
+    }
+
+    .btn-next-type:disabled {
+      opacity: .42;
+      cursor: not-allowed;
+      transform: none;
+      box-shadow: 0 6px 24px rgba(43, 189, 180, .2)
+    }
+
+    /* WIZARD */
+    .wiz-sec {
+      position: relative;
+      z-index: 5;
+      padding: 0 0 80px;
+      display: none
+    }
+
+    .wiz-sec.active {
+      display: block;
+      animation: fiup .5s ease both
+    }
+
+    /* STEPPER */
+    .stepper-wrap {
+      background: #fff;
+      border-radius: var(--r);
+      box-shadow: var(--sc);
+      padding: 24px 28px;
+      margin-bottom: 28px;
+      border: 1px solid var(--g200);
+      overflow-x: auto
+    }
+
+    .stepper {
+      display: flex;
+      align-items: center;
+      min-width: 560px
+    }
+
+    .sitem {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      flex: 1;
+      position: relative;
+      cursor: pointer
+    }
+
+    .sitem:not(:last-child)::after {
+      content: '';
+      position: absolute;
+      right: 0;
+      top: 19px;
+      height: 2px;
+      background: var(--g200);
+      transition: background .4s;
+      width: calc(100% - 130px);
+      left: 130px
+    }
+
+    .sitem.done:not(:last-child)::after {
+      background: var(--teal)
+    }
+
+    .snum {
+      width: 38px;
+      height: 38px;
+      min-width: 38px;
+      border-radius: 50%;
+      border: 2.5px solid var(--g200);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: .87rem;
+      color: var(--g400);
+      background: #fff;
+      transition: all .38s cubic-bezier(.34, 1.56, .64, 1);
+      position: relative;
+      z-index: 1
+    }
+
+    .sitem.active .snum {
+      background: linear-gradient(135deg, var(--teal), var(--teal-dark));
+      border-color: var(--teal);
+      color: #fff;
+      box-shadow: 0 0 0 4px rgba(43, 189, 180, .17);
+      transform: scale(1.12)
+    }
+
+    .sitem.done .snum {
+      background: linear-gradient(135deg, var(--teal), var(--teal-dark));
+      border-color: var(--teal);
+      color: #fff
+    }
+
+    .sinfo {}
+
+    .slbl {
+      font-weight: 700;
+      font-size: .86rem;
+      color: var(--navy)
+    }
+
+    .ssub {
+      font-size: .7rem;
+      color: var(--g400)
+    }
+
+    .sitem.active .slbl {
+      color: var(--teal-dark)
+    }
+
+    .sitem.active .ssub {
+      color: var(--teal)
+    }
+
+    /* FORM CARD */
+    .form-card {
+      background: #fff;
+      border-radius: var(--r);
+      box-shadow: var(--sc);
+      border: 1px solid var(--g200);
+      overflow: hidden
+    }
+
+    .fc-head {
+      background: linear-gradient(100deg, var(--navy) 0%, var(--navy-mid) 100%);
+      padding: 26px 34px;
+      display: flex;
+      align-items: center;
+      gap: 17px
+    }
+
+    .fch-ico {
+      width: 50px;
+      height: 50px;
+      border-radius: 15px;
+      background: rgba(43, 189, 180, .18);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--teal);
+      font-size: 1.35rem;
+      flex-shrink: 0
+    }
+
+    .fch-ttl {
+      font-family: var(--fd);
+      font-size: 1.42rem;
+      font-weight: 700;
+      color: #fff
+    }
+
+    .fch-sub {
+      font-size: .8rem;
+      color: rgba(255, 255, 255, .52);
+      margin-top: 3px
+    }
+
+    .fc-body {
+      padding: 34px
+    }
+
+    /* STEPS */
+    .fstep {
+      display: none
+    }
+
+    .fstep.active {
+      display: block;
+      animation: stepAnim .38s ease
+    }
+
+    @keyframes stepAnim {
+      from {
+        opacity: 0;
+        transform: translateX(14px)
+      }
+
+      to {
+        opacity: 1;
+        transform: translateX(0)
+      }
+    }
+
+    /* FIELDS */
+    .fg {
+      margin-bottom: 20px
+    }
+
+    .flbl {
+      font-size: .81rem;
+      font-weight: 600;
+      color: var(--navy);
+      margin-bottom: 7px;
+      display: flex;
+      align-items: center;
+      gap: 5px
+    }
+
+    .flbl i {
+      color: var(--teal);
+      font-size: .76rem
+    }
+
+    .freq {
+      color: #e05;
+      font-size: .73rem
+    }
+
+    .fi {
+      width: 100%;
+      height: 50px;
+      background: var(--off-white);
+      border: 2px solid var(--g200);
+      border-radius: var(--rsm);
+      padding: 0 15px;
+      font-family: var(--fb);
+      font-size: .88rem;
+      color: var(--g800);
+      transition: all .25s;
+      outline: none
+    }
+
+    .fi:focus {
+      border-color: var(--teal);
+      background: #fff;
+      box-shadow: 0 0 0 4px rgba(43, 189, 180, .11)
+    }
+
+    .fi::placeholder {
+      color: var(--g400)
+    }
+
+    .fta {
+      width: 100%;
+      min-height: 90px;
+      background: var(--off-white);
+      border: 2px solid var(--g200);
+      border-radius: var(--rsm);
+      padding: 13px 15px;
+      font-family: var(--fb);
+      font-size: .88rem;
+      color: var(--g800);
+      transition: all .25s;
+      outline: none;
+      resize: vertical
+    }
+
+    .fta:focus {
+      border-color: var(--teal);
+      background: #fff;
+      box-shadow: 0 0 0 4px rgba(43, 189, 180, .11)
+    }
+
+    .fsel {
+      width: 100%;
+      height: 50px;
+      background: var(--off-white);
+      border: 2px solid var(--g200);
+      border-radius: var(--rsm);
+      padding: 0 15px;
+      font-family: var(--fb);
+      font-size: .88rem;
+      color: var(--g800);
+      outline: none;
+      cursor: pointer;
+      transition: all .25s;
+      -webkit-appearance: none;
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%232BBDB4' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 15px center
+    }
+
+    .fsel:focus {
+      border-color: var(--teal);
+      background-color: #fff;
+      box-shadow: 0 0 0 4px rgba(43, 189, 180, .11)
+    }
+
+    .iw {
+      position: relative
+    }
+
+    .iw .fi {
+      padding-left: 42px
+    }
+
+    .iw .ii {
+      position: absolute;
+      left: 13px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--teal);
+      font-size: .87rem;
+      pointer-events: none
+    }
+
+    .iw .iir {
+      position: absolute;
+      right: 13px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--g400);
+      font-size: .87rem;
+      cursor: pointer;
+      transition: color .2s
+    }
+
+    .iw .iir:hover {
+      color: var(--teal)
+    }
+
+    .pw .fi {
+      padding-right: 46px
+    }
+
+    /* City search */
+    .csw {
+      position: relative
+    }
+
+    .csw .fi {
+      padding-left: 42px;
+      padding-right: 40px
+    }
+
+    .cdrop {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      z-index: 300;
+      background: #fff;
+      border: 2px solid var(--teal);
+      border-top: none;
+      border-radius: 0 0 var(--rsm) var(--rsm);
+      max-height: 210px;
+      overflow-y: auto;
+      display: none;
+      box-shadow: 0 8px 24px rgba(43, 189, 180, .14)
+    }
+
+    .cdrop.open {
+      display: block
+    }
+
+    .copt {
+      padding: 10px 15px;
+      cursor: pointer;
+      font-size: .86rem;
+      color: var(--g800);
+      transition: background .15s;
+      display: flex;
+      align-items: center;
+      gap: 8px
+    }
+
+    .copt:hover,
+    .copt.focused {
+      background: var(--teal-light);
+      color: var(--teal-dark)
+    }
+
+    .copt i {
+      color: var(--teal);
+      font-size: .73rem
+    }
+
+    /* Gender */
+    .gopt-wrap {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap
+    }
+
+    .gopt {
+      flex: 1;
+      min-width: 85px
+    }
+
+    .gopt label {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 7px;
+      padding: 11px 14px;
+      border: 2px solid var(--g200);
+      border-radius: var(--rsm);
+      cursor: pointer;
+      font-size: .86rem;
+      font-weight: 600;
+      color: var(--g600);
+      transition: all .25s;
+      background: var(--off-white)
+    }
+
+    .gopt input {
+      display: none
+    }
+
+    .gopt input:checked+label {
+      border-color: var(--teal);
+      color: var(--teal-dark);
+      background: var(--teal-light)
+    }
+
+    /* Upload */
+    .uarea {
+      border: 2px dashed var(--g200);
+      border-radius: var(--rsm);
+      padding: 28px 18px;
+      text-align: center;
+      cursor: pointer;
+      transition: all .3s;
+      background: var(--off-white);
+      position: relative;
+      overflow: hidden
+    }
+
+    .uarea:hover {
+      border-color: var(--teal);
+      background: var(--teal-light)
+    }
+
+    .uarea.hasfile {
+      border-color: var(--teal);
+      background: var(--teal-light)
+    }
+
+    .uarea input[type="file"] {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      cursor: pointer;
+      width: 100%;
+      height: 100%
+    }
+
+    .uico {
+      width: 54px;
+      height: 54px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--teal-light), #d1f5f3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 11px;
+      color: var(--teal);
+      font-size: 1.35rem;
+      transition: all .3s
+    }
+
+    .uarea:hover .uico {
+      transform: scale(1.1);
+      box-shadow: 0 4px 16px rgba(43, 189, 180, .24)
+    }
+
+    .uttl {
+      font-weight: 700;
+      color: var(--navy);
+      font-size: .88rem;
+      margin-bottom: 3px
+    }
+
+    .usub {
+      font-size: .76rem;
+      color: var(--g400)
+    }
+
+    .ubadge {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: var(--teal);
+      color: #fff;
+      font-size: .71rem;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 20px;
+      margin-top: 7px
+    }
+
+    /* Divider */
+    .sdiv {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 26px 0 18px
+    }
+
+    .sdiv span {
+      font-family: var(--fd);
+      font-size: .98rem;
+      font-weight: 700;
+      color: var(--navy);
+      white-space: nowrap
+    }
+
+    .sdiv::before,
+    .sdiv::after {
+      content: '';
+      flex: 1;
+      height: 1.5px;
+      background: var(--g200)
+    }
+
+    /* Password strength */
+    .pstrength {
+      display: flex;
+      gap: 4px;
+      margin-top: 7px
+    }
+
+    .psbar {
+      height: 4px;
+      flex: 1;
+      border-radius: 2px;
+      background: var(--g200);
+      transition: background .3s
+    }
+
+    .psbar.weak {
+      background: #f05
+    }
+
+    .psbar.fair {
+      background: #fa0
+    }
+
+    .psbar.good {
+      background: var(--teal)
+    }
+
+    .pslbl {
+      font-size: .74rem;
+      color: var(--g400);
+      margin-top: 4px
+    }
+
+    .ferr {
+      font-size: .75rem;
+      color: #e05;
+      margin-top: 4px;
+      display: none
+    }
+
+    /* Payment box */
+    .paybox {
+      background: linear-gradient(135deg, var(--navy) 0%, #1a4060 100%);
+      border-radius: var(--r);
+      padding: 30px;
+      color: #fff;
+      position: relative;
+      overflow: hidden;
+      margin-bottom: 22px
+    }
+
+    .paybox::before {
+      content: '';
+      position: absolute;
+      top: -40px;
+      right: -40px;
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      background: rgba(43, 189, 180, .12)
+    }
+
+    .paybox::after {
+      content: '';
+      position: absolute;
+      bottom: -30px;
+      left: 20px;
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      background: rgba(240, 192, 64, .1)
+    }
+
+    .pay-ttl {
+      font-family: var(--fd);
+      font-size: 1.18rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+      position: relative;
+      z-index: 1
+    }
+
+    .pay-amount {
+      display: inline-flex;
+      align-items: baseline;
+      gap: 4px;
+      margin: 10px 0 14px;
+      position: relative;
+      z-index: 1
+    }
+
+    .pay-cur {
+      font-size: 1.18rem;
+      color: var(--teal);
+      font-weight: 600
+    }
+
+    .pay-num {
+      font-size: 2.9rem;
+      font-weight: 900;
+      font-family: var(--fd);
+      color: #fff
+    }
+
+    .pay-per {
+      font-size: .78rem;
+      color: rgba(255, 255, 255, .45)
+    }
+
+    .pay-desc {
+      font-size: .81rem;
+      color: rgba(255, 255, 255, .58);
+      margin-bottom: 18px;
+      position: relative;
+      z-index: 1
+    }
+
+    .acc-box {
+      background: rgba(255, 255, 255, .08);
+      border-radius: 12px;
+      padding: 15px 18px;
+      border: 1px solid rgba(255, 255, 255, .11);
+      position: relative;
+      z-index: 1
+    }
+
+    .acc-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 6px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, .07);
+      font-size: .83rem
+    }
+
+    .acc-row:last-child {
+      border-bottom: none
+    }
+
+    .ak {
+      color: rgba(255, 255, 255, .48)
+    }
+
+    .av {
+      color: #fff;
+      font-weight: 600
+    }
+
+    .acopy {
+      background: none;
+      border: none;
+      color: var(--teal);
+      cursor: pointer;
+      font-size: .73rem;
+      transition: opacity .2s;
+      font-family: var(--fb)
+    }
+
+    .acopy:hover {
+      opacity: .7
+    }
+
+    /* NAV */
+    .fnav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 22px 34px;
+      background: var(--g100);
+      border-top: 1.5px solid var(--g200);
+      flex-wrap: wrap;
+      gap: 12px
+    }
+
+    .btn-prev {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 24px;
+      background: #fff;
+      border: 2px solid var(--g200);
+      border-radius: 50px;
+      color: var(--g600);
+      font-weight: 600;
+      cursor: pointer;
+      font-family: var(--fb);
+      font-size: .88rem;
+      transition: all .25s
+    }
+
+    .btn-prev:hover {
+      border-color: var(--teal);
+      color: var(--teal)
+    }
+
+    .btn-next {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 13px 30px;
+      background: linear-gradient(135deg, var(--teal), var(--teal-dark));
+      border: none;
+      border-radius: 50px;
+      color: #fff;
+      font-weight: 700;
+      cursor: pointer;
+      font-family: var(--fb);
+      font-size: .9rem;
+      transition: all .3s cubic-bezier(.34, 1.56, .64, 1);
+      box-shadow: 0 6px 24px rgba(43, 189, 180, .33)
+    }
+
+    .btn-next:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px rgba(43, 189, 180, .43)
+    }
+
+    .btn-next:active {
+      transform: translateY(0)
+    }
+
+    .btn-submit {
+      background: linear-gradient(135deg, #059b60, #047a4c);
+      box-shadow: 0 6px 24px rgba(5, 155, 96, .28)
+    }
+
+    .pinfo {
+      font-size: .77rem;
+      color: var(--g400);
+      font-weight: 500
+    }
+
+    .pinfo span {
+      color: var(--teal);
+      font-weight: 700
+    }
+
+    /* Success */
+    .success-sec {
+      position: relative;
+      z-index: 5;
+      padding: 0 0 80px;
+      display: none
+    }
+
+    .success-sec.active {
+      display: block;
+      animation: fiup .5s ease both
+    }
+
+    .suc-inner {
+      text-align: center;
+      padding: 70px 36px
+    }
+
+    .suc-ico {
+      width: 96px;
+      height: 96px;
+      background: linear-gradient(135deg, #d4f7e8, #a8f0ce);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 26px;
+      color: #059b60;
+      font-size: 2.7rem;
+      animation: sucPop .5s .2s cubic-bezier(.34, 1.56, .64, 1) both
+    }
+
+    @keyframes sucPop {
+      from {
+        transform: scale(0) rotate(-15deg)
+      }
+
+      to {
+        transform: scale(1) rotate(0)
+      }
+    }
+
+    .suc-ttl {
+      font-family: var(--fd);
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 12px
+    }
+
+    .suc-desc {
+      color: var(--g600);
+      font-size: .97rem;
+      line-height: 1.65;
+      max-width: 460px;
+      margin: 0 auto 28px
+    }
+
+    .suc-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--teal-light);
+      border: 1.5px solid var(--teal);
+      border-radius: 50px;
+      padding: 10px 22px;
+      color: var(--teal-dark);
+      font-weight: 700;
+      font-size: .87rem
+    }
+
+    /* Tips box */
+    .tipbox {
+      background: var(--gold-light);
+      border: 1.5px solid var(--gold);
+      border-radius: 12px;
+      padding: 13px 17px;
+      margin-top: 18px;
+      display: flex;
+      gap: 11px;
+      align-items: flex-start
+    }
+
+    .tipbox i {
+      color: #b8860b;
+      margin-top: 2px;
+      flex-shrink: 0
+    }
+
+    .tipbox-t {
+      font-size: .8rem;
+      color: #7a5c0a;
+      line-height: 1.6
+    }
+
+    .infobox {
+      background: var(--teal-light);
+      border: 1.5px solid var(--teal);
+      border-radius: 12px;
+      padding: 15px 18px;
+      margin-top: 18px
+    }
+
+    .infobox-ttl {
+      font-size: .8rem;
+      color: var(--teal-dark);
+      font-weight: 700;
+      margin-bottom: 7px
+    }
+
+    .infobox-body {
+      font-size: .78rem;
+      color: var(--g600);
+      line-height: 1.8
+    }
+
+    /* Responsive */
+    @media(max-width:768px) {
+      .stepper {
+        min-width: 480px
+      }
+
+      .sinfo {
+        display: none
+      }
+
+      .fnav {
+        padding: 16px 18px
+      }
+
+      .fc-head {
+        padding: 18px 20px
+      }
+
+      .fc-body {
+        padding: 20px
+      }
+
+      .paybox {
+        padding: 20px
+      }
+    }
+
+    @media(max-width:480px) {
+      .type-card {
+        width: 100%;
+        max-width: 340px
+      }
+
+      .sitem:not(:last-child)::after {
+        width: calc(100% - 55px);
+        left: 55px
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="bg-blobs">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+  </div>
+  <div class="particles" id="particles"></div>
+
+  <!-- HEADER -->
+  <header class="reg-header">
+    <div class="container d-flex align-items-center justify-content-between gap-3 flex-wrap">
+      <a href="#" class="reg-logo">
+        <div class="logo-icon"><i class="fa-solid fa-compass"></i></div>
+        ShamProm<span>.</span>
+      </a>
+      <p class="header-tag m-0 d-none d-md-block">Discover the World's Natural Wonders</p>
+      <a href="#" class="btn-prev" style="padding:9px 18px;font-size:.8rem;text-decoration:none;">
+        <i class="fa-solid fa-arrow-left"></i> Back to Site
+      </a>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <div class="reg-hero">
+    <div class="container">
+      <div class="hero-badge"><i class="fa-solid fa-shield-halved"></i> Secure Registration</div>
+      <h1>Join <em>ShamProm</em> —<br>Your Adventure Awaits</h1>
+      <p>Create your account to start exploring the world's most breathtaking destinations</p>
+    </div>
+  </div>
+
+  <!-- TYPE SELECTOR -->
+  <section class="type-sec" id="typeSec">
+    <div class="container" style="max-width:760px;">
+      <h2 class="type-title">Who are you joining as?</h2>
+      <p class="type-sub">Select the account type that best describes you</p>
+      <div class="type-cards">
+        <div class="type-card" data-type="buyer" onclick="selType('buyer',this)">
+          <div class="tc-chk"><i class="fa-solid fa-check"></i></div>
+          <div class="tc-icon"><i class="fa-solid fa-person-walking-luggage"></i></div>
+          <div class="tc-ttl">Buyer</div>
+          <div class="tc-desc">Explore and book amazing packages, discover destinations and create unforgettable
+            memories.</div>
+          <div class="tc-feats">
+            <span class="tc-feat">Book Packages</span><span class="tc-feat">Explore Deals</span>
+            <span class="tc-feat">Reviews</span><span class="tc-feat">Saved Trips</span>
+          </div>
+        </div>
+        <div class="type-card" data-type="business" onclick="selType('business',this)">
+          <div class="tc-chk"><i class="fa-solid fa-check"></i></div>
+          <div class="tc-icon"><i class="fa-solid fa-building"></i></div>
+          <div class="tc-ttl">Business Owner</div>
+          <div class="tc-desc">List your packages, manage bookings and grow your business with our powerful
+            platform.</div>
+          <div class="tc-feats">
+            <span class="tc-feat">List Packages</span><span class="tc-feat">Manage Bookings</span>
+            <span class="tc-feat">Analytics</span><span class="tc-feat">Verified Badge</span>
+          </div>
+        </div>
+      </div>
+      <div class="text-center mt-4">
+        <button class="btn-next-type" id="typeBtn" onclick="startWiz()" disabled>
+          Continue to Registration <i class="fa-solid fa-arrow-right"></i>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- WIZARD -->
+  <section class="wiz-sec" id="wizSec">
+    <div class="container" style="max-width:880px;">
+      <div class="stepper-wrap">
+        <div class="stepper" id="stepper"></div>
+      </div>
+      <div class="form-card">
+        <div class="fc-head">
+          <div class="fch-ico" id="fchIco"><i class="fa-solid fa-user"></i></div>
+          <div>
+            <div class="fch-ttl" id="fchTtl">Personal Information</div>
+            <div class="fch-sub" id="fchSub">Tell us about yourself</div>
+          </div>
+        </div>
+        <div class="fc-body" id="fcBody"></div>
+        <div class="fnav" id="fnav">
+          <div class="pinfo">Step <span id="pcur">1</span> of <span id="ptot">5</span></div>
+          <div class="d-flex gap-3 flex-wrap">
+            <button class="btn-prev" id="prevBtn" onclick="prevStep()"><i class="fa-solid fa-arrow-left"></i>
+              Previous</button>
+            <button class="btn-next" id="nextBtn" onclick="nextStep()">Next <i
+                class="fa-solid fa-arrow-right"></i></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SUCCESS -->
+  <section class="success-sec" id="sucSec">
+    <div class="container" style="max-width:680px;">
+      <div class="form-card">
+        <div class="fc-body">
+          <div class="suc-inner">
+            <div class="suc-ico"><i class="fa-solid fa-check"></i></div>
+            <h2 class="suc-ttl">Registration Submitted!</h2>
+            <p class="suc-desc">Thank you for joining ShamProm! Your registration is under review. We'll verify your
+              transaction slip and activate your account within 24–48 hours.</p>
+            <div class="suc-badge"><i class="fa-solid fa-envelope"></i> Confirmation email sent to your inbox</div>
+            <div class="mt-4">
+              <a href="#" class="btn-next" style="display:inline-flex;text-decoration:none;">
+                <i class="fa-solid fa-compass"></i> Explore ShamProm
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // ── DATA ──────────────────────────────────────────────────────────────────────
+    const CITIES = ["Abu Dhabi", "Abuja", "Accra", "Addis Ababa", "Adelaide", "Agra", "Ahmedabad", "Alexandria", "Algiers", "Almaty", "Amsterdam", "Ankara", "Athens", "Auckland", "Baghdad", "Baku", "Bangalore", "Bangkok", "Barcelona", "Beijing", "Beirut", "Belgrade", "Berlin", "Bogotá", "Brisbane", "Brussels", "Bucharest", "Budapest", "Buenos Aires", "Cairo", "Calgary", "Cape Town", "Casablanca", "Chennai", "Chicago", "Colombo", "Copenhagen", "Dallas", "Damascus", "Dar es Salaam", "Delhi", "Denver", "Dhaka", "Dubai", "Dublin", "Durban", "Edinburgh", "Fukuoka", "Guangzhou", "Hanoi", "Havana", "Helsinki", "Ho Chi Minh City", "Hong Kong", "Houston", "Hyderabad", "Istanbul", "Jakarta", "Jeddah", "Johannesburg", "Karachi", "Kathmandu", "Khartoum", "Kyiv", "Kinshasa", "Kuala Lumpur", "Lagos", "Lahore", "Lima", "Lisbon", "London", "Los Angeles", "Luanda", "Madrid", "Manila", "Melbourne", "Mexico City", "Miami", "Milan", "Montreal", "Moscow", "Mumbai", "Nairobi", "New York", "Osaka", "Oslo", "Ottawa", "Paris", "Prague", "Pune", "Riyadh", "Rome", "San Francisco", "Santiago", "São Paulo", "Seoul", "Shanghai", "Singapore", "Stockholm", "Sydney", "Taipei", "Tashkent", "Tehran", "Tokyo", "Toronto", "Vienna", "Warsaw", "Washington D.C.", "Wellington", "Yangon", "Zürich", "Islamabad", "Rawalpindi", "Peshawar", "Quetta", "Multan", "Faisalabad", "Gujranwala", "Sialkot", "Birmingham", "Manchester", "Glasgow", "Liverpool", "Bristol", "Leeds", "Sheffield", "Nottingham", "Vancouver", "Edmonton", "Winnipeg", "Quebec City", "Phoenix", "San Antonio", "San Diego", "San Jose", "Austin", "Jacksonville", "Columbus", "Indianapolis", "Charlotte", "Seattle", "Denver", "Nashville", "Baltimore", "Casablanca", "Marrakech", "Tunis", "Algiers", "Tripoli", "Nairobi", "Mombasa", "Kampala", "Accra", "Dakar", "Abidjan", "Bamako", "Conakry", "Freetown", "Banjul", "Lomé", "Cotonou"];
+
+    const COUNTRIES = ["Afghanistan", "Albania", "Algeria", "Andorra", "Angola", "Argentina", "Armenia", "Australia", "Austria", "Azerbaijan", "Bahamas", "Bahrain", "Bangladesh", "Barbados", "Belarus", "Belgium", "Belize", "Bhutan", "Bolivia", "Bosnia and Herzegovina", "Botswana", "Brazil", "Brunei", "Bulgaria", "Cambodia", "Cameroon", "Canada", "Chad", "Chile", "China", "Colombia", "Costa Rica", "Croatia", "Cuba", "Cyprus", "Czech Republic", "Denmark", "Ecuador", "Egypt", "El Salvador", "Eritrea", "Estonia", "Ethiopia", "Fiji", "Finland", "France", "Gabon", "Georgia", "Germany", "Ghana", "Greece", "Guatemala", "Guinea", "Guyana", "Haiti", "Honduras", "Hungary", "Iceland", "India", "Indonesia", "Iran", "Iraq", "Ireland", "Israel", "Italy", "Jamaica", "Japan", "Jordan", "Kazakhstan", "Kenya", "Kuwait", "Kyrgyzstan", "Laos", "Latvia", "Lebanon", "Libya", "Lithuania", "Luxembourg", "Madagascar", "Malawi", "Malaysia", "Maldives", "Mali", "Malta", "Mauritius", "Mexico", "Moldova", "Monaco", "Mongolia", "Morocco", "Mozambique", "Myanmar", "Namibia", "Nepal", "Netherlands", "New Zealand", "Nicaragua", "Nigeria", "North Korea", "North Macedonia", "Norway", "Oman", "Pakistan", "Panama", "Paraguay", "Peru", "Philippines", "Poland", "Portugal", "Qatar", "Romania", "Russia", "Rwanda", "Saudi Arabia", "Senegal", "Serbia", "Sierra Leone", "Singapore", "Slovakia", "Slovenia", "Somalia", "South Africa", "South Korea", "South Sudan", "Spain", "Sri Lanka", "Sudan", "Suriname", "Sweden", "Switzerland", "Syria", "Taiwan", "Tajikistan", "Tanzania", "Thailand", "Togo", "Trinidad and Tobago", "Tunisia", "Turkey", "Turkmenistan", "Uganda", "Ukraine", "United Arab Emirates", "United Kingdom", "United States", "Uruguay", "Uzbekistan", "Venezuela", "Vietnam", "Yemen", "Zambia", "Zimbabwe"];
+
+    // ── STATE ─────────────────────────────────────────────────────────────────────
+    let chosenType = null, curStep = 0, totSteps = 0;
+
+    const STEPS = {
+      buyer: [
+        { ico: 'fa-user', ttl: 'Personal Information', sub: 'Basic details about you' },
+        { ico: 'fa-location-dot', ttl: 'Location Details', sub: 'Where are you based?' },
+        { ico: 'fa-id-card', ttl: 'Identity Verification', sub: 'Upload your ID documents' },
+        { ico: 'fa-lock', ttl: 'Account & Security', sub: 'Set your credentials' },
+        { ico: 'fa-credit-card', ttl: 'Payment', sub: 'Complete registration fee' },
+      ],
+      business: [
+        { ico: 'fa-user', ttl: 'Personal Information', sub: 'Basic details about you' },
+        { ico: 'fa-location-dot', ttl: 'Location Details', sub: 'Where are you based?' },
+        { ico: 'fa-briefcase', ttl: 'Business Details', sub: 'Tell us about your business' },
+        { ico: 'fa-id-card', ttl: 'Identity & Business Docs', sub: 'Upload ID & business documents' },
+        { ico: 'fa-lock', ttl: 'Account & Security', sub: 'Set your credentials' },
+        { ico: 'fa-credit-card', ttl: 'Payment', sub: 'Complete registration fee' },
+      ]
+    };
+
+    // ── TYPE SELECTION ────────────────────────────────────────────────────────────
+    function selType(type, el) {
+      chosenType = type;
+      document.querySelectorAll('.type-card').forEach(c => c.classList.remove('sel'));
+      el.classList.add('sel');
+      const btn = document.getElementById('typeBtn');
+      btn.disabled = false;
+    }
+
+    function startWiz() {
+      if (!chosenType) return;
+      document.getElementById('typeSec').style.display = 'none';
+      const ws = document.getElementById('wizSec');
+      ws.classList.add('active');
+      initWiz();
+    }
+
+    // ── HELPERS ───────────────────────────────────────────────────────────────────
+    const countrySel = (name) => `<select class="fsel" name="${name}"><option value="">Select…</option>${COUNTRIES.map(c => `<option>${c}</option>`).join('')}</select>`;
+
+    const inp = (id, lbl, ico, ph, type = 'text') => `
+  <div class="fg"><label class="flbl"><i class="fa-solid ${ico}"></i>${lbl}<span class="freq">*</span></label>
+  <div class="iw"><i class="ii fa-solid ${ico}"></i><input type="${type}" class="fi" id="${id}" placeholder="${ph}"/></div></div>`;
+
+    const cityFld = (id, lbl) => `
+  <div class="fg"><label class="flbl"><i class="fa-solid fa-city"></i>${lbl}<span class="freq">*</span></label>
+  <div class="csw" data-cid="${id}">
+    <div class="iw"><i class="ii fa-solid fa-city"></i>
+    <input type="text" class="fi city-input" id="${id}" placeholder="Search city…" autocomplete="off"/>
+    <i class="iir fa-solid fa-chevron-down"></i></div>
+    <div class="cdrop" id="${id}-drop"></div>
+  </div></div>`;
+
+    const upload = (id, lbl, ico, hint) => `
+  <div class="fg"><label class="flbl"><i class="fa-solid ${ico}"></i>${lbl}<span class="freq">*</span></label>
+  <div class="uarea" id="ua-${id}"><input type="file" accept="image/*,.pdf" onchange="handleUp('${id}',this)"/>
+  <div class="uico"><i class="fa-solid fa-cloud-arrow-up"></i></div>
+  <div class="uttl">Drag & Drop or Click to Upload</div>
+  <div class="usub">${hint}</div>
+  <div id="fn-${id}"></div></div></div>`;
+
+    const payStep = () => `
+  <div class="paybox">
+    <div style="position:relative;z-index:1">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px">
+        <div style="width:38px;height:38px;background:rgba(43,189,180,.2);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--teal);font-size:1.05rem"><i class="fa-solid fa-credit-card"></i></div>
+        <div class="pay-ttl">Registration Fee</div>
+      </div>
+      <div class="pay-amount"><span class="pay-cur">$</span><span class="pay-num">1</span><span class="pay-per">one-time fee</span></div>
+      <div class="pay-desc">Transfer the registration fee to the account below, then upload your transaction slip to complete registration.</div>
+      <div class="acc-box">
+        <div style="font-size:.72rem;font-weight:700;color:rgba(255,255,255,.38);letter-spacing:.09em;text-transform:uppercase;margin-bottom:9px">Bank Account Details</div>
+        <div class="acc-row"><span class="ak">Bank Name</span><span class="av">ShamPro International Bank</span></div>
+        <div class="acc-row"><span class="ak">Account Name</span><span class="av">ShamPro Pvt. Ltd.</span></div>
+        <div class="acc-row"><span class="ak">Account No.</span><span style="display:flex;align-items:center;gap:8px"><span class="av" id="accNo">0123-4567-8901-2345</span><button class="acopy" onclick="cpAcc()"><i class="fa-solid fa-copy"></i> Copy</button></span></div>
+        <div class="acc-row"><span class="ak">IBAN</span><span class="av">TR12 0001 2009 8765 4321 0000 00</span></div>
+        <div class="acc-row"><span class="ak">SWIFT / BIC</span><span class="av">TOURMINTXXX</span></div>
+        <div class="acc-row"><span class="ak">Amount</span><span class="av" style="color:var(--teal)">$1.00 USD</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="sdiv"><span><i class="fa-solid fa-receipt me-2" style="color:var(--teal)"></i>Upload Transaction Slip</span></div>
+  <div class="row g-3">
+    <div class="col-md-6">${upload('txslip', 'Payment Transaction Slip', 'fa-receipt', 'Screenshot or photo of receipt, JPG/PNG/PDF ≤10MB')}</div>
+    <div class="col-md-6">
+      ${inp('txid', 'Transaction / Reference ID', 'fa-hashtag', 'e.g. TXN20240215XXXXXX')}
+      <div class="fg"><label class="flbl"><i class="fa-solid fa-calendar"></i>Payment Date<span class="freq">*</span></label>
+      <div class="iw"><i class="ii fa-solid fa-calendar"></i><input type="date" class="fi"/></div></div>
+    </div>
+  </div>
+  <div class="fg mt-3"><label style="display:flex;align-items:flex-start;gap:9px;cursor:pointer">
+    <input type="checkbox" id="termsChk" style="margin-top:3px;accent-color:var(--teal);width:15px;height:15px"/>
+    <span style="font-size:.83rem;color:var(--g600)">I agree to ShamProm's <a href="#" style="color:var(--teal);font-weight:600">Terms of Service</a> and <a href="#" style="color:var(--teal);font-weight:600">Privacy Policy</a>. I understand my account will be reviewed and activated after verification.</span>
+  </label></div>`;
+
+    const passStep = () => `
+  <div class="sdiv"><span><i class="fa-solid fa-lock me-2" style="color:var(--teal)"></i>Account Credentials</span></div>
+  <div class="row g-3">
+    <div class="col-md-6">
+      <div class="fg"><label class="flbl"><i class="fa-solid fa-lock"></i>Create Password<span class="freq">*</span></label>
+      <div class="iw pw"><i class="ii fa-solid fa-lock"></i>
+      <input type="password" class="fi" id="pass1" placeholder="Min. 8 characters" oninput="chkStr(this.value)"/>
+      <i class="iir fa-solid fa-eye" onclick="togPass('pass1',this)"></i></div>
+      <div class="pstrength"><div class="psbar" id="sb1"></div><div class="psbar" id="sb2"></div><div class="psbar" id="sb3"></div><div class="psbar" id="sb4"></div></div>
+      <div class="pslbl" id="strLbl">Enter a password</div></div>
+    </div>
+    <div class="col-md-6">
+      <div class="fg"><label class="flbl"><i class="fa-solid fa-lock"></i>Confirm Password<span class="freq">*</span></label>
+      <div class="iw pw"><i class="ii fa-solid fa-lock"></i>
+      <input type="password" class="fi" id="pass2" placeholder="Repeat your password"/>
+      <i class="iir fa-solid fa-eye" onclick="togPass('pass2',this)"></i></div>
+      <div class="ferr" id="pmErr">Passwords do not match</div></div>
+    </div>
+  </div>
+  <div class="infobox">
+    <div class="infobox-ttl"><i class="fa-solid fa-shield-halved me-2"></i>Password Requirements</div>
+    <div class="infobox-body">✓ At least 8 characters &nbsp;·&nbsp; ✓ One uppercase letter &nbsp;·&nbsp; ✓ One number &nbsp;·&nbsp; ✓ One special character (!@#$%)</div>
+  </div>`;
+
+    // ── STEP CONTENT ──────────────────────────────────────────────────────────────
+    const PERSONAL = () => `
+  <div class="sdiv"><span><i class="fa-solid fa-user me-2" style="color:var(--teal)"></i>Basic Information</span></div>
+  <div class="row g-3">
+    <div class="col-md-6">${inp('fname', 'First Name', 'fa-id-card', 'e.g. John')}</div>
+    <div class="col-md-6">${inp('lname', 'Last Name', 'fa-id-card', 'e.g. Doe')}</div>
+    <div class="col-md-6">${inp('uname', 'Username', 'fa-at', '@username')}</div>
+    <div class="col-md-6">${inp('email', 'Email Address', 'fa-envelope', 'you@example.com', 'email')}</div>
+    <div class="col-md-6">${inp('phone', 'Phone Number', 'fa-phone', '+1 000 000 0000', 'tel')}</div>
+    <div class="col-md-6">${inp('website', 'Website (optional)', 'fa-globe', 'https://yoursite.com', 'url')}</div>
+    <div class="col-md-6">
+      <div class="fg"><label class="flbl"><i class="fa-solid fa-venus-mars"></i>Gender<span class="freq">*</span></label>
+      <div class="gopt-wrap">
+        <div class="gopt"><input type="radio" name="gender" id="gm" value="male"><label for="gm"><i class="fa-solid fa-mars"></i>Male</label></div>
+        <div class="gopt"><input type="radio" name="gender" id="gf" value="female"><label for="gf"><i class="fa-solid fa-venus"></i>Female</label></div>
+        <div class="gopt"><input type="radio" name="gender" id="go" value="other"><label for="go"><i class="fa-solid fa-genderless"></i>Other</label></div>
+      </div></div>
+    </div>
+    <div class="col-md-3">${inp('dob', 'Date of Birth', 'fa-calendar', '', 'date')}</div>
+    <div class="col-md-3">
+      <div class="fg"><label class="flbl"><i class="fa-solid fa-flag"></i>Nationality<span class="freq">*</span></label>${countrySel('nationality')}</div>
+    </div>
+  </div>
+  <div class="sdiv mt-2"><span><i class="fa-solid fa-camera me-2" style="color:var(--teal)"></i>Profile Picture</span></div>
+  <div class="row g-3"><div class="col-md-5">${upload('pfp', 'Profile Photo', 'fa-camera', 'JPG, PNG up to 5MB')}</div></div>`;
+
+    const LOCATION = () => `
+  <div class="sdiv"><span><i class="fa-solid fa-location-dot me-2" style="color:var(--teal)"></i>Location Details</span></div>
+  <div class="row g-3">
+    <div class="col-md-6">${cityFld('city', 'City')}</div>
+    <div class="col-md-3">${inp('postal', 'Postal Code', 'fa-mailbox', '000000')}</div>
+    <div class="col-md-3">
+      <div class="fg"><label class="flbl"><i class="fa-solid fa-globe"></i>Country<span class="freq">*</span></label>${countrySel('country')}</div>
+    </div>
+    <div class="col-md-6">${inp('landmark', 'Landmark / Nearby Area', 'fa-map-pin', 'Near central park, etc.')}</div>
+    <div class="col-12">
+      <div class="fg"><label class="flbl"><i class="fa-solid fa-house"></i>Full Address<span class="freq">*</span></label>
+      <textarea class="fta" placeholder="Enter your complete mailing address…"></textarea></div>
+    </div>
+  </div>`;
+
+    const ID_VERIFY = () => `
+  <div class="sdiv"><span><i class="fa-solid fa-id-card me-2" style="color:var(--teal)"></i>Identity Verification</span></div>
+  <p style="font-size:.83rem;color:var(--g600);margin-bottom:18px">Upload clear photos of your government-issued ID card. All documents are encrypted and stored securely.</p>
+  <div class="row g-3">
+    <div class="col-md-6">${upload('idf', 'ID Card — Front Side', 'fa-address-card', 'Clear photo, JPG/PNG ≤10MB')}</div>
+    <div class="col-md-6">${upload('idb', 'ID Card — Back Side', 'fa-address-card', 'Clear photo, JPG/PNG ≤10MB')}</div>
+  </div>
+  <div class="tipbox">
+    <i class="fa-solid fa-triangle-exclamation"></i>
+    <div class="tipbox-t"><strong>Important:</strong> Ensure the ID is fully visible with no glare. Acceptable IDs: National ID Card, Passport, Driver's License. Blurry or partial images may delay verification.</div>
+  </div>`;
+
+    const BUSINESS_STEP = () => `
+  <div class="sdiv"><span><i class="fa-solid fa-briefcase me-2" style="color:var(--teal)"></i>Business Information</span></div>
+  <div class="row g-3">
+    <div class="col-md-6">${inp('bizname', 'Business Name', 'fa-building', 'e.g. ShamProm Ltd.')}</div>
+    <div class="col-md-6">
+      <div class="fg"><label class="flbl"><i class="fa-solid fa-tag"></i>Business Type<span class="freq">*</span></label>
+      <select class="fsel"><option value="">Select type</option><option>Operator</option><option>Travel Agency</option><option>Hotel / Resort</option><option>Transport Provider</option><option>Adventure Sports</option><option>Cruise Line</option><option>Other</option></select></div>
+    </div>
+    <div class="col-md-6">${inp('bizreg', 'Business Registration No.', 'fa-hashtag', 'e.g. BRN-2024-00123')}</div>
+    <div class="col-md-6">${inp('biztax', 'Tax / NTN Number (optional)', 'fa-receipt', 'e.g. NTN-0000000')}</div>
+    <div class="col-12">
+      <div class="fg"><label class="flbl"><i class="fa-solid fa-align-left"></i>Business Description<span class="freq">*</span></label>
+      <textarea class="fta" placeholder="Describe your business, services, and what makes you unique…"></textarea></div>
+    </div>
+  </div>`;
+
+    const BIZ_DOCS = () => `
+  ${ID_VERIFY()}
+  <div class="sdiv mt-2"><span><i class="fa-solid fa-file-contract me-2" style="color:var(--teal)"></i>Business Registration Proof</span></div>
+  <div class="row g-3">
+    <div class="col-md-6">${upload('bizregdoc', 'Business Registration Certificate', 'fa-file-shield', 'PDF, JPG, PNG ≤15MB')}</div>
+    <div class="col-md-6">${upload('bizlic', 'Business License / Permit', 'fa-file-certificate', 'PDF, JPG, PNG ≤15MB')}</div>
+  </div>
+  <div class="tipbox" style="margin-top:18px">
+    <i class="fa-solid fa-triangle-exclamation"></i>
+    <div class="tipbox-t"><strong>Note:</strong> Business documents must be valid and unexpired. We accept certificates of incorporation, trade licenses, tourism board registrations, and government-issued business permits.</div>
+  </div>`;
+
+    // ── STEP RENDERERS ────────────────────────────────────────────────────────────
+    const BUYER_STEPS = [PERSONAL, LOCATION, () => ID_VERIFY(), passStep, payStep];
+    const BIZ_STEPS = [PERSONAL, LOCATION, BUSINESS_STEP, () => BIZ_DOCS(), passStep, payStep];
+
+    // ── WIZARD INIT ───────────────────────────────────────────────────────────────
+    function initWiz() {
+      const steps = STEPS[chosenType];
+      totSteps = steps.length;
+      curStep = 0;
+      buildStepper(steps);
+      buildBody();
+      updUI();
+    }
+
+    function buildStepper(steps) {
+      document.getElementById('stepper').innerHTML = steps.map((s, i) => `
+    <div class="sitem${i === 0 ? ' active' : ''}" id="si${i}">
+      <div class="snum" id="sn${i}">${i + 1}</div>
+      <div class="sinfo"><div class="slbl">${s.ttl}</div><div class="ssub">${s.sub}</div></div>
+    </div>`).join('');
+    }
+
+    function buildBody() {
+      const arr = chosenType === 'buyer' ? BUYER_STEPS : BIZ_STEPS;
+      document.getElementById('fcBody').innerHTML = arr.map((fn, i) => `
+    <div class="fstep${i === 0 ? ' active' : ''}" id="fs${i}">${fn()}</div>`).join('');
+      initCity();
+    }
+
+    function updUI() {
+      const steps = STEPS[chosenType];
+      steps.forEach((s, i) => {
+        const item = document.getElementById(`si${i}`);
+        const num = document.getElementById(`sn${i}`);
+        item.classList.remove('active', 'done');
+        if (i < curStep) { item.classList.add('done'); num.innerHTML = '<i class="fa-solid fa-check" style="font-size:.78rem"></i>'; }
+        else if (i === curStep) { item.classList.add('active'); num.textContent = i + 1; }
+        else num.textContent = i + 1;
+      });
+      document.querySelectorAll('.fstep').forEach(f => f.classList.remove('active'));
+      const cur = document.getElementById(`fs${curStep}`);
+      if (cur) cur.classList.add('active');
+      const s = steps[curStep];
+      document.getElementById('fchIco').innerHTML = `<i class="fa-solid ${s.ico}"></i>`;
+      document.getElementById('fchTtl').textContent = s.ttl;
+      document.getElementById('fchSub').textContent = s.sub;
+      document.getElementById('pcur').textContent = curStep + 1;
+      document.getElementById('ptot').textContent = totSteps;
+      const pb = document.getElementById('prevBtn');
+      const nb = document.getElementById('nextBtn');
+      pb.style.visibility = curStep === 0 ? 'hidden' : 'visible';
+      const isLast = curStep === totSteps - 1;
+      nb.innerHTML = isLast ? '<i class="fa-solid fa-paper-plane"></i> Submit Registration' : 'Next <i class="fa-solid fa-arrow-right"></i>';
+      nb.className = 'btn-next' + (isLast ? ' btn-submit' : '');
+      initCity();
+    }
+
+    function nextStep() {
+      if (curStep === totSteps - 1) { submit(); return; }
+      curStep = Math.min(curStep + 1, totSteps - 1);
+      updUI();
+      scroll();
+    }
+    function prevStep() {
+      curStep = Math.max(curStep - 1, 0);
+      updUI();
+      scroll();
+    }
+    function scroll() {
+      const el = document.querySelector('.stepper-wrap');
+      if (el) window.scrollTo({ top: el.offsetTop - 80, behavior: 'smooth' });
+    }
+    function submit() {
+      document.getElementById('wizSec').classList.remove('active');
+      document.getElementById('wizSec').style.display = 'none';
+      const ss = document.getElementById('sucSec');
+      ss.classList.add('active');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // ── CITY SEARCH ───────────────────────────────────────────────────────────────
+    function initCity() {
+      document.querySelectorAll('.city-input').forEach(inp => {
+        const id = inp.id;
+        const drop = document.getElementById(id + '-drop');
+        if (!drop) return;
+        inp.addEventListener('input', function () {
+          const v = this.value.toLowerCase();
+          if (v.length < 1) { drop.classList.remove('open'); return; }
+          const f = CITIES.filter(c => c.toLowerCase().includes(v)).slice(0, 28);
+          if (!f.length) { drop.classList.remove('open'); return; }
+          drop.innerHTML = f.map(c => `<div class="copt" onclick="pickCity('${id}','${c}')"><i class="fa-solid fa-location-dot"></i>${c}</div>`).join('');
+          drop.classList.add('open');
+        });
+        inp.addEventListener('blur', () => setTimeout(() => drop.classList.remove('open'), 200));
+        inp.addEventListener('focus', function () { if (this.value.length > 0) this.dispatchEvent(new Event('input')); });
+      });
+    }
+    function pickCity(id, city) {
+      document.getElementById(id).value = city;
+      document.getElementById(id + '-drop').classList.remove('open');
+    }
+
+    // ── FILE UPLOAD ───────────────────────────────────────────────────────────────
+    function handleUp(id, inp) {
+      if (!inp.files[0]) return;
+      const f = inp.files[0];
+      const ua = document.getElementById('ua-' + id);
+      const fn = document.getElementById('fn-' + id);
+      ua.classList.add('hasfile');
+      const nm = f.name.length > 28 ? f.name.substring(0, 25) + '…' : f.name;
+      fn.innerHTML = `<div class="ubadge"><i class="fa-solid fa-check"></i>${nm}</div>`;
+      ua.querySelector('.uttl').textContent = 'File Selected ✓';
+      const ico = ua.querySelector('.uico');
+      ico.innerHTML = '<i class="fa-solid fa-check-circle"></i>';
+      ico.style.background = 'linear-gradient(135deg,#d4f7e8,#a8f0ce)';
+      ico.style.color = '#059b60';
+    }
+
+    // ── PASSWORD ──────────────────────────────────────────────────────────────────
+    function chkStr(v) {
+      const bars = ['sb1', 'sb2', 'sb3', 'sb4'];
+      const lbl = document.getElementById('strLbl');
+      if (!lbl) return;
+      bars.forEach(b => { const e = document.getElementById(b); if (e) e.className = 'psbar'; });
+      if (!v) { if (lbl) lbl.textContent = 'Enter a password'; return; }
+      let sc = 0;
+      if (v.length >= 8) sc++;
+      if (/[A-Z]/.test(v)) sc++;
+      if (/[0-9]/.test(v)) sc++;
+      if (/[^A-Za-z0-9]/.test(v)) sc++;
+      const cls = ['', 'weak', 'weak', 'fair', 'good', 'good'];
+      const lbls = ['', 'Weak', 'Weak', 'Fair', 'Good', 'Strong'];
+      for (let i = 0; i < sc; i++) { const e = document.getElementById(`sb${i + 1}`); if (e) e.classList.add(cls[sc]); }
+      if (lbl) lbl.textContent = lbls[sc] || 'Weak';
+    }
+    function togPass(id, ico) {
+      const el = document.getElementById(id);
+      if (el.type === 'password') { el.type = 'text'; ico.className = 'iir fa-solid fa-eye-slash'; }
+      else { el.type = 'password'; ico.className = 'iir fa-solid fa-eye'; }
+    }
+    function cpAcc() {
+      const v = document.getElementById('accNo').textContent;
+      navigator.clipboard.writeText(v).then(() => {
+        const b = document.querySelector('.acopy');
+        b.innerHTML = '<i class="fa-solid fa-check"></i> Copied!';
+        b.style.color = '#059b60';
+        setTimeout(() => { b.innerHTML = '<i class="fa-solid fa-copy"></i> Copy'; b.style.color = ''; }, 2000);
+      });
+    }
+
+    // ── PARTICLES ─────────────────────────────────────────────────────────────────
+    (function () {
+      const c = document.getElementById('particles');
+      for (let i = 0; i < 16; i++) {
+        const p = document.createElement('div');
+        p.className = 'particle';
+        const s = Math.random() * 7 + 3;
+        p.style.cssText = `width:${s}px;height:${s}px;left:${Math.random() * 100}%;animation-duration:${Math.random() * 14 + 10}s;animation-delay:${Math.random() * -14}s`;
+        c.appendChild(p);
+      }
+    })();
+  </script>
+</body>
+
+</html>

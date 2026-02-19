@@ -1,0 +1,2187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ShamPro – Create Your Account</title>
+
+    <!-- Bootstrap 5 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" />
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css" />
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Syne:wght@700;800&display=swap"
+        rel="stylesheet" />
+
+    <style>
+        /* ========== ROOT & VARIABLES ========== */
+        :root {
+            --teal: #1ABCAD;
+            --teal-light: #e8f9f7;
+            --teal-dark: #0d9e90;
+            --navy: #0d1b2a;
+            --slate: #334155;
+            --muted: #94a3b8;
+            --surface: #f8fbfc;
+            --white: #ffffff;
+            --border: #e2eaef;
+            --danger: #ef4444;
+            --warning: #f59e0b;
+            --success: #10b981;
+            --radius: 16px;
+            --radius-sm: 10px;
+            --shadow: 0 4px 24px rgba(13, 27, 42, .08);
+            --shadow-lg: 0 12px 48px rgba(13, 27, 42, .14);
+            --step-inactive: #c8d6df;
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background: var(--surface);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* ========== ANIMATED BACKGROUND ========== */
+        .bg-canvas {
+            position: fixed;
+            inset: 0;
+            z-index: 0;
+            background: linear-gradient(135deg, #f0faf9 0%, #e8f5f4 40%, #fafffe 100%);
+            overflow: hidden;
+        }
+
+        .bg-blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: .35;
+            animation: floatBlob 8s ease-in-out infinite alternate;
+        }
+
+        .bg-blob-1 {
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, #1abcad55, transparent);
+            top: -200px;
+            right: -150px;
+            animation-delay: 0s;
+        }
+
+        .bg-blob-2 {
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, #0d9e9044, transparent);
+            bottom: -100px;
+            left: -100px;
+            animation-delay: 3s;
+        }
+
+        .bg-blob-3 {
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, #1abcad33, transparent);
+            top: 40%;
+            left: 30%;
+            animation-delay: 1.5s;
+        }
+
+        @keyframes floatBlob {
+            from {
+                transform: translate(0, 0) scale(1);
+            }
+
+            to {
+                transform: translate(30px, -20px) scale(1.06);
+            }
+        }
+
+        /* ========== GRID DOTS ========== */
+        .bg-grid {
+            position: absolute;
+            inset: 0;
+            background-image: radial-gradient(circle, var(--teal) 1px, transparent 1px);
+            background-size: 40px 40px;
+            opacity: .045;
+        }
+
+        /* ========== PAGE WRAPPER ========== */
+        .page-wrap {
+            position: relative;
+            z-index: 1;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 32px 16px 60px;
+        }
+
+        /* ========== LOGO HEADER ========== */
+        .site-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 36px;
+            animation: fadeDown .6s ease both;
+        }
+
+        .site-logo .logo-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, var(--teal), var(--teal-dark));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 6px 20px rgba(26, 188, 173, .35);
+        }
+
+        .site-logo .logo-icon i {
+            color: #fff;
+            font-size: 20px;
+        }
+
+        .site-logo .logo-text {
+            font-family: 'Syne', sans-serif;
+            font-size: 26px;
+            font-weight: 800;
+            color: var(--navy);
+            letter-spacing: -.5px;
+        }
+
+        .site-logo .logo-text span {
+            color: var(--teal);
+        }
+
+        /* ========== FORM CARD ========== */
+        .form-card {
+            width: 100%;
+            max-width: 860px;
+            background: var(--white);
+            border-radius: 28px;
+            box-shadow: var(--shadow-lg);
+            overflow: hidden;
+            animation: fadeUp .7s ease both .1s;
+        }
+
+        @keyframes fadeDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: none;
+            }
+        }
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(28px);
+            }
+
+            to {
+                opacity: 1;
+                transform: none;
+            }
+        }
+
+        /* ========== CARD HEADER ========== */
+        .card-header-top {
+            background: linear-gradient(130deg, var(--navy) 0%, #1a3347 100%);
+            padding: 36px 40px 28px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card-header-top::before {
+            content: '';
+            position: absolute;
+            bottom: -40px;
+            right: -40px;
+            width: 220px;
+            height: 220px;
+            border-radius: 50%;
+            background: rgba(26, 188, 173, .12);
+        }
+
+        .card-header-top::after {
+            content: '';
+            position: absolute;
+            top: -30px;
+            left: 60%;
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            background: rgba(26, 188, 173, .08);
+        }
+
+        .card-header-top h1 {
+            font-family: 'Syne', sans-serif;
+            font-size: 28px;
+            font-weight: 800;
+            color: #fff;
+            margin-bottom: 6px;
+        }
+
+        .card-header-top p {
+            color: rgba(255, 255, 255, .6);
+            font-size: 14px;
+        }
+
+        /* ========== STEP INDICATOR ========== */
+        .steps-wrap {
+            padding: 28px 40px 0;
+            overflow-x: auto;
+            white-space: nowrap;
+        }
+
+        .steps-inner {
+            display: flex;
+            align-items: flex-start;
+            gap: 0;
+            min-width: max-content;
+        }
+
+        .step-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            flex: 1;
+            min-width: 80px;
+        }
+
+        .step-item:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            top: 18px;
+            left: calc(50% + 22px);
+            right: calc(-50% + 22px);
+            height: 2px;
+            background: var(--border);
+            transition: background .4s ease;
+        }
+
+        .step-item.done:not(:last-child)::after {
+            background: var(--teal);
+        }
+
+        .step-circle {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: var(--surface);
+            border: 2px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--muted);
+            transition: all .35s ease;
+            position: relative;
+            z-index: 1;
+        }
+
+        .step-item.active .step-circle {
+            background: var(--teal);
+            border-color: var(--teal);
+            color: #fff;
+            box-shadow: 0 0 0 6px rgba(26, 188, 173, .18);
+            transform: scale(1.1);
+        }
+
+        .step-item.done .step-circle {
+            background: var(--teal);
+            border-color: var(--teal);
+            color: #fff;
+        }
+
+        .step-label {
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--muted);
+            margin-top: 7px;
+            text-align: center;
+            white-space: normal;
+            max-width: 72px;
+            line-height: 1.3;
+        }
+
+        .step-item.active .step-label {
+            color: var(--teal);
+        }
+
+        .step-item.done .step-label {
+            color: var(--teal-dark);
+        }
+
+        /* ========== FORM BODY ========== */
+        .form-body {
+            padding: 32px 40px 36px;
+        }
+
+        /* ========== SECTION HEADING ========== */
+        .section-heading {
+            margin-bottom: 28px;
+            padding-bottom: 14px;
+            border-bottom: 2px solid var(--border);
+        }
+
+        .section-heading h2 {
+            font-family: 'Syne', sans-serif;
+            font-size: 20px;
+            font-weight: 800;
+            color: var(--navy);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 4px;
+        }
+
+        .section-heading h2 .sh-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 10px;
+            background: var(--teal-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 17px;
+            color: var(--teal);
+        }
+
+        .section-heading p {
+            color: var(--muted);
+            font-size: 13.5px;
+            padding-left: 46px;
+        }
+
+        /* ========== FLOATING LABEL INPUTS ========== */
+        .field-group {
+            position: relative;
+            margin-bottom: 22px;
+        }
+
+        .field-group label {
+            display: block;
+            font-size: 12.5px;
+            font-weight: 700;
+            color: var(--slate);
+            margin-bottom: 7px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .field-group label i {
+            color: var(--teal);
+            font-size: 13px;
+        }
+
+        .field-group .form-control,
+        .field-group .form-select {
+            border: 1.8px solid var(--border);
+            border-radius: var(--radius-sm);
+            padding: 13px 18px;
+            font-size: 14px;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            color: var(--navy);
+            background: var(--white);
+            transition: all .25s ease;
+            width: 100%;
+        }
+
+        .field-group .form-control:focus,
+        .field-group .form-select:focus {
+            border-color: var(--teal);
+            box-shadow: 0 0 0 4px rgba(26, 188, 173, .12);
+            outline: none;
+        }
+
+        .field-group .form-control::placeholder {
+            color: #b0bfc9;
+        }
+
+        /* input with icon prefix */
+        .input-icon-wrap {
+            position: relative;
+        }
+
+        .input-icon-wrap .icon-prefix {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--teal);
+            font-size: 15px;
+            pointer-events: none;
+        }
+
+        .input-icon-wrap .form-control {
+            padding-left: 42px;
+        }
+
+        .input-icon-wrap .icon-suffix {
+            position: absolute;
+            right: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--muted);
+            font-size: 15px;
+            cursor: pointer;
+        }
+
+        .input-icon-wrap .icon-suffix:hover {
+            color: var(--teal);
+        }
+
+        /* password strength */
+        .pw-strength {
+            margin-top: 8px;
+            display: flex;
+            gap: 5px;
+        }
+
+        .pw-bar {
+            flex: 1;
+            height: 4px;
+            border-radius: 4px;
+            background: var(--border);
+            transition: background .3s;
+        }
+
+        .pw-bar.weak {
+            background: #ef4444;
+        }
+
+        .pw-bar.medium {
+            background: #f59e0b;
+        }
+
+        .pw-bar.strong {
+            background: #10b981;
+        }
+
+        /* ========== FILE UPLOAD ========== */
+        .upload-box {
+            border: 2px dashed var(--border);
+            border-radius: var(--radius-sm);
+            padding: 28px 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: all .25s ease;
+            background: var(--surface);
+        }
+
+        .upload-box:hover {
+            border-color: var(--teal);
+            background: var(--teal-light);
+        }
+
+        .upload-box i {
+            font-size: 30px;
+            color: var(--teal);
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .upload-box p {
+            font-size: 13px;
+            color: var(--muted);
+            margin: 0;
+        }
+
+        .upload-box span {
+            font-size: 12px;
+            color: var(--teal);
+            font-weight: 600;
+        }
+
+        .upload-box input[type="file"] {
+            display: none;
+        }
+
+        .upload-preview {
+            margin-top: 10px;
+            display: none;
+        }
+
+        .upload-preview img {
+            max-height: 90px;
+            border-radius: 8px;
+            object-fit: cover;
+            border: 2px solid var(--border);
+        }
+
+        .upload-preview .up-name {
+            font-size: 12px;
+            color: var(--slate);
+            margin-top: 4px;
+        }
+
+        /* ========== CITY SELECT WITH SEARCH ========== */
+        .custom-select-wrap {
+            position: relative;
+        }
+
+        .city-dropdown {
+            position: absolute;
+            top: calc(100% + 6px);
+            left: 0;
+            right: 0;
+            background: var(--white);
+            border: 1.8px solid var(--border);
+            border-radius: var(--radius-sm);
+            box-shadow: var(--shadow-lg);
+            z-index: 999;
+            max-height: 220px;
+            overflow: hidden;
+            display: none;
+            flex-direction: column;
+        }
+
+        .city-dropdown.open {
+            display: flex;
+        }
+
+        .city-dropdown .city-search {
+            padding: 10px 14px;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .city-dropdown .city-search input {
+            border: none;
+            outline: none;
+            font-size: 13px;
+            font-family: inherit;
+            flex: 1;
+            color: var(--navy);
+        }
+
+        .city-dropdown .city-search i {
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+        .city-list {
+            overflow-y: auto;
+            flex: 1;
+        }
+
+        .city-list .city-opt {
+            padding: 10px 16px;
+            font-size: 13.5px;
+            color: var(--slate);
+            cursor: pointer;
+            transition: background .15s;
+        }
+
+        .city-list .city-opt:hover,
+        .city-list .city-opt.selected {
+            background: var(--teal-light);
+            color: var(--teal-dark);
+            font-weight: 600;
+        }
+
+        .city-list .city-empty {
+            padding: 14px 16px;
+            font-size: 13px;
+            color: var(--muted);
+            text-align: center;
+        }
+
+        .city-selected-display {
+            border: 1.8px solid var(--border);
+            border-radius: var(--radius-sm);
+            padding: 13px 18px;
+            font-size: 14px;
+            color: var(--navy);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: var(--white);
+            transition: border-color .25s;
+            user-select: none;
+        }
+
+        .city-selected-display:hover,
+        .city-selected-display.open {
+            border-color: var(--teal);
+            box-shadow: 0 0 0 4px rgba(26, 188, 173, .12);
+        }
+
+        .city-selected-display span {
+            color: #b0bfc9;
+        }
+
+        /* ========== TYPE SELECTOR ========== */
+        .type-selector {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px;
+            margin: 8px 0 12px;
+        }
+
+        .type-card {
+            border: 2.5px solid var(--border);
+            border-radius: var(--radius);
+            padding: 28px 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: all .3s ease;
+            background: var(--white);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .type-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(26, 188, 173, .06), transparent);
+            opacity: 0;
+            transition: opacity .3s;
+        }
+
+        .type-card:hover::before {
+            opacity: 1;
+        }
+
+        .type-card:hover {
+            border-color: var(--teal);
+            transform: translateY(-4px);
+            box-shadow: 0 8px 28px rgba(26, 188, 173, .18);
+        }
+
+        .type-card.selected {
+            border-color: var(--teal);
+            background: var(--teal-light);
+        }
+
+        .type-card.selected::before {
+            opacity: 1;
+        }
+
+        .type-card .tc-icon {
+            width: 64px;
+            height: 64px;
+            border-radius: 18px;
+            margin: 0 auto 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            background: var(--teal-light);
+            color: var(--teal);
+            transition: all .3s;
+        }
+
+        .type-card.selected .tc-icon {
+            background: var(--teal);
+            color: var(--white);
+            box-shadow: 0 8px 24px rgba(26, 188, 173, .35);
+        }
+
+        .type-card h3 {
+            font-family: 'Syne', sans-serif;
+            font-size: 17px;
+            font-weight: 800;
+            color: var(--navy);
+            margin-bottom: 6px;
+        }
+
+        .type-card p {
+            font-size: 12.5px;
+            color: var(--muted);
+            margin: 0;
+            line-height: 1.5;
+        }
+
+        .type-card .tc-check {
+            position: absolute;
+            top: 14px;
+            right: 14px;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: var(--teal);
+            color: #fff;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            font-size: 13px;
+        }
+
+        .type-card.selected .tc-check {
+            display: flex;
+        }
+
+        /* ========== RADIO / CHECKBOX FANCY ========== */
+        .fancy-radio-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .fancy-radio {
+            border: 1.8px solid var(--border);
+            border-radius: 40px;
+            padding: 9px 18px;
+            cursor: pointer;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--slate);
+            transition: all .22s;
+            display: flex;
+            align-items: center;
+            gap: 7px;
+        }
+
+        .fancy-radio:hover {
+            border-color: var(--teal);
+            color: var(--teal);
+        }
+
+        .fancy-radio input {
+            display: none;
+        }
+
+        .fancy-radio.selected {
+            background: var(--teal);
+            border-color: var(--teal);
+            color: #fff;
+        }
+
+        .fancy-radio .fr-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--border);
+            transition: background .22s;
+        }
+
+        .fancy-radio.selected .fr-dot {
+            background: rgba(255, 255, 255, .6);
+        }
+
+        /* ========== PAYMENT INFO ========== */
+        .payment-box {
+            background: linear-gradient(135deg, #0d1b2a 0%, #1a3347 100%);
+            border-radius: var(--radius);
+            padding: 28px;
+            margin-bottom: 24px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .payment-box::after {
+            content: '';
+            position: absolute;
+            bottom: -30px;
+            right: -30px;
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            background: rgba(26, 188, 173, .12);
+        }
+
+        .payment-box h4 {
+            color: #fff;
+            font-family: 'Syne', sans-serif;
+            font-size: 17px;
+            font-weight: 800;
+            margin-bottom: 4px;
+        }
+
+        .payment-box p {
+            color: rgba(255, 255, 255, .55);
+            font-size: 13px;
+            margin-bottom: 20px;
+        }
+
+        .account-detail-row {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: rgba(255, 255, 255, .08);
+            border-radius: 10px;
+            padding: 14px 18px;
+            margin-bottom: 10px;
+        }
+
+        .account-detail-row i {
+            color: var(--teal);
+            font-size: 18px;
+            flex-shrink: 0;
+        }
+
+        .account-detail-row .ad-label {
+            font-size: 11px;
+            color: rgba(255, 255, 255, .45);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: .5px;
+            margin-bottom: 2px;
+        }
+
+        .account-detail-row .ad-value {
+            font-size: 14px;
+            color: #fff;
+            font-weight: 700;
+            letter-spacing: .5px;
+        }
+
+        .amount-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--teal);
+            color: #fff;
+            border-radius: 40px;
+            padding: 10px 22px;
+            font-size: 15px;
+            font-weight: 800;
+            margin-bottom: 20px;
+            box-shadow: 0 6px 20px rgba(26, 188, 173, .4);
+        }
+
+        /* ========== NAVIGATION BUTTONS ========== */
+        .form-nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 32px;
+            padding-top: 24px;
+            border-top: 1.5px solid var(--border);
+        }
+
+        .btn-prev {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--surface);
+            border: 1.8px solid var(--border);
+            border-radius: 40px;
+            padding: 12px 26px;
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--slate);
+            cursor: pointer;
+            transition: all .25s;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        .btn-prev:hover {
+            border-color: var(--teal);
+            color: var(--teal);
+        }
+
+        .btn-next {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: linear-gradient(135deg, var(--teal), var(--teal-dark));
+            border: none;
+            border-radius: 40px;
+            padding: 13px 32px;
+            font-size: 14px;
+            font-weight: 700;
+            color: #fff;
+            cursor: pointer;
+            transition: all .28s;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            box-shadow: 0 8px 24px rgba(26, 188, 173, .35);
+        }
+
+        .btn-next:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 32px rgba(26, 188, 173, .45);
+        }
+
+        .btn-next:active {
+            transform: translateY(0);
+        }
+
+        /* ========== STEPS PANEL ========== */
+        .wizard-step {
+            display: none;
+            animation: stepIn .4s ease both;
+        }
+
+        .wizard-step.active {
+            display: block;
+        }
+
+        @keyframes stepIn {
+            from {
+                opacity: 0;
+                transform: translateX(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        /* ========== SUCCESS SCREEN ========== */
+        .success-screen {
+            text-align: center;
+            padding: 60px 40px;
+        }
+
+        .success-animation {
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--teal), var(--teal-dark));
+            margin: 0 auto 28px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 12px 40px rgba(26, 188, 173, .45);
+            animation: popIn .6s cubic-bezier(.34, 1.56, .64, 1) both;
+        }
+
+        .success-animation i {
+            font-size: 50px;
+            color: #fff;
+        }
+
+        @keyframes popIn {
+            from {
+                transform: scale(0);
+                opacity: 0;
+            }
+
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        .success-screen h2 {
+            font-family: 'Syne', sans-serif;
+            font-size: 28px;
+            font-weight: 800;
+            color: var(--navy);
+            margin-bottom: 10px;
+        }
+
+        .success-screen p {
+            color: var(--muted);
+            font-size: 15px;
+            max-width: 400px;
+            margin: 0 auto 28px;
+            line-height: 1.7;
+        }
+
+        /* ========== PROGRESS BAR ========== */
+        .progress-mini {
+            height: 4px;
+            background: var(--border);
+            border-radius: 4px;
+            margin: 22px 40px 0;
+        }
+
+        .progress-mini-inner {
+            height: 100%;
+            background: linear-gradient(90deg, var(--teal), var(--teal-dark));
+            border-radius: 4px;
+            transition: width .5s cubic-bezier(.4, 0, .2, 1);
+        }
+
+        /* ========== TOOLTIP ========== */
+        .form-tooltip {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: var(--border);
+            color: var(--muted);
+            font-size: 10px;
+            cursor: help;
+            margin-left: 4px;
+        }
+
+        /* ========== DIVIDER ========== */
+        .fancy-divider {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin: 26px 0;
+        }
+
+        .fancy-divider hr {
+            flex: 1;
+            border-color: var(--border);
+        }
+
+        .fancy-divider span {
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--muted);
+            white-space: nowrap;
+        }
+
+        /* ========== RESPONSIVE ========== */
+        @media (max-width: 768px) {
+            .form-body {
+                padding: 24px 20px 28px;
+            }
+
+            .card-header-top {
+                padding: 28px 20px 22px;
+            }
+
+            .steps-wrap {
+                padding: 20px 20px 0;
+            }
+
+            .form-nav {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            .btn-next,
+            .btn-prev {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .type-selector {
+                grid-template-columns: 1fr;
+            }
+
+            .progress-mini {
+                margin: 16px 20px 0;
+            }
+
+            .card-header-top h1 {
+                font-size: 22px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .steps-wrap {
+                padding: 16px 14px 0;
+            }
+
+            .step-label {
+                font-size: 10px;
+                max-width: 56px;
+            }
+
+            .step-circle {
+                width: 30px;
+                height: 30px;
+                font-size: 12px;
+            }
+
+            .step-item:not(:last-child)::after {
+                top: 15px;
+            }
+        }
+
+        /* ========== VALIDATION ========== */
+        .field-error {
+            font-size: 11.5px;
+            color: var(--danger);
+            margin-top: 5px;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .form-control.is-invalid,
+        .city-selected-display.is-invalid {
+            border-color: var(--danger) !important;
+        }
+
+        .form-control.is-valid {
+            border-color: var(--success) !important;
+        }
+
+        /* ========== MISC ========== */
+        select option {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        .text-teal {
+            color: var(--teal);
+        }
+
+        .fw-700 {
+            font-weight: 700;
+        }
+
+        a {
+            color: var(--teal);
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        /* Step-specific progress hint */
+        .step-badge {
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--muted);
+            margin-bottom: 6px;
+        }
+
+        .step-badge span {
+            color: var(--teal);
+            font-weight: 800;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ANIMATED BG -->
+    <div class="bg-canvas">
+        <div class="bg-grid"></div>
+        <div class="bg-blob bg-blob-1"></div>
+        <div class="bg-blob bg-blob-2"></div>
+        <div class="bg-blob bg-blob-3"></div>
+    </div>
+
+    <div class="page-wrap">
+        <!-- LOGO -->
+        <div class="site-logo">
+            <div class="logo-icon"><i class="bi bi-compass"></i></div>
+            <div class="logo-text">Sham<span>Pro</span></div>
+        </div>
+
+        <!-- FORM CARD -->
+        <div class="form-card">
+            <!-- HEADER -->
+            <div class="card-header-top">
+                <p class="step-badge" id="globalStepBadge">Step <span id="globalStepNum">1</span> of <span
+                        id="globalStepTotal">5</span></p>
+                <h1 id="stepTitle">Create Your Account</h1>
+                <p id="stepSubtitle">Join the world's most trusted travel marketplace.</p>
+            </div>
+
+            <!-- PROGRESS BAR -->
+            <div class="progress-mini">
+                <div class="progress-mini-inner" id="progressBar" style="width:20%"></div>
+            </div>
+
+            <!-- STEPS NAV (for business / buyer respective step counts) -->
+            <div class="steps-wrap" id="stepsWrap">
+                <div class="steps-inner" id="stepsInner">
+                    <!-- injected by JS -->
+                </div>
+            </div>
+
+            <!-- FORM BODY -->
+            <div class="form-body">
+
+                <!-- ============================
+           STEP 0 : Account Type
+      ============================= -->
+                <div class="wizard-step active" id="step-0">
+                    <div class="section-heading">
+                        <h2><span class="sh-icon"><i class="bi bi-person-gear"></i></span>Who are you?</h2>
+                        <p>Select your account type to get started.</p>
+                    </div>
+
+                    <div class="type-selector">
+                        <div class="type-card" id="tc-business" onclick="selectType('business')">
+                            <div class="tc-check"><i class="bi bi-check"></i></div>
+                            <div class="tc-icon"><i class="bi bi-briefcase"></i></div>
+                            <h3>Business Owner</h3>
+                            <p>Register your business and list your services on Now.</p>
+                        </div>
+                        <div class="type-card" id="tc-buyer" onclick="selectType('buyer')">
+                            <div class="tc-check"><i class="bi bi-check"></i></div>
+                            <div class="tc-icon"><i class="bi bi-person-heart"></i></div>
+                            <h3>Buyer</h3>
+                            <p>Book Items, packages and experiences with verified providers.</p>
+                        </div>
+                    </div>
+
+                    <div class="form-nav">
+                        <div></div>
+                        <button class="btn-next" onclick="goNext()">
+                            Continue <i class="bi bi-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- ============================
+           STEP 1 : Personal Info
+      ============================= -->
+                <div class="wizard-step" id="step-1">
+                    <div class="section-heading">
+                        <h2><span class="sh-icon"><i class="bi bi-person"></i></span>Personal Information</h2>
+                        <p>Tell us a bit about yourself.</p>
+                    </div>
+
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <div class="field-group">
+                                <label><i class="bi bi-person-fill"></i> First Name <span
+                                        class="text-danger">*</span></label>
+                                <div class="input-icon-wrap">
+                                    <i class="bi bi-person icon-prefix"></i>
+                                    <input type="text" class="form-control" id="firstName" placeholder="John">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="field-group">
+                                <label><i class="bi bi-person-fill"></i> Last Name <span
+                                        class="text-danger">*</span></label>
+                                <div class="input-icon-wrap">
+                                    <i class="bi bi-person icon-prefix"></i>
+                                    <input type="text" class="form-control" id="lastName" placeholder="Doe">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="field-group">
+                                <label><i class="bi bi-at"></i> Username <span class="text-danger">*</span></label>
+                                <div class="input-icon-wrap">
+                                    <i class="bi bi-at icon-prefix"></i>
+                                    <input type="text" class="form-control" id="username" placeholder="john.doe">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="field-group">
+                                <label><i class="bi bi-envelope-fill"></i> Email Address <span
+                                        class="text-danger">*</span></label>
+                                <div class="input-icon-wrap">
+                                    <i class="bi bi-envelope icon-prefix"></i>
+                                    <input type="email" class="form-control" id="email" placeholder="john@example.com">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="field-group">
+                                <label><i class="bi bi-telephone-fill"></i> Phone Number <span
+                                        class="text-danger">*</span></label>
+                                <div class="input-icon-wrap">
+                                    <i class="bi bi-telephone icon-prefix"></i>
+                                    <input type="tel" class="form-control" id="phone" placeholder="+1 234 567 8900">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="field-group">
+                                <label><i class="bi bi-globe"></i> Website</label>
+                                <div class="input-icon-wrap">
+                                    <i class="bi bi-globe icon-prefix"></i>
+                                    <input type="url" class="form-control" id="website"
+                                        placeholder="https://yoursite.com">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="field-group">
+                                <label><i class="bi bi-gender-ambiguous"></i> Gender <span
+                                        class="text-danger">*</span></label>
+                                <div class="fancy-radio-group" id="genderGroup">
+                                    <label class="fancy-radio" onclick="selectFancyRadio(this,'genderGroup')">
+                                        <input type="radio" name="gender" value="male"><span class="fr-dot"></span> Male
+                                    </label>
+                                    <label class="fancy-radio" onclick="selectFancyRadio(this,'genderGroup')">
+                                        <input type="radio" name="gender" value="female"><span class="fr-dot"></span>
+                                        Female
+                                    </label>
+                                    <label class="fancy-radio" onclick="selectFancyRadio(this,'genderGroup')">
+                                        <input type="radio" name="gender" value="other"><span class="fr-dot"></span>
+                                        Other
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="field-group">
+                                <label><i class="bi bi-calendar-fill"></i> Date of Birth <span
+                                        class="text-danger">*</span></label>
+                                <div class="input-icon-wrap">
+                                    <i class="bi bi-calendar icon-prefix"></i>
+                                    <input type="date" class="form-control" id="dob">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="field-group">
+                                <label><i class="bi bi-flag-fill"></i> Nationality <span
+                                        class="text-danger">*</span></label>
+                                <div class="field-group" style="margin-bottom:0">
+                                    <select class="form-select" id="nationality">
+                                        <option value="">Select nationality</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="field-group">
+                                <label><i class="bi bi-camera-fill"></i> Profile Picture</label>
+                                <div class="upload-box" onclick="document.getElementById('profilePicInput').click()"
+                                    id="profilePicBox">
+                                    <input type="file" id="profilePicInput" accept="image/*"
+                                        onchange="previewUpload(this,'profilePicBox')">
+                                    <i class="bi bi-person-circle"></i>
+                                    <p>Click to upload your profile photo</p>
+                                    <span>JPG, PNG, GIF up to 5MB</span>
+                                    <div class="upload-preview" id="profilePicPreview"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-nav">
+                        <button class="btn-prev" onclick="goPrev()"><i class="bi bi-arrow-left"></i> Back</button>
+                        <button class="btn-next" onclick="goNext()">Next <i class="bi bi-arrow-right"></i></button>
+                    </div>
+                </div>
+
+                <!-- ============================
+           STEP 2 : Address Info
+      ============================= -->
+                <div class="wizard-step" id="step-2">
+                    <div class="section-heading">
+                        <h2><span class="sh-icon"><i class="bi bi-geo-alt"></i></span>Address Details</h2>
+                        <p>Help us locate you on the map.</p>
+                    </div>
+
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <div class="field-group">
+                                <label><i class="bi bi-geo"></i> Country <span class="text-danger">*</span></label>
+                                <select class="form-select" id="country" onchange="updateCitiesByCountry()">
+                                    <option value="">Select country</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="field-group">
+                                <label><i class="bi bi-buildings"></i> City <span class="text-danger">*</span></label>
+                                <div class="custom-select-wrap">
+                                    <div class="city-selected-display" id="cityDisplay" onclick="toggleCityDropdown()">
+                                        <span>Select city</span>
+                                        <i class="bi bi-chevron-down"></i>
+                                    </div>
+                                    <div class="city-dropdown" id="cityDropdown">
+                                        <div class="city-search">
+                                            <i class="bi bi-search"></i>
+                                            <input type="text" id="citySearchInput" placeholder="Search city..."
+                                                oninput="filterCities(this.value)">
+                                        </div>
+                                        <div class="city-list" id="cityList"></div>
+                                    </div>
+                                    <input type="hidden" id="cityValue">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="field-group">
+                                <label><i class="bi bi-mailbox"></i> Postal Code</label>
+                                <div class="input-icon-wrap">
+                                    <i class="bi bi-mailbox icon-prefix"></i>
+                                    <input type="text" class="form-control" id="postalCode" placeholder="12345">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="field-group">
+                                <label><i class="bi bi-signpost"></i> Landmark</label>
+                                <div class="input-icon-wrap">
+                                    <i class="bi bi-signpost icon-prefix"></i>
+                                    <input type="text" class="form-control" id="landmark"
+                                        placeholder="Near Central Park...">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="field-group">
+                                <label><i class="bi bi-house-fill"></i> Full Address <span
+                                        class="text-danger">*</span></label>
+                                <div class="input-icon-wrap">
+                                    <i class="bi bi-house icon-prefix"></i>
+                                    <input type="text" class="form-control" id="address"
+                                        placeholder="123 Main St, Apt 4B">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-nav">
+                        <button class="btn-prev" onclick="goPrev()"><i class="bi bi-arrow-left"></i> Back</button>
+                        <button class="btn-next" onclick="goNext()">Next <i class="bi bi-arrow-right"></i></button>
+                    </div>
+                </div>
+
+                <!-- ============================
+           STEP 3 : ID Verification
+      ============================= -->
+                <div class="wizard-step" id="step-3">
+                    <div class="section-heading">
+                        <h2><span class="sh-icon"><i class="bi bi-shield-check"></i></span>Identity Verification</h2>
+                        <p>Upload a government-issued ID card for verification.</p>
+                    </div>
+
+                    <div class="row g-4">
+                        <div class="col-md-6">
+                            <div class="field-group">
+                                <label><i class="bi bi-card-heading"></i> ID Card – Front Side <span
+                                        class="text-danger">*</span></label>
+                                <div class="upload-box" onclick="document.getElementById('idFrontInput').click()"
+                                    id="idFrontBox">
+                                    <input type="file" id="idFrontInput" accept="image/*"
+                                        onchange="previewUpload(this,'idFrontBox')">
+                                    <i class="bi bi-credit-card-2-front"></i>
+                                    <p>Upload front of ID card</p>
+                                    <span>JPG, PNG, PDF · Max 10MB</span>
+                                    <div class="upload-preview" id="idFrontPreview"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="field-group">
+                                <label><i class="bi bi-credit-card-2-back"></i> ID Card – Back Side <span
+                                        class="text-danger">*</span></label>
+                                <div class="upload-box" onclick="document.getElementById('idBackInput').click()"
+                                    id="idBackBox">
+                                    <input type="file" id="idBackInput" accept="image/*"
+                                        onchange="previewUpload(this,'idBackBox')">
+                                    <i class="bi bi-credit-card-2-back"></i>
+                                    <p>Upload back of ID card</p>
+                                    <span>JPG, PNG, PDF · Max 10MB</span>
+                                    <div class="upload-preview" id="idBackPreview"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Business owner only: business registration proof -->
+                        <div class="col-12" id="bizProofSection" style="display:none">
+                            <div class="fancy-divider">
+                                <hr><span>Business Documents</span>
+                                <hr>
+                            </div>
+                            <div class="field-group">
+                                <label><i class="bi bi-file-earmark-check-fill"></i> Business Registration Proof <span
+                                        class="text-danger">*</span></label>
+                                <div class="upload-box" onclick="document.getElementById('bizProofInput').click()"
+                                    id="bizProofBox">
+                                    <input type="file" id="bizProofInput" accept="image/*,.pdf"
+                                        onchange="previewUpload(this,'bizProofBox')">
+                                    <i class="bi bi-file-earmark-text"></i>
+                                    <p>Upload your business registration certificate or trade license</p>
+                                    <span>JPG, PNG, PDF · Max 20MB</span>
+                                    <div class="upload-preview" id="bizProofPreview"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-nav">
+                        <button class="btn-prev" onclick="goPrev()"><i class="bi bi-arrow-left"></i> Back</button>
+                        <button class="btn-next" onclick="goNext()">Next <i class="bi bi-arrow-right"></i></button>
+                    </div>
+                </div>
+
+                <!-- ============================
+           STEP 4 : Password
+      ============================= -->
+                <div class="wizard-step" id="step-4">
+                    <div class="section-heading">
+                        <h2><span class="sh-icon"><i class="bi bi-lock"></i></span>Secure Your Account</h2>
+                        <p>Create a strong password to protect your account.</p>
+                    </div>
+
+                    <div class="row g-3">
+                        <div class="col-12">
+                            <div class="field-group">
+                                <label><i class="bi bi-lock-fill"></i> Create Password <span
+                                        class="text-danger">*</span></label>
+                                <div class="input-icon-wrap">
+                                    <i class="bi bi-lock icon-prefix"></i>
+                                    <input type="password" class="form-control" id="password"
+                                        placeholder="Min 8 characters" oninput="checkPasswordStrength(this.value)">
+                                    <i class="bi bi-eye icon-suffix" onclick="togglePassword('password',this)"></i>
+                                </div>
+                                <div class="pw-strength" id="pwBars">
+                                    <div class="pw-bar" id="bar1"></div>
+                                    <div class="pw-bar" id="bar2"></div>
+                                    <div class="pw-bar" id="bar3"></div>
+                                    <div class="pw-bar" id="bar4"></div>
+                                </div>
+                                <div style="font-size:11.5px;color:var(--muted);margin-top:5px" id="pwLabel">Enter a
+                                    password to check strength</div>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="field-group">
+                                <label><i class="bi bi-lock-fill"></i> Confirm Password <span
+                                        class="text-danger">*</span></label>
+                                <div class="input-icon-wrap">
+                                    <i class="bi bi-lock icon-prefix"></i>
+                                    <input type="password" class="form-control" id="confirmPassword"
+                                        placeholder="Re-enter your password">
+                                    <i class="bi bi-eye icon-suffix"
+                                        onclick="togglePassword('confirmPassword',this)"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div
+                                style="background:var(--teal-light);border-radius:var(--radius-sm);padding:14px 18px;font-size:13px;color:var(--teal-dark)">
+                                <i class="bi bi-info-circle me-2"></i>
+                                Password must be at least 8 characters and include uppercase, lowercase, number and
+                                special character.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-nav">
+                        <button class="btn-prev" onclick="goPrev()"><i class="bi bi-arrow-left"></i> Back</button>
+                        <button class="btn-next" onclick="goNext()">Next <i class="bi bi-arrow-right"></i></button>
+                    </div>
+                </div>
+
+                <!-- ============================
+           STEP 5 : Payment
+      ============================= -->
+                <div class="wizard-step" id="step-5">
+                    <div class="section-heading">
+                        <h2><span class="sh-icon"><i class="bi bi-credit-card"></i></span>Registration Payment</h2>
+                        <p>A one-time fee is required to activate your account.</p>
+                    </div>
+
+                    <!-- Amount Banner -->
+                    <div style="text-align:center;margin-bottom:20px">
+                        <div class="amount-badge">
+                            <i class="bi bi-cash-coin"></i>
+                            Registration Fee: <strong>$1.00 USD</strong>
+                        </div>
+                        <div style="font-size:13px;color:var(--muted)">One-time non-refundable registration fee.</div>
+                    </div>
+
+                    <!-- Account Details -->
+                    <div class="payment-box">
+                        <h4><i class="bi bi-bank2 me-2"></i>Transfer to Our Account</h4>
+                        <p>Send $1.00 to the account below and upload your transaction slip.</p>
+
+                        <div class="account-detail-row">
+                            <i class="bi bi-bank"></i>
+                            <div>
+                                <div class="ad-label">Bank Name</div>
+                                <div class="ad-value">First National Travel Bank</div>
+                            </div>
+                        </div>
+                        <div class="account-detail-row">
+                            <i class="bi bi-hash"></i>
+                            <div>
+                                <div class="ad-label">Account Number</div>
+                                <div class="ad-value">1234 5678 9012 3456</div>
+                            </div>
+                        </div>
+                        <div class="account-detail-row">
+                            <i class="bi bi-person-badge"></i>
+                            <div>
+                                <div class="ad-label">Account Holder</div>
+                                <div class="ad-value">ShamPro Marketplace Ltd.</div>
+                            </div>
+                        </div>
+                        <div class="account-detail-row">
+                            <i class="bi bi-upc"></i>
+                            <div>
+                                <div class="ad-label">IBAN / Routing</div>
+                                <div class="ad-value">GB29 NWBK 6016 1331 9268 19</div>
+                            </div>
+                        </div>
+                        <div class="account-detail-row">
+                            <i class="bi bi-telephone-fill"></i>
+                            <div>
+                                <div class="ad-label">Mobile Payment (PayNow / JazzCash)</div>
+                                <div class="ad-value">+1 800 ShamPro 00</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Payment Method -->
+                    <div class="field-group">
+                        <label><i class="bi bi-wallet2"></i> Payment Method Used</label>
+                        <div class="fancy-radio-group" id="payMethodGroup">
+                            <label class="fancy-radio" onclick="selectFancyRadio(this,'payMethodGroup')">
+                                <input type="radio" name="payMethod" value="bank"><span class="fr-dot"></span><i
+                                    class="bi bi-bank"></i> Bank Transfer
+                            </label>
+                            <label class="fancy-radio" onclick="selectFancyRadio(this,'payMethodGroup')">
+                                <input type="radio" name="payMethod" value="card"><span class="fr-dot"></span><i
+                                    class="bi bi-credit-card"></i> Card
+                            </label>
+                            <label class="fancy-radio" onclick="selectFancyRadio(this,'payMethodGroup')">
+                                <input type="radio" name="payMethod" value="mobile"><span class="fr-dot"></span><i
+                                    class="bi bi-phone"></i> Mobile Payment
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Card Info (conditionally shown) -->
+                    <div id="cardInfoSection" style="display:none">
+                        <div class="row g-3">
+                            <div class="col-12">
+                                <div class="field-group">
+                                    <label><i class="bi bi-credit-card-fill"></i> Card Number</label>
+                                    <div class="input-icon-wrap">
+                                        <i class="bi bi-credit-card icon-prefix"></i>
+                                        <input type="text" class="form-control" id="cardNumber"
+                                            placeholder="1234 5678 9012 3456" maxlength="19" oninput="formatCard(this)">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="field-group">
+                                    <label><i class="bi bi-calendar3"></i> Expiry Date</label>
+                                    <div class="input-icon-wrap">
+                                        <i class="bi bi-calendar icon-prefix"></i>
+                                        <input type="text" class="form-control" id="cardExpiry" placeholder="MM/YY"
+                                            maxlength="5" oninput="formatExpiry(this)">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="field-group">
+                                    <label><i class="bi bi-shield-lock"></i> CVV <span class="form-tooltip"
+                                            title="3-4 digit code on back of card">?</span></label>
+                                    <div class="input-icon-wrap">
+                                        <i class="bi bi-lock icon-prefix"></i>
+                                        <input type="password" class="form-control" id="cardCvv" placeholder="•••"
+                                            maxlength="4">
+                                        <i class="bi bi-eye icon-suffix" onclick="togglePassword('cardCvv',this)"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="field-group">
+                                    <label><i class="bi bi-person-fill"></i> Cardholder Name</label>
+                                    <div class="input-icon-wrap">
+                                        <i class="bi bi-person icon-prefix"></i>
+                                        <input type="text" class="form-control" id="cardName" placeholder="John Doe">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Transaction Slip Upload -->
+                    <div class="field-group" id="slipSection">
+                        <label><i class="bi bi-receipt"></i> Upload Transaction Slip / Screenshot <span
+                                class="text-danger">*</span></label>
+                        <div class="upload-box" onclick="document.getElementById('txSlipInput').click()" id="txSlipBox">
+                            <input type="file" id="txSlipInput" accept="image/*,.pdf"
+                                onchange="previewUpload(this,'txSlipBox')">
+                            <i class="bi bi-receipt-cutoff"></i>
+                            <p>Upload proof of your $1.00 payment</p>
+                            <span>JPG, PNG, PDF · Max 10MB</span>
+                            <div class="upload-preview" id="txSlipPreview"></div>
+                        </div>
+                    </div>
+
+                    <div class="field-group">
+                        <label><i class="bi bi-hash"></i> Transaction / Reference ID</label>
+                        <div class="input-icon-wrap">
+                            <i class="bi bi-hash icon-prefix"></i>
+                            <input type="text" class="form-control" id="txRef" placeholder="e.g. TXN12345678">
+                        </div>
+                    </div>
+
+                    <div class="form-nav">
+                        <button class="btn-prev" onclick="goPrev()"><i class="bi bi-arrow-left"></i> Back</button>
+                        <button class="btn-next" onclick="submitForm()">
+                            <i class="bi bi-check2-circle"></i> Submit Registration
+                        </button>
+                    </div>
+                </div>
+
+                <!-- ============================
+           SUCCESS SCREEN
+      ============================= -->
+                <div class="wizard-step" id="step-success">
+                    <div class="success-screen">
+                        <div class="success-animation"><i class="bi bi-check-lg"></i></div>
+                        <h2>Registration Submitted!</h2>
+                        <p>
+                            Thank you for joining <strong class="text-teal">ShamPro</strong>! Your registration is under
+                            review.
+                            We'll verify your documents and payment within <strong>24-48 hours</strong> and send a
+                            confirmation to your email.
+                        </p>
+                        <button class="btn-next" onclick="window.location.reload()">
+                            <i class="bi bi-house"></i> Back to Home
+                        </button>
+                    </div>
+                </div>
+
+            </div><!-- /form-body -->
+        </div><!-- /form-card -->
+    </div><!-- /page-wrap -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+    <script>
+        /* ============================================================
+           DATA
+        ============================================================ */
+        const COUNTRIES = [
+            "Afghanistan", "Albania", "Algeria", "Andorra", "Angola", "Antigua and Barbuda", "Argentina",
+            "Armenia", "Australia", "Austria", "Azerbaijan", "Bahamas", "Bahrain", "Bangladesh", "Barbados",
+            "Belarus", "Belgium", "Belize", "Benin", "Bhutan", "Bolivia", "Bosnia and Herzegovina", "Botswana",
+            "Brazil", "Brunei", "Bulgaria", "Burkina Faso", "Burundi", "Cabo Verde", "Cambodia", "Cameroon",
+            "Canada", "Central African Republic", "Chad", "Chile", "China", "Colombia", "Comoros",
+            "Congo (Brazzaville)", "Congo (DRC)", "Costa Rica", "Croatia", "Cuba", "Cyprus", "Czech Republic",
+            "Denmark", "Djibouti", "Dominica", "Dominican Republic", "Ecuador", "Egypt", "El Salvador",
+            "Equatorial Guinea", "Eritrea", "Estonia", "Eswatini", "Ethiopia", "Fiji", "Finland", "France",
+            "Gabon", "Gambia", "Georgia", "Germany", "Ghana", "Greece", "Grenada", "Guatemala", "Guinea",
+            "Guinea-Bissau", "Guyana", "Haiti", "Honduras", "Hungary", "Iceland", "India", "Indonesia", "Iran",
+            "Iraq", "Ireland", "Israel", "Italy", "Jamaica", "Japan", "Jordan", "Kazakhstan", "Kenya", "Kiribati",
+            "Kuwait", "Kyrgyzstan", "Laos", "Latvia", "Lebanon", "Lesotho", "Liberia", "Libya", "Liechtenstein",
+            "Lithuania", "Luxembourg", "Madagascar", "Malawi", "Malaysia", "Maldives", "Mali", "Malta",
+            "Marshall Islands", "Mauritania", "Mauritius", "Mexico", "Micronesia", "Moldova", "Monaco",
+            "Mongolia", "Montenegro", "Morocco", "Mozambique", "Myanmar", "Namibia", "Nauru", "Nepal",
+            "Netherlands", "New Zealand", "Nicaragua", "Niger", "Nigeria", "North Korea", "North Macedonia",
+            "Norway", "Oman", "Pakistan", "Palau", "Panama", "Papua New Guinea", "Paraguay", "Peru", "Philippines",
+            "Poland", "Portugal", "Qatar", "Romania", "Russia", "Rwanda", "Saint Kitts and Nevis", "Saint Lucia",
+            "Saint Vincent and the Grenadines", "Samoa", "San Marino", "Saudi Arabia", "Senegal", "Serbia",
+            "Seychelles", "Sierra Leone", "Singapore", "Slovakia", "Slovenia", "Solomon Islands", "Somalia",
+            "South Africa", "South Korea", "South Sudan", "Spain", "Sri Lanka", "Sudan", "Suriname", "Sweden",
+            "Switzerland", "Syria", "Taiwan", "Tajikistan", "Tanzania", "Thailand", "Timor-Leste", "Togo",
+            "Tonga", "Trinidad and Tobago", "Tunisia", "Turkey", "Turkmenistan", "Tuvalu", "Uganda", "Ukraine",
+            "United Arab Emirates", "United Kingdom", "United States", "Uruguay", "Uzbekistan", "Vanuatu",
+            "Vatican City", "Venezuela", "Vietnam", "Yemen", "Zambia", "Zimbabwe"
+        ];
+
+        // World Cities list (representative subset with many major cities)
+        const ALL_CITIES = [
+            "Abu Dhabi", "Abuja", "Accra", "Addis Ababa", "Adelaide", "Agra", "Ahmedabad", "Alexandria",
+            "Algiers", "Almaty", "Amman", "Amsterdam", "Anchorage", "Ankara", "Antananarivo", "Antwerp",
+            "Apia", "Athens", "Atlanta", "Auckland", "Baghdad", "Baku", "Bangalore", "Bangkok", "Barcelona",
+            "Basel", "Beirut", "Belgrade", "Belo Horizonte", "Berlin", "Bishkek", "Bogota", "Bologna",
+            "Brisbane", "Brussels", "Bucharest", "Budapest", "Buenos Aires", "Cairo", "Calgary", "Canberra",
+            "Cape Town", "Caracas", "Casablanca", "Chennai", "Chengdu", "Chicago", "Chongqing", "Colombo",
+            "Copenhagen", "Dakar", "Dallas", "Damascus", "Dar es Salaam", "Delhi", "Denver", "Dhaka",
+            "Doha", "Dubai", "Dublin", "Durban", "Edinburgh", "Florence", "Frankfurt", "Geneva", "Glasgow",
+            "Guangzhou", "Guatemala City", "Guayaquil", "Hamburg", "Hanoi", "Harare", "Helsinki", "Ho Chi Minh City",
+            "Hong Kong", "Houston", "Hyderabad", "Islamabad", "Istanbul", "Jakarta", "Jeddah", "Jerusalem",
+            "Johannesburg", "Kabul", "Kampala", "Karachi", "Kathmandu", "Khartoum", "Kinshasa", "Kolkata",
+            "Kuala Lumpur", "Kuwait City", "Lagos", "Lahore", "La Paz", "Lima", "Lisbon", "London",
+            "Los Angeles", "Luanda", "Lusaka", "Lyon", "Madrid", "Manama", "Manila", "Maputo", "Marseille",
+            "Melbourne", "Mexico City", "Miami", "Milan", "Minneapolis", "Minsk", "Mogadishu", "Montevideo",
+            "Montreal", "Moscow", "Mumbai", "Muscat", "Nairobi", "Naples", "Nassau", "New York", "Niamey",
+            "Nicosia", "Oslo", "Ottawa", "Ouagadougou", "Panama City", "Paris", "Perth", "Phnom Penh",
+            "Porto", "Prague", "Pretoria", "Quito", "Rabat", "Riyadh", "Rio de Janeiro", "Rome", "Rosario",
+            "San Francisco", "San José", "Santiago", "Santo Domingo", "São Paulo", "Seattle", "Seoul",
+            "Shanghai", "Shenzhen", "Singapore", "Sofia", "Stockholm", "Surabaya", "Sydney", "Taipei",
+            "Tashkent", "Tehran", "Tel Aviv", "Tbilisi", "Tokyo", "Toronto", "Tunis", "Ulaanbaatar",
+            "Vancouver", "Vienna", "Vilnius", "Warsaw", "Washington D.C.", "Wellington", "Yangon", "Yerevan",
+            "Zagreb", "Zurich"
+        ];
+
+        /* ============================================================
+           WIZARD STATE
+        ============================================================ */
+        let accountType = null; // 'business' | 'buyer'
+        let currentStep = 0;    // 0 = type select
+        const TOTAL_STEPS = 6;    // steps 0-5 + success
+
+        const STEP_META = {
+            0: { title: "Create Your Account", sub: "Join the world's most trusted marketplace.", icon: "bi-compass" },
+            1: { title: "Personal Information", sub: "Tell us a bit about yourself.", icon: "bi-person" },
+            2: { title: "Address Details", sub: "Help us locate you on the map.", icon: "bi-geo-alt" },
+            3: { title: "Identity Verification", sub: "Upload a government-issued ID for verification.", icon: "bi-shield-check" },
+            4: { title: "Secure Your Account", sub: "Create a strong password.", icon: "bi-lock" },
+            5: { title: "Registration Payment", sub: "Complete payment to activate your account.", icon: "bi-credit-card" },
+        };
+
+        const STEP_LABELS = ["Account Type", "Personal Info", "Address", "ID Verification", "Password", "Payment"];
+
+        /* ============================================================
+           INIT
+        ============================================================ */
+        window.addEventListener('DOMContentLoaded', () => {
+            populateCountries();
+            populateNationality();
+            renderSteps();
+            updateUI();
+            initPaymentMethodListener();
+
+            // Close city dropdown on outside click
+            document.addEventListener('click', e => {
+                const wrap = document.querySelector('.custom-select-wrap');
+                if (wrap && !wrap.contains(e.target)) closeCityDropdown();
+            });
+        });
+
+        /* ============================================================
+           COUNTRIES & NATIONALITY
+        ============================================================ */
+        function populateCountries() {
+            const sel = document.getElementById('country');
+            COUNTRIES.forEach(c => {
+                const opt = document.createElement('option');
+                opt.value = c; opt.textContent = c;
+                sel.appendChild(opt);
+            });
+        }
+        function populateNationality() {
+            const sel = document.getElementById('nationality');
+            COUNTRIES.forEach(c => {
+                const opt = document.createElement('option');
+                opt.value = c; opt.textContent = c;
+                sel.appendChild(opt);
+            });
+        }
+
+        /* ============================================================
+           CITY DROPDOWN
+        ============================================================ */
+        let selectedCity = '';
+
+        function updateCitiesByCountry() {
+            renderCityList(ALL_CITIES);
+            document.getElementById('cityDisplay').innerHTML = '<span>Select city</span><i class="bi bi-chevron-down"></i>';
+            selectedCity = '';
+            document.getElementById('cityValue').value = '';
+        }
+
+        function toggleCityDropdown() {
+            const dd = document.getElementById('cityDropdown');
+            const display = document.getElementById('cityDisplay');
+            const isOpen = dd.classList.contains('open');
+            if (isOpen) { closeCityDropdown(); }
+            else {
+                dd.classList.add('open');
+                display.classList.add('open');
+                renderCityList(ALL_CITIES);
+                document.getElementById('citySearchInput').value = '';
+                setTimeout(() => document.getElementById('citySearchInput').focus(), 50);
+            }
+        }
+        function closeCityDropdown() {
+            document.getElementById('cityDropdown').classList.remove('open');
+            document.getElementById('cityDisplay').classList.remove('open');
+        }
+        function filterCities(val) {
+            const filtered = ALL_CITIES.filter(c => c.toLowerCase().includes(val.toLowerCase()));
+            renderCityList(filtered);
+        }
+        function renderCityList(cities) {
+            const list = document.getElementById('cityList');
+            if (!cities.length) { list.innerHTML = '<div class="city-empty">No cities found</div>'; return; }
+            list.innerHTML = cities.map(c =>
+                `<div class="city-opt${c === selectedCity ? ' selected' : ''}" onclick="selectCity('${c}')">${c}</div>`
+            ).join('');
+        }
+        function selectCity(city) {
+            selectedCity = city;
+            document.getElementById('cityValue').value = city;
+            const d = document.getElementById('cityDisplay');
+            d.innerHTML = `${city} <i class="bi bi-chevron-down"></i>`;
+            closeCityDropdown();
+        }
+
+        /* ============================================================
+           TYPE SELECTION
+        ============================================================ */
+        function selectType(type) {
+            accountType = type;
+            document.getElementById('tc-business').classList.toggle('selected', type === 'business');
+            document.getElementById('tc-buyer').classList.toggle('selected', type === 'buyer');
+            // show/hide biz proof section
+            document.getElementById('bizProofSection').style.display = type === 'business' ? 'block' : 'none';
+        }
+
+        /* ============================================================
+           FANCY RADIO
+        ============================================================ */
+        function selectFancyRadio(el, groupId) {
+            document.querySelectorAll(`#${groupId} .fancy-radio`).forEach(r => r.classList.remove('selected'));
+            el.classList.add('selected');
+            const inp = el.querySelector('input[type="radio"]');
+            if (inp) inp.checked = true;
+        }
+
+        /* ============================================================
+           STEPS RENDER
+        ============================================================ */
+        function renderSteps() {
+            const inner = document.getElementById('stepsInner');
+            inner.innerHTML = STEP_LABELS.map((label, i) => {
+                let cls = '';
+                if (i < currentStep) cls = 'done';
+                else if (i === currentStep) cls = 'active';
+                const icon = i < currentStep ? '<i class="bi bi-check"></i>' : (i + 1);
+                return `<div class="step-item ${cls}" id="stepItem${i}">
+      <div class="step-circle">${icon}</div>
+      <div class="step-label">${label}</div>
+    </div>`;
+            }).join('');
+        }
+
+        function updateStepClasses() {
+            STEP_LABELS.forEach((_, i) => {
+                const el = document.getElementById('stepItem' + i);
+                if (!el) return;
+                el.className = 'step-item';
+                if (i < currentStep) el.classList.add('done');
+                else if (i === currentStep) el.classList.add('active');
+                const circle = el.querySelector('.step-circle');
+                if (i < currentStep) circle.innerHTML = '<i class="bi bi-check"></i>';
+                else circle.innerHTML = (i + 1);
+            });
+        }
+
+        /* ============================================================
+           UI UPDATE
+        ============================================================ */
+        function updateUI() {
+            const meta = STEP_META[currentStep] || {};
+            document.getElementById('stepTitle').textContent = meta.title || '';
+            document.getElementById('stepSubtitle').textContent = meta.sub || '';
+            document.getElementById('globalStepNum').textContent = currentStep + 1;
+            document.getElementById('globalStepTotal').textContent = STEP_LABELS.length;
+
+            // Progress bar
+            const pct = Math.round(((currentStep + 1) / STEP_LABELS.length) * 100);
+            document.getElementById('progressBar').style.width = pct + '%';
+
+            updateStepClasses();
+        }
+
+        /* ============================================================
+           NAVIGATION
+        ============================================================ */
+        function showStep(n) {
+            document.querySelectorAll('.wizard-step').forEach(s => s.classList.remove('active'));
+            const target = document.getElementById('step-' + n) || document.getElementById('step-success');
+            if (target) target.classList.add('active');
+        }
+
+        function goPrev() {
+            if (currentStep > 0) {
+                currentStep--;
+                showStep(currentStep);
+                updateUI();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        }
+
+        function goNext() {
+            if (!validateStep(currentStep)) return;
+            currentStep++;
+            showStep(currentStep);
+            updateUI();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function submitForm() {
+            if (!validateStep(currentStep)) return;
+            // Show success
+            document.querySelectorAll('.wizard-step').forEach(s => s.classList.remove('active'));
+            document.getElementById('step-success').classList.add('active');
+            document.getElementById('progressBar').style.width = '100%';
+            document.getElementById('stepsWrap').style.display = 'none';
+            document.getElementById('stepTitle').textContent = '🎉 You\'re all set!';
+            document.getElementById('stepSubtitle').textContent = 'Registration complete.';
+        }
+
+        /* ============================================================
+           VALIDATION (basic)
+        ============================================================ */
+        function validateStep(step) {
+            clearErrors();
+            if (step === 0) {
+                if (!accountType) { alert('Please select an account type to continue.'); return false; }
+            }
+            if (step === 1) {
+                if (!v('firstName')) { showError('firstName', 'First name is required'); return false; }
+                if (!v('lastName')) { showError('lastName', 'Last name is required'); return false; }
+                if (!v('username')) { showError('username', 'Username is required'); return false; }
+                if (!v('email') || !document.getElementById('email').value.includes('@')) {
+                    showError('email', 'Valid email is required'); return false;
+                }
+                if (!v('phone')) { showError('phone', 'Phone number is required'); return false; }
+                if (!document.querySelector('#genderGroup .fancy-radio.selected')) {
+                    alert('Please select your gender.'); return false;
+                }
+                if (!v('dob')) { showError('dob', 'Date of birth is required'); return false; }
+                if (!document.getElementById('nationality').value) {
+                    showSelectError('nationality', 'Nationality is required'); return false;
+                }
+            }
+            if (step === 2) {
+                if (!document.getElementById('country').value) { showSelectError('country', 'Country is required'); return false; }
+                if (!document.getElementById('cityValue').value) {
+                    document.getElementById('cityDisplay').classList.add('is-invalid');
+                    return false;
+                }
+                if (!v('address')) { showError('address', 'Address is required'); return false; }
+            }
+            if (step === 4) {
+                const pw = document.getElementById('password').value;
+                const cpw = document.getElementById('confirmPassword').value;
+                if (pw.length < 8) { showError('password', 'Password must be at least 8 characters'); return false; }
+                if (pw !== cpw) { showError('confirmPassword', 'Passwords do not match'); return false; }
+            }
+            return true;
+        }
+
+        function v(id) { return document.getElementById(id)?.value?.trim() !== ''; }
+
+        function showError(id, msg) {
+            const el = document.getElementById(id);
+            if (el) {
+                el.classList.add('is-invalid');
+                const err = document.createElement('div');
+                err.className = 'field-error';
+                err.innerHTML = `<i class="bi bi-exclamation-circle"></i>${msg}`;
+                el.parentNode.appendChild(err);
+            }
+        }
+        function showSelectError(id, msg) {
+            const el = document.getElementById(id);
+            if (el) {
+                el.classList.add('is-invalid');
+                const err = document.createElement('div');
+                err.className = 'field-error';
+                err.innerHTML = `<i class="bi bi-exclamation-circle"></i>${msg}`;
+                el.parentNode.appendChild(err);
+            }
+        }
+        function clearErrors() {
+            document.querySelectorAll('.field-error').forEach(e => e.remove());
+            document.querySelectorAll('.is-invalid').forEach(e => e.classList.remove('is-invalid'));
+        }
+
+        /* ============================================================
+           FILE UPLOAD PREVIEW
+        ============================================================ */
+        function previewUpload(input, boxId) {
+            const box = document.getElementById(boxId);
+            const previewId = boxId.replace('Box', 'Preview');
+            const preview = document.getElementById(previewId);
+            const file = input.files[0];
+            if (!file) return;
+
+            box.style.borderColor = 'var(--teal)';
+            box.style.background = 'var(--teal-light)';
+
+            if (!preview) return;
+            preview.style.display = 'block';
+
+            if (file.type.startsWith('image/')) {
+                const reader = new FileReader();
+                reader.onload = e => {
+                    preview.innerHTML = `<img src="${e.target.result}" alt="preview"><div class="up-name">${file.name}</div>`;
+                };
+                reader.readAsDataURL(file);
+            } else {
+                preview.innerHTML = `<div style="font-size:13px;color:var(--teal);padding:8px"><i class="bi bi-file-earmark-check me-2"></i>${file.name}</div>`;
+            }
+        }
+
+        /* ============================================================
+           PASSWORD
+        ============================================================ */
+        function togglePassword(id, iconEl) {
+            const inp = document.getElementById(id);
+            if (!inp) return;
+            const show = inp.type === 'password';
+            inp.type = show ? 'text' : 'password';
+            iconEl.className = show ? 'bi bi-eye-slash icon-suffix' : 'bi bi-eye icon-suffix';
+        }
+
+        function checkPasswordStrength(val) {
+            const bars = [document.getElementById('bar1'), document.getElementById('bar2'), document.getElementById('bar3'), document.getElementById('bar4')];
+            const label = document.getElementById('pwLabel');
+            bars.forEach(b => { b.className = 'pw-bar'; });
+
+            if (!val) { label.textContent = 'Enter a password to check strength'; return; }
+
+            let score = 0;
+            if (val.length >= 8) score++;
+            if (/[A-Z]/.test(val)) score++;
+            if (/[0-9]/.test(val)) score++;
+            if (/[^A-Za-z0-9]/.test(val)) score++;
+
+            const cls = score <= 1 ? 'weak' : score === 2 ? 'medium' : score === 3 ? 'medium' : 'strong';
+            const text = score <= 1 ? '🔴 Weak' : score === 2 ? '🟡 Fair' : score === 3 ? '🟡 Good' : '🟢 Strong';
+
+            for (let i = 0; i < score; i++) bars[i].classList.add(cls);
+            label.textContent = text;
+            label.style.color = cls === 'weak' ? '#ef4444' : cls === 'medium' ? '#f59e0b' : '#10b981';
+        }
+
+        /* ============================================================
+           PAYMENT FORM
+        ============================================================ */
+        function initPaymentMethodListener() {
+            document.querySelectorAll('[name="payMethod"]').forEach(inp => {
+                inp.addEventListener('change', () => {
+                    const isCard = inp.value === 'card';
+                    document.getElementById('cardInfoSection').style.display = isCard ? 'block' : 'none';
+                });
+            });
+        }
+
+        function formatCard(input) {
+            let v = input.value.replace(/\D/g, '').substring(0, 16);
+            input.value = v.match(/.{1,4}/g)?.join(' ') || v;
+        }
+        function formatExpiry(input) {
+            let v = input.value.replace(/\D/g, '');
+            if (v.length >= 3) v = v.substring(0, 2) + '/' + v.substring(2, 4);
+            input.value = v;
+        }
+
+        /* ============================================================
+           DRAG & DROP for upload boxes
+        ============================================================ */
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.upload-box').forEach(box => {
+                box.addEventListener('dragover', e => { e.preventDefault(); box.style.borderColor = 'var(--teal)'; });
+                box.addEventListener('dragleave', () => { box.style.borderColor = 'var(--border)'; });
+                box.addEventListener('drop', e => {
+                    e.preventDefault();
+                    const inp = box.querySelector('input[type="file"]');
+                    if (inp && e.dataTransfer.files.length) {
+                        inp.files = e.dataTransfer.files;
+                        previewUpload(inp, box.id);
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>

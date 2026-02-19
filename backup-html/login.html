@@ -1,0 +1,959 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ShamProm – Sign In</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" />
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Syne:wght@700;800;900&display=swap"
+    rel="stylesheet" />
+  <style>
+    :root {
+      --teal: #1ABCAD;
+      --teal-light: #e8f9f7;
+      --teal-glow: rgba(26, 188, 173, .28);
+      --teal-dark: #0d9e90;
+      --navy: #0d1b2a;
+      --navy-mid: #1a3347;
+      --slate: #334155;
+      --muted: #94a3b8;
+      --surface: #f4f9f8;
+      --white: #ffffff;
+      --border: #dde8ec;
+      --danger: #ef4444;
+      --success: #10b981;
+      --radius: 20px;
+      --radius-sm: 12px;
+      --shadow: 0 4px 24px rgba(13, 27, 42, .07);
+      --shadow-lg: 0 20px 60px rgba(13, 27, 42, .14);
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html,
+    body {
+      height: 100%;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: var(--surface);
+      overflow-x: hidden;
+    }
+
+    /* LAYOUT */
+    .auth-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 100vh;
+    }
+
+    /* LEFT */
+    .auth-left {
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(150deg, var(--navy) 0%, var(--navy-mid) 60%, #0a2a3d 100%);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 48px 52px;
+    }
+
+    .left-mesh {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    .mesh-circle {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(60px);
+      animation: meshFloat 9s ease-in-out infinite alternate;
+    }
+
+    .mc1 {
+      width: 380px;
+      height: 380px;
+      background: rgba(26, 188, 173, .18);
+      top: -80px;
+      right: -80px;
+      animation-delay: 0s;
+    }
+
+    .mc2 {
+      width: 260px;
+      height: 260px;
+      background: rgba(26, 188, 173, .10);
+      bottom: 60px;
+      left: -60px;
+      animation-delay: 3s;
+    }
+
+    .mc3 {
+      width: 180px;
+      height: 180px;
+      background: rgba(255, 255, 255, .04);
+      top: 45%;
+      left: 30%;
+      animation-delay: 1.5s;
+    }
+
+    @keyframes meshFloat {
+      from {
+        transform: translate(0, 0) scale(1);
+      }
+
+      to {
+        transform: translate(24px, -18px) scale(1.07);
+      }
+    }
+
+    .left-grid {
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(circle, rgba(26, 188, 173, .25) 1px, transparent 1px);
+      background-size: 36px 36px;
+      opacity: .35;
+    }
+
+    .left-floaters {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+    }
+
+    .floater {
+      position: absolute;
+      background: rgba(255, 255, 255, .06);
+      border: 1px solid rgba(255, 255, 255, .1);
+      backdrop-filter: blur(8px);
+      border-radius: 16px;
+      padding: 16px 20px;
+      font-size: 13px;
+      color: rgba(255, 255, 255, .75);
+      animation: floaterDrift 7s ease-in-out infinite alternate;
+    }
+
+    .f1 {
+      top: 22%;
+      left: 6%;
+      animation-delay: 0s;
+    }
+
+    .f2 {
+      top: 55%;
+      right: 6%;
+      animation-delay: 2s;
+    }
+
+    .f3 {
+      bottom: 22%;
+      left: 10%;
+      animation-delay: 4s;
+    }
+
+    @keyframes floaterDrift {
+      from {
+        transform: translateY(0) rotate(0deg);
+      }
+
+      to {
+        transform: translateY(-14px) rotate(1.5deg);
+      }
+    }
+
+    .floater .f-icon {
+      font-size: 20px;
+      color: var(--teal);
+      margin-bottom: 6px;
+    }
+
+    .floater .f-label {
+      font-weight: 700;
+      font-size: 12px;
+      color: rgba(255, 255, 255, .5);
+      text-transform: uppercase;
+      letter-spacing: .5px;
+      margin-bottom: 2px;
+    }
+
+    .floater .f-val {
+      font-size: 14px;
+      color: #fff;
+      font-weight: 700;
+    }
+
+    .left-logo {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .left-logo .logo-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, var(--teal), var(--teal-dark));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 8px 24px var(--teal-glow);
+    }
+
+    .left-logo .logo-icon i {
+      color: #fff;
+      font-size: 22px;
+    }
+
+    .left-logo .logo-text {
+      font-family: 'Syne', sans-serif;
+      font-size: 28px;
+      font-weight: 900;
+      color: #fff;
+      letter-spacing: -.5px;
+    }
+
+    .left-logo .logo-text span {
+      color: var(--teal);
+    }
+
+    .left-hero {
+      position: relative;
+      z-index: 2;
+    }
+
+    .left-hero h2 {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(26px, 3vw, 40px);
+      font-weight: 900;
+      color: #fff;
+      line-height: 1.2;
+      margin-bottom: 16px;
+    }
+
+    .left-hero h2 em {
+      color: var(--teal);
+      font-style: normal;
+    }
+
+    .left-hero p {
+      color: rgba(255, 255, 255, .55);
+      font-size: 15px;
+      line-height: 1.7;
+      max-width: 340px;
+    }
+
+    .teal-line {
+      width: 48px;
+      height: 4px;
+      background: linear-gradient(90deg, var(--teal), transparent);
+      border-radius: 4px;
+      margin-bottom: 20px;
+    }
+
+    .left-stats {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      gap: 32px;
+    }
+
+    .stat-item .s-num {
+      font-family: 'Syne', sans-serif;
+      font-size: 28px;
+      font-weight: 900;
+      color: var(--teal);
+    }
+
+    .stat-item .s-label {
+      font-size: 12px;
+      color: rgba(255, 255, 255, .45);
+      font-weight: 600;
+      margin-top: 2px;
+    }
+
+    /* RIGHT */
+    .auth-right {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 24px;
+      background: var(--surface);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .auth-right::before {
+      content: '';
+      position: absolute;
+      top: -120px;
+      right: -120px;
+      width: 350px;
+      height: 350px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(26, 188, 173, .07), transparent);
+    }
+
+    .auth-box {
+      width: 100%;
+      max-width: 440px;
+      position: relative;
+      z-index: 1;
+      animation: fadeUp .55s cubic-bezier(.4, 0, .2, 1) both;
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(24px);
+      }
+
+      to {
+        opacity: 1;
+        transform: none;
+      }
+    }
+
+    /* FORM */
+    .form-heading {
+      margin-bottom: 28px;
+    }
+
+    .fh-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      background: var(--teal-light);
+      color: var(--teal-dark);
+      font-size: 12px;
+      font-weight: 700;
+      border-radius: 40px;
+      padding: 6px 14px;
+      margin-bottom: 14px;
+      border: 1px solid rgba(26, 188, 173, .2);
+    }
+
+    .form-heading h1 {
+      font-family: 'Syne', sans-serif;
+      font-size: 30px;
+      font-weight: 900;
+      color: var(--navy);
+      margin-bottom: 7px;
+      line-height: 1.2;
+    }
+
+    .form-heading p {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    .form-heading p a {
+      color: var(--teal);
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .form-heading p a:hover {
+      text-decoration: underline;
+    }
+
+    /* TYPE TOGGLE */
+    .type-toggle {
+      display: flex;
+      gap: 0;
+      border: 1.8px solid var(--border);
+      border-radius: 40px;
+      padding: 4px;
+      margin-bottom: 24px;
+      background: var(--white);
+    }
+
+    .type-toggle button {
+      flex: 1;
+      padding: 9px 16px;
+      border: none;
+      border-radius: 35px;
+      font-size: 13px;
+      font-weight: 700;
+      font-family: inherit;
+      color: var(--muted);
+      background: transparent;
+      cursor: pointer;
+      transition: all .25s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+
+    .type-toggle button.active {
+      background: linear-gradient(135deg, var(--teal), var(--teal-dark));
+      color: #fff;
+      box-shadow: 0 4px 14px var(--teal-glow);
+    }
+
+    /* SOCIAL */
+    .social-btns {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .social-btn {
+      flex: 1;
+      padding: 12px;
+      border: 1.8px solid var(--border);
+      border-radius: var(--radius-sm);
+      background: var(--white);
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--slate);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      transition: all .22s;
+    }
+
+    .social-btn:hover {
+      border-color: var(--teal);
+      color: var(--teal);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow);
+    }
+
+    /* DIVIDER */
+    .auth-divider {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin: 16px 0 20px;
+    }
+
+    .auth-divider hr {
+      flex: 1;
+      border-color: var(--border);
+    }
+
+    .auth-divider span {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--muted);
+    }
+
+    /* FIELD */
+    .field {
+      margin-bottom: 18px;
+    }
+
+    .field label {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 12.5px;
+      font-weight: 700;
+      color: var(--slate);
+      margin-bottom: 7px;
+    }
+
+    .field label i {
+      color: var(--teal);
+      font-size: 13px;
+    }
+
+    .input-wrap {
+      position: relative;
+    }
+
+    .input-wrap .i-pre,
+    .input-wrap .i-suf {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 16px;
+      pointer-events: none;
+      transition: color .2s;
+    }
+
+    .input-wrap .i-pre {
+      left: 16px;
+      color: var(--muted);
+    }
+
+    .input-wrap .i-suf {
+      right: 14px;
+      color: var(--muted);
+      cursor: pointer;
+      pointer-events: all;
+    }
+
+    .input-wrap .i-suf:hover {
+      color: var(--teal);
+    }
+
+    .input-wrap input {
+      width: 100%;
+      background: var(--white);
+      border: 1.8px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 14px 44px 14px 46px;
+      font-size: 14px;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      color: var(--navy);
+      transition: all .25s ease;
+      outline: none;
+    }
+
+    .input-wrap input::placeholder {
+      color: #b8c9d3;
+    }
+
+    .input-wrap input:focus {
+      border-color: var(--teal);
+      box-shadow: 0 0 0 4px rgba(26, 188, 173, .12);
+    }
+
+    .input-wrap input.error {
+      border-color: var(--danger);
+      box-shadow: 0 0 0 4px rgba(239, 68, 68, .1);
+    }
+
+    .input-wrap input.valid {
+      border-color: var(--success);
+    }
+
+    .field-err {
+      font-size: 11.5px;
+      color: var(--danger);
+      margin-top: 5px;
+      display: none;
+      align-items: center;
+      gap: 5px;
+    }
+
+    /* REMEMBER/FORGOT ROW */
+    .row-between {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+
+    .check-wrap {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+    }
+
+    .check-wrap input[type="checkbox"] {
+      display: none;
+    }
+
+    .check-box {
+      width: 18px;
+      height: 18px;
+      border-radius: 5px;
+      border: 1.8px solid var(--border);
+      background: var(--white);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all .2s;
+      flex-shrink: 0;
+    }
+
+    .check-wrap:has(input:checked) .check-box {
+      background: var(--teal);
+      border-color: var(--teal);
+    }
+
+    .check-wrap:has(input:checked) .check-box::after {
+      content: '✓';
+      font-size: 11px;
+      font-weight: 800;
+      color: #fff;
+    }
+
+    .check-wrap span {
+      font-size: 13px;
+      color: var(--slate);
+      font-weight: 600;
+    }
+
+    .forgot-link {
+      font-size: 13px;
+      color: var(--teal);
+      font-weight: 700;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .forgot-link:hover {
+      text-decoration: underline;
+    }
+
+    /* BUTTON */
+    .btn-auth {
+      width: 100%;
+      padding: 15px;
+      background: linear-gradient(135deg, var(--teal) 0%, var(--teal-dark) 100%);
+      border: none;
+      border-radius: 40px;
+      font-size: 15px;
+      font-weight: 800;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      color: #fff;
+      cursor: pointer;
+      box-shadow: 0 10px 30px var(--teal-glow);
+      transition: all .28s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn-auth:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 40px var(--teal-glow);
+    }
+
+    .btn-auth:active {
+      transform: translateY(0);
+    }
+
+    .btn-auth.loading {
+      pointer-events: none;
+      opacity: .85;
+    }
+
+    .btn-spinner {
+      width: 18px;
+      height: 18px;
+      border: 2.5px solid rgba(255, 255, 255, .3);
+      border-top-color: #fff;
+      border-radius: 50%;
+      animation: spin .7s linear infinite;
+      display: none;
+    }
+
+    .btn-auth.loading .btn-spinner {
+      display: block;
+    }
+
+    .btn-auth.loading .btn-text {
+      display: none;
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    .btn-success {
+      background: linear-gradient(135deg, #10b981, #0da876) !important;
+      box-shadow: 0 10px 30px rgba(16, 185, 129, .35) !important;
+    }
+
+    /* BOTTOM LINK */
+    .auth-link {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 13.5px;
+      color: var(--muted);
+    }
+
+    .auth-link a {
+      color: var(--teal);
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .auth-link a:hover {
+      text-decoration: underline;
+    }
+
+    /* TOAST */
+    .toast-wrap {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      z-index: 9999;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .toast-msg {
+      background: var(--navy);
+      color: #fff;
+      border-radius: 14px;
+      padding: 14px 20px;
+      font-size: 13.5px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      box-shadow: var(--shadow-lg);
+      animation: toastIn .35s cubic-bezier(.34, 1.56, .64, 1);
+    }
+
+    .toast-msg i {
+      color: var(--teal);
+      font-size: 18px;
+    }
+
+    @keyframes toastIn {
+      from {
+        opacity: 0;
+        transform: translateY(14px) scale(.95);
+      }
+
+      to {
+        opacity: 1;
+        transform: none;
+      }
+    }
+
+    /* RESPONSIVE */
+    @media(max-width:900px) {
+      .auth-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .auth-left {
+        display: none;
+      }
+
+      .auth-right {
+        min-height: 100vh;
+      }
+    }
+
+    @media(max-width:480px) {
+      .form-heading h1 {
+        font-size: 24px;
+      }
+
+      .social-btns {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="auth-layout">
+
+    <!-- LEFT PANEL -->
+    <div class="auth-left">
+      <div class="left-mesh">
+        <div class="mesh-circle mc1"></div>
+        <div class="mesh-circle mc2"></div>
+        <div class="mesh-circle mc3"></div>
+      </div>
+      <div class="left-grid"></div>
+      <div class="left-floaters">
+        <div class="floater f1">
+          <div class="f-icon"><i class="bi bi-star-fill"></i></div>
+          <div class="f-label">Traveler Rating</div>
+          <div class="f-val">4.9 / 5.0 ⭐</div>
+        </div>
+        <div class="floater f2">
+          <div class="f-icon"><i class="bi bi-shield-fill-check"></i></div>
+          <div class="f-label">Verified Listings</div>
+          <div class="f-val">12,400+</div>
+        </div>
+        <div class="floater f3">
+          <div class="f-icon"><i class="bi bi-globe-americas"></i></div>
+          <div class="f-label">Countries Covered</div>
+          <div class="f-val">195 Nations</div>
+        </div>
+      </div>
+      <div class="left-logo">
+        <div class="logo-icon"><i class="bi bi-compass"></i></div>
+        <div class="logo-text">Sham<span>Pro</span></div>
+      </div>
+      <div class="left-hero">
+        <div class="teal-line"></div>
+        <h2>Welcome back to your <em>adventure hub.</em></h2>
+        <p>Sign in to access thousands of Packages, trusted Deals, and Secure Platform — all in one place.</p>
+      </div>
+      <div class="left-stats">
+        <div class="stat-item">
+          <div class="s-num">50k+</div>
+          <div class="s-label">Happy Clients</div>
+        </div>
+        <div class="stat-item">
+          <div class="s-num">8k+</div>
+          <div class="s-label">Client Partners</div>
+        </div>
+        <div class="stat-item">
+          <div class="s-num">195</div>
+          <div class="s-label">Countries</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT PANEL -->
+    <div class="auth-right">
+      <div class="auth-box">
+        <div class="form-heading">
+          <div class="fh-badge"><i class="bi bi-compass"></i> ShamPro Account</div>
+          <h1>Sign In</h1>
+          <p>Don't have an account? <a href="register.html">Create one free</a></p>
+        </div>
+
+        <!-- Type toggle -->
+        <div class="type-toggle">
+          <button class="active" id="btnBuyer" onclick="setType('buyer')"><i class="bi bi-person-heart"></i>
+            Buyer</button>
+          <button id="btnBusiness" onclick="setType('business')"><i class="bi bi-briefcase"></i> Business</button>
+        </div>
+
+        <!-- Social -->
+        <div class="social-btns">
+          <button class="social-btn" onclick="toast('Google sign-in coming soon!','bi-google')">
+            <svg width="18" height="18" viewBox="0 0 18 18">
+              <path fill="#4285F4"
+                d="M17.64 9.2c0-.637-.057-1.251-.164-1.84H9v3.481h4.844c-.209 1.125-.843 2.078-1.796 2.716v2.259h2.908c1.702-1.567 2.684-3.875 2.684-6.615z" />
+              <path fill="#34A853"
+                d="M9 18c2.43 0 4.467-.806 5.956-2.184l-2.908-2.259c-.806.54-1.837.86-3.048.86-2.344 0-4.328-1.584-5.036-3.711H.957v2.332A8.997 8.997 0 0 0 9 18z" />
+              <path fill="#FBBC05"
+                d="M3.964 10.706A5.41 5.41 0 0 1 3.682 9c0-.593.102-1.17.282-1.706V4.962H.957A8.996 8.996 0 0 0 0 9c0 1.452.348 2.827.957 4.038l3.007-2.332z" />
+              <path fill="#EA4335"
+                d="M9 3.58c1.321 0 2.508.454 3.44 1.345l2.582-2.58C13.463.891 11.426 0 9 0A8.997 8.997 0 0 0 .957 4.962L3.964 7.294C4.672 5.163 6.656 3.58 9 3.58z" />
+            </svg>
+            Google
+          </button>
+          <button class="social-btn" onclick="toast('Facebook sign-in coming soon!','bi-facebook')">
+            <i class="bi bi-facebook" style="color:#1877f2;font-size:17px"></i> Facebook
+          </button>
+        </div>
+
+        <div class="auth-divider">
+          <hr><span>or continue with email</span>
+          <hr>
+        </div>
+
+        <!-- Email -->
+        <div class="field">
+          <label><i class="bi bi-envelope-fill"></i> Email Address</label>
+          <div class="input-wrap">
+            <i class="bi bi-envelope i-pre"></i>
+            <input type="email" id="email" placeholder="you@example.com" oninput="liveEmail(this)">
+          </div>
+          <div class="field-err" id="err-email"><i class="bi bi-exclamation-circle"></i> Enter a valid email address
+          </div>
+        </div>
+
+        <!-- Password -->
+        <div class="field">
+          <label><i class="bi bi-lock-fill"></i> Password</label>
+          <div class="input-wrap">
+            <i class="bi bi-lock i-pre"></i>
+            <input type="password" id="password" placeholder="Your password">
+            <i class="bi bi-eye i-suf" id="eyeLogin" onclick="toggleVis('password','eyeLogin')"></i>
+          </div>
+        </div>
+
+        <!-- Remember / Forgot -->
+        <div class="row-between">
+          <label class="check-wrap">
+            <input type="checkbox" id="remember">
+            <div class="check-box"></div>
+            <span>Remember me</span>
+          </label>
+          <a class="forgot-link" href="forgot-password.html">Forgot password?</a>
+        </div>
+
+        <!-- Submit -->
+        <button class="btn-auth" id="loginBtn" onclick="handleLogin()">
+          <div class="btn-spinner"></div>
+          <span class="btn-text"><i class="bi bi-box-arrow-in-right"></i> Sign In</span>
+        </button>
+
+        <div class="auth-link">New to ShamPro? <a href="register.html">Create an account</a></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast-wrap" id="toastWrap"></div>
+
+  <script>
+    function setType(t) {
+      document.getElementById('btnBuyer').classList.toggle('active', t === 'buyer');
+      document.getElementById('btnBusiness').classList.toggle('active', t === 'business');
+    }
+    function liveEmail(inp) {
+      const ok = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(inp.value.trim());
+      inp.classList.toggle('error', !ok && inp.value.length > 2);
+      inp.classList.toggle('valid', ok);
+      document.getElementById('err-email').style.display = (!ok && inp.value.length > 3) ? 'flex' : 'none';
+    }
+    function toggleVis(id, iconId) {
+      const inp = document.getElementById(id);
+      const show = inp.type === 'password';
+      inp.type = show ? 'text' : 'password';
+      document.getElementById(iconId).className = (show ? 'bi bi-eye-slash' : 'bi bi-eye') + ' i-suf';
+    }
+    function toast(msg, icon = 'bi-info-circle') {
+      const wrap = document.getElementById('toastWrap');
+      const t = document.createElement('div');
+      t.className = 'toast-msg';
+      t.innerHTML = `<i class="bi ${icon}"></i>${msg}`;
+      wrap.appendChild(t);
+      setTimeout(() => { t.style.opacity = '0'; t.style.transition = 'opacity .3s'; setTimeout(() => t.remove(), 300); }, 3000);
+    }
+    function handleLogin() {
+      const email = document.getElementById('email').value.trim();
+      const pw = document.getElementById('password').value;
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        document.getElementById('email').classList.add('error');
+        document.getElementById('err-email').style.display = 'flex'; return;
+      }
+      if (!pw) { document.getElementById('password').classList.add('error'); toast('Please enter your password.', 'bi-exclamation-circle'); return; }
+      const btn = document.getElementById('loginBtn');
+      btn.classList.add('loading');
+      setTimeout(() => {
+        btn.classList.remove('loading');
+        btn.classList.add('btn-success');
+        btn.innerHTML = '<i class="bi bi-check2-circle"></i> Welcome Back!';
+        toast('Signed in successfully! Redirecting…', 'bi-check-circle');
+        setTimeout(() => {
+          btn.classList.remove('btn-success');
+          btn.innerHTML = '<div class="btn-spinner"></div><span class="btn-text"><i class="bi bi-box-arrow-in-right"></i> Sign In</span>';
+        }, 3000);
+      }, 1800);
+    }
+
+    // Remember me
+    window.addEventListener('DOMContentLoaded', () => {
+      const saved = localStorage.getItem('shampro_email');
+      if (saved) { document.getElementById('email').value = saved; document.getElementById('remember').checked = true; }
+      document.getElementById('remember').addEventListener('change', function () {
+        if (this.checked) localStorage.setItem('shampro_email', document.getElementById('email').value);
+        else localStorage.removeItem('shampro_email');
+      });
+    });
+  </script>
+</body>
+
+</html>
