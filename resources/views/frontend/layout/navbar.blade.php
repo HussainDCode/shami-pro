@@ -28,9 +28,32 @@
                                 <ul>
                                     <li class="d-none d-md-inline-block"><a href="faq.html">FAQ</a></li>
                                     <li class="d-none d-md-inline-block"><a href="contact.html">Support</a></li>
-                                    <li><a href="#login-form" class="popup-content">Sign In / Register<i
-                                                class="fa-regular fa-user"></i></a>
+                                    @guest
+                                    <li>
+                                        <a href="{{ route('login') }}">
+                                            Sign In
+                                            <i class="fa-regular fa-user"></i>
+                                        </a>
                                     </li>
+                                    <li>
+                                        <a href="{{ route('register') }}">
+                                            Register
+                                            <i class="fa-regular fa-user"></i>
+                                        </a>
+                                    </li>
+                                    @else
+                                    <li>
+                                        <span class="text-inherit">{{ Auth::user()->name }}</span>
+                                    </li>
+                                    <li>
+                                        <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                            Logout <i class="fa-regular fa-arrow-right-from-bracket"></i>
+                                        </a>
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                            @csrf
+                                        </form>
+                                    </li>
+                                    @endguest
                                 </ul>
                             </div>
                         </div>
@@ -45,15 +68,16 @@
                     <div class="row align-items-center justify-content-between">
                         <div class="col-auto">
                             <div class="header-logo">
-                                <a href="home-travel.html"><img src="assets/img/logo.svg" alt="Tourm"></a>
+                                <a href="{{ url('/') }}"><img src="{{ asset('assets/img/logo.svg') }}" alt="Tourm"></a>
                             </div>
                         </div>
                         <div class="col-auto me-xl-auto">
                             <nav class="main-menu d-none d-xl-inline-block">
                                 <ul>
-                                    <li class="menu-item-has-children mega-menu-wrap">
+                                    {{-- <li class="menu-item-has-children mega-menu-wrap"> --}}
+                                        <li>
                                         <a class="active" href="home-travel.html">Home</a>
-                                        <ul class="mega-menu mega-menu-content">
+                                        {{-- <ul class="mega-menu mega-menu-content">
                                             <li>
                                                 <div class="container">
                                                     <div class="row gy-4">
@@ -306,15 +330,16 @@
                                                     </div>
                                                 </div>
                                             </li>
-                                        </ul>
+                                        </ul> --}}
                                     </li>
                                     <li><a href="about.html">About Us</a></li>
-                                    <li class="menu-item-has-children">
+                                    <li>
+                                    {{-- <li class="menu-item-has-children"> --}}
                                         <a href="#">Destination</a>
-                                        <ul class="sub-menu">
+                                        {{-- <ul class="sub-menu">
                                             <li><a href="destination.html">Destination</a></li>
                                             <li><a href="destination-details.html">Destination Details</a></li>
-                                        </ul>
+                                        </ul> --}}
                                     </li>
                                     <li class="menu-item-has-children">
                                         <a href="#">Service</a>
@@ -384,4 +409,4 @@
                 <div class="logo-bg" data-mask-src="assets/img/logo_bg_mask.png"></div>
             </div>
         </div>
-    </header>ß
+    </header>

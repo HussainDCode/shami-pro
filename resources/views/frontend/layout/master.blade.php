@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Tourm - Travel & Tour Booking Agency HTML Template - Home Travel</title>
+    <title>Shami - Pro</title>
     <meta name="author" content="Tourm">
     <meta name="description" content="Tourm - Travel & Tour Booking Agency HTML Template ">
     <meta name="keywords" content="Tourm - Travel & Tour Booking Agency HTML Template ">
@@ -33,17 +33,19 @@
     <meta name="theme-color" content="#ffffff">
 
     <!--==============================
-	  Google Fonts
-	============================== -->
+ Google Fonts
+ ============================== -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Manrope:wght@200..800&family=Montez&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Manrope:wght@200..800&family=Montez&display=swap"
+        rel="stylesheet">
 
     <!--==============================
-	    All CSS File
-	============================== -->
+ All CSS File
+ ============================== -->
     <!-- Bootstrap -->
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
     <!-- Fontawesome Icon -->
@@ -62,11 +64,11 @@
 <body>
 
     <!--[if lte IE 9]>
-    	<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
-  	<![endif]-->
+    <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+  <![endif]-->
 
 
-<!--********************************
+    <!--********************************
     Code Start From Here
 ******************************** -->
 
@@ -77,7 +79,7 @@
     </div>
 
 
-<!--==============================
+    <!--==============================
     Preloader
 ==============================-->
     <div id="preloader" class="preloader ">
@@ -103,7 +105,7 @@
         </div>
 
     </div>
-<!--==============================
+    <!--==============================
     Sidemenu
 ============================== -->
     <div class="sidemenu-wrapper sidemenu-info ">
@@ -114,7 +116,8 @@
                     <div class="about-logo">
                         <a href="home-travel.html"><img src="assets/img/logo2.svg" alt="Tourm"></a>
                     </div>
-                    <p class="about-text">Rapidiously myocardinate cross-platform intellectual capital model. Appropriately create interactive infrastructures</p>
+                    <p class="about-text">Rapidiously myocardinate cross-platform intellectual capital model.
+                        Appropriately create interactive infrastructures</p>
                     <div class="th-social">
                         <a href="https://www.facebook.com/"><i class="fab fa-facebook-f"></i></a>
                         <a href="https://www.twitter.com/"><i class="fab fa-twitter"></i></a>
@@ -128,25 +131,29 @@
                 <div class="recent-post-wrap">
                     <div class="recent-post">
                         <div class="media-img">
-                            <a href="blog-details.html"><img src="assets/img/blog/recent-post-1-1.jpg" alt="Blog Image"></a>
+                            <a href="blog-details.html"><img src="assets/img/blog/recent-post-1-1.jpg"
+                                    alt="Blog Image"></a>
                         </div>
                         <div class="media-body">
                             <div class="recent-post-meta">
                                 <a href="blog.html"><i class="far fa-calendar"></i>24 Jun , 2025</a>
                             </div>
-                            <h4 class="post-title"><a class="text-inherit" href="blog-details.html">Where Vision Meets Concrete
+                            <h4 class="post-title"><a class="text-inherit" href="blog-details.html">Where Vision
+                                    Meets Concrete
                                     Reality</a></h4>
                         </div>
                     </div>
                     <div class="recent-post">
                         <div class="media-img">
-                            <a href="blog-details.html"><img src="assets/img/blog/recent-post-1-2.jpg" alt="Blog Image"></a>
+                            <a href="blog-details.html"><img src="assets/img/blog/recent-post-1-2.jpg"
+                                    alt="Blog Image"></a>
                         </div>
                         <div class="media-body">
                             <div class="recent-post-meta">
                                 <a href="blog.html"><i class="far fa-calendar"></i>22 Jun , 2025</a>
                             </div>
-                            <h4 class="post-title"><a class="text-inherit" href="blog-details.html">Raising the Bar in Construction.</a></h4>
+                            <h4 class="post-title"><a class="text-inherit" href="blog-details.html">Raising the Bar
+                                    in Construction.</a></h4>
                         </div>
                     </div>
                 </div>
@@ -168,7 +175,8 @@
                             <img src="assets/img/icon/envelope.svg" alt="img">
                         </div>
                         <div class="details">
-                            <p><a href="mailto:mailinfo00@tourm.com" class="info-box_link">mailinfo00@tourm.com</a></p>
+                            <p><a href="mailto:mailinfo00@tourm.com" class="info-box_link">mailinfo00@tourm.com</a>
+                            </p>
                             <p><a href="mailto:support24@tourm.com" class="info-box_link">support24@tourm.com</a></p>
                         </div>
                     </div>
@@ -189,7 +197,7 @@
             <button type="submit"><i class="fal fa-search"></i></button>
         </form>
     </div>
-<!--==============================
+    <!--==============================
     Mobile Menu
 ============================== -->
     <div class="th-menu-wrapper onepage-nav">
@@ -279,41 +287,45 @@
         </div>
     </div>
 
-<!--==============================
-	Header Area
+    <!--==============================
+ Header Area
 ==============================-->
     @include('frontend.layout.navbar')
 
 
     @yield('content')
 
-<!--==============================
+    <!--==============================
 Footer Area
 ==============================-->
 
     @include('frontend.layout.footer')
 
-<!--********************************
+    <!--********************************
         Code End  Here
 ******************************** -->
 
     <!-- Scroll To Top -->
     <div class="scroll-top">
         <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
-            <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98" style="transition: stroke-dashoffset 10ms linear 0s; stroke-dasharray: 307.919, 307.919; stroke-dashoffset: 307.919;">
+            <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"
+                style="transition: stroke-dashoffset 10ms linear 0s; stroke-dasharray: 307.919, 307.919; stroke-dashoffset: 307.919;">
             </path>
         </svg>
     </div>
-<!--==============================
+    <!--==============================
 modal Area
 ==============================-->
     <div id="login-form" class="popup-login-register mfp-hide">
         <ul class="nav" id="pills-tab" role="tablist">
             <li class="nav-item" role="presentation">
-                <button class="nav-menu" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="false">Login</button>
+                <button class="nav-menu" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home"
+                    type="button" role="tab" aria-controls="pills-home" aria-selected="false">Login</button>
             </li>
             <li class="nav-item" role="presentation">
-                <button class="nav-menu active" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="true">Register</button>
+                <button class="nav-menu active" id="pills-profile-tab" data-bs-toggle="pill"
+                    data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile"
+                    aria-selected="true">Register</button>
             </li>
         </ul>
         <div class="tab-content" id="pills-tabContent">
@@ -324,11 +336,13 @@ modal Area
                         <div class="row">
                             <div class="form-group col-12">
                                 <label>Username or email</label>
-                                <input type="text" class="form-control" name="email" id="email" required="required">
+                                <input type="text" class="form-control" name="email" id="email"
+                                    required="required">
                             </div>
                             <div class="form-group col-12">
                                 <label>Password</label>
-                                <input type="password" class="form-control" name="pasword" id="pasword" required="required">
+                                <input type="password" class="form-control" name="pasword" id="pasword"
+                                    required="required">
                             </div>
 
                             <div class="form-btn mb-20 col-12">
@@ -342,29 +356,35 @@ modal Area
                     </form>
                 </div>
             </div>
-            <div class="tab-pane fade active show" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+            <div class="tab-pane fade active show" id="pills-profile" role="tabpanel"
+                aria-labelledby="pills-profile-tab">
                 <h3 class="th-form-title mb-30">Sign in to your account</h3>
                 <form action="mail.php" method="POST" class="login-form ajax-contact">
                     <div class="row">
                         <div class="form-group col-12">
                             <label>Username*</label>
-                            <input type="text" class="form-control" name="usename" id="usename" required="required">
+                            <input type="text" class="form-control" name="usename" id="usename"
+                                required="required">
                         </div>
                         <div class="form-group col-12">
                             <label>First name*</label>
-                            <input type="text" class="form-control" name="firstname" id="firstname" required="required">
+                            <input type="text" class="form-control" name="firstname" id="firstname"
+                                required="required">
                         </div>
                         <div class="form-group col-12">
                             <label>Last name*</label>
-                            <input type="text" class="form-control" name="lastname" id="lastname" required="required">
+                            <input type="text" class="form-control" name="lastname" id="lastname"
+                                required="required">
                         </div>
                         <div class="form-group col-12">
                             <label for="new_email">Your email*</label>
-                            <input type="text" class="form-control" name="new_email" id="new_email" required="required">
+                            <input type="text" class="form-control" name="new_email" id="new_email"
+                                required="required">
                         </div>
                         <div class="form-group col-12">
                             <label for="new_email_confirm">Confirm email*</label>
-                            <input type="text" class="form-control" name="new_email_confirm" id="new_email_confirm" required="required">
+                            <input type="text" class="form-control" name="new_email_confirm"
+                                id="new_email_confirm" required="required">
                         </div>
                         <div class="statement">
                             <span class="register-notes">A password will be emailed to you.</span>
@@ -415,6 +435,32 @@ modal Area
 
     <!-- Main Js File -->
     <script src="assets/js/main.js"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+
+            document.querySelectorAll('.popup-content').forEach(function(link) {
+
+                link.addEventListener('click', function() {
+
+                    var tab = this.getAttribute('data-tab');
+
+                    if (tab === 'login') {
+                        var loginTab = new bootstrap.Tab(document.getElementById('pills-home-tab'));
+                        loginTab.show();
+                    }
+
+                    if (tab === 'register') {
+                        var registerTab = new bootstrap.Tab(document.getElementById(
+                            'pills-profile-tab'));
+                        registerTab.show();
+                    }
+                });
+
+            });
+
+        });
+    </script>
 </body>
 
 </html>
