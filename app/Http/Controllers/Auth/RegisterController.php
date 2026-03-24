@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Role;
 use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
@@ -61,7 +62,7 @@ class RegisterController extends Controller
             'country' => ['nullable', 'string', 'max:100'],
             'city' => ['nullable', 'string', 'max:100'],
             'address' => ['nullable', 'string'],
-            'account_type' => ['nullable', 'string', 'in:business,buyer'],
+            'account_type' => ['required', 'string', 'in:business,buyer'],
             'profile_picture' => ['nullable', 'file', 'image', 'max:5120'],
             'id_front' => ['nullable', 'file', 'image', 'max:10240'],
             'id_back' => ['nullable', 'file', 'image', 'max:10240'],
@@ -81,7 +82,13 @@ class RegisterController extends Controller
         $name = trim(($data['first_name'] ?? '') . ' ' . ($data['last_name'] ?? ''));
         $uploads = $this->storeUploads(request());
 
+        $roleSlug = $data['account_type'] === 'business'
+            ? Role::SLUG_BUSINESS_OWNER
+            : Role::SLUG_BUYER;
+        $roleId = Role::query()->where('slug', $roleSlug)->value('id');
+
         return User::create([
+            'role_id' => $roleId,
             'name' => $name,
             'email' => $data['email'],
             'password' => Hash::make($data['password']),

@@ -159,7 +159,7 @@
                     </button>
                 </form>
 
-                <div class="auth-link">New to ShamPro? <a href="{{ route('register') }}">Create an account</a></div>
+                {{-- <div class="auth-link">New to ShamPro? <a href="{{ route('register') }}">Create an account</a></div> --}}
             </div>
         </div>
     </div>

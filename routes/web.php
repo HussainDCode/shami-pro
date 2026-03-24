@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\SouldevDashboardController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Auth\CustomPasswordResetController;
 use Illuminate\Support\Facades\Auth;
@@ -10,6 +11,10 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 
 Route::get('/', [HomeController::class, 'index'])->name('frontend.index');
+
+Route::middleware(['auth', 'admin'])->group(function () {
+    Route::get('/souldev', [SouldevDashboardController::class, 'index'])->name('admin.souldev');
+});
 
 Route::middleware('guest')->group(function () {
     Route::get('/password/forgot-password', [CustomPasswordResetController::class, 'showForgotPasswordForm'])
