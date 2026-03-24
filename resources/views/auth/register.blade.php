@@ -13,1151 +13,10 @@
         href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css" />
     <!-- Google Fonts -->
     <link
-        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Syne:wght@700;800&display=swap"
-        rel="stylesheet" />
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Manrope:wght@200..800&family=Montez&display=swap"
+        rel="stylesheet">
 
-    <style>
-        /* ========== ROOT & VARIABLES ========== */
-        :root {
-            --teal: #1ABCAD;
-            --teal-light: #e8f9f7;
-            --teal-dark: #0d9e90;
-            --navy: #0d1b2a;
-            --slate: #334155;
-            --muted: #94a3b8;
-            --surface: #f8fbfc;
-            --white: #ffffff;
-            --border: #e2eaef;
-            --danger: #ef4444;
-            --warning: #f59e0b;
-            --success: #10b981;
-            --radius: 16px;
-            --radius-sm: 10px;
-            --shadow: 0 4px 24px rgba(13, 27, 42, .08);
-            --shadow-lg: 0 12px 48px rgba(13, 27, 42, .14);
-            --step-inactive: #c8d6df;
-        }
-
-        *,
-        *::before,
-        *::after {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        body {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            background: var(--surface);
-            min-height: 100vh;
-            overflow-x: hidden;
-        }
-
-        /* ========== ANIMATED BACKGROUND ========== */
-        .bg-canvas {
-            position: fixed;
-            inset: 0;
-            z-index: 0;
-            background: linear-gradient(135deg, #f0faf9 0%, #e8f5f4 40%, #fafffe 100%);
-            overflow: hidden;
-        }
-
-        .bg-blob {
-            position: absolute;
-            border-radius: 50%;
-            filter: blur(80px);
-            opacity: .35;
-            animation: floatBlob 8s ease-in-out infinite alternate;
-        }
-
-        .bg-blob-1 {
-            width: 600px;
-            height: 600px;
-            background: radial-gradient(circle, #1abcad55, transparent);
-            top: -200px;
-            right: -150px;
-            animation-delay: 0s;
-        }
-
-        .bg-blob-2 {
-            width: 400px;
-            height: 400px;
-            background: radial-gradient(circle, #0d9e9044, transparent);
-            bottom: -100px;
-            left: -100px;
-            animation-delay: 3s;
-        }
-
-        .bg-blob-3 {
-            width: 300px;
-            height: 300px;
-            background: radial-gradient(circle, #1abcad33, transparent);
-            top: 40%;
-            left: 30%;
-            animation-delay: 1.5s;
-        }
-
-        @keyframes floatBlob {
-            from {
-                transform: translate(0, 0) scale(1);
-            }
-
-            to {
-                transform: translate(30px, -20px) scale(1.06);
-            }
-        }
-
-        /* ========== GRID DOTS ========== */
-        .bg-grid {
-            position: absolute;
-            inset: 0;
-            background-image: radial-gradient(circle, var(--teal) 1px, transparent 1px);
-            background-size: 40px 40px;
-            opacity: .045;
-        }
-
-        /* ========== PAGE WRAPPER ========== */
-        .page-wrap {
-            position: relative;
-            z-index: 1;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 32px 16px 60px;
-        }
-
-        /* ========== LOGO HEADER ========== */
-        .site-logo {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-bottom: 36px;
-            animation: fadeDown .6s ease both;
-        }
-
-        .site-logo .logo-icon {
-            width: 44px;
-            height: 44px;
-            border-radius: 12px;
-            background: linear-gradient(135deg, var(--teal), var(--teal-dark));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 6px 20px rgba(26, 188, 173, .35);
-        }
-
-        .site-logo .logo-icon i {
-            color: #fff;
-            font-size: 20px;
-        }
-
-        .site-logo .logo-text {
-            font-family: 'Syne', sans-serif;
-            font-size: 26px;
-            font-weight: 800;
-            color: var(--navy);
-            letter-spacing: -.5px;
-        }
-
-        .site-logo .logo-text span {
-            color: var(--teal);
-        }
-
-        /* ========== FORM CARD ========== */
-        .form-card {
-            width: 100%;
-            max-width: 860px;
-            background: var(--white);
-            border-radius: 28px;
-            box-shadow: var(--shadow-lg);
-            overflow: hidden;
-            animation: fadeUp .7s ease both .1s;
-        }
-
-        @keyframes fadeDown {
-            from {
-                opacity: 0;
-                transform: translateY(-20px);
-            }
-
-            to {
-                opacity: 1;
-                transform: none;
-            }
-        }
-
-        @keyframes fadeUp {
-            from {
-                opacity: 0;
-                transform: translateY(28px);
-            }
-
-            to {
-                opacity: 1;
-                transform: none;
-            }
-        }
-
-        /* ========== CARD HEADER ========== */
-        .card-header-top {
-            background: linear-gradient(130deg, var(--navy) 0%, #1a3347 100%);
-            padding: 36px 40px 28px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .card-header-top::before {
-            content: '';
-            position: absolute;
-            bottom: -40px;
-            right: -40px;
-            width: 220px;
-            height: 220px;
-            border-radius: 50%;
-            background: rgba(26, 188, 173, .12);
-        }
-
-        .card-header-top::after {
-            content: '';
-            position: absolute;
-            top: -30px;
-            left: 60%;
-            width: 140px;
-            height: 140px;
-            border-radius: 50%;
-            background: rgba(26, 188, 173, .08);
-        }
-
-        .card-header-top h1 {
-            font-family: 'Syne', sans-serif;
-            font-size: 28px;
-            font-weight: 800;
-            color: #fff;
-            margin-bottom: 6px;
-        }
-
-        .card-header-top p {
-            color: rgba(255, 255, 255, .6);
-            font-size: 14px;
-        }
-
-        /* ========== STEP INDICATOR ========== */
-        .steps-wrap {
-            padding: 28px 40px 0;
-            overflow-x: auto;
-            white-space: nowrap;
-        }
-
-        .steps-inner {
-            display: flex;
-            align-items: flex-start;
-            gap: 0;
-            min-width: max-content;
-        }
-
-        .step-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            position: relative;
-            flex: 1;
-            min-width: 80px;
-        }
-
-        .step-item:not(:last-child)::after {
-            content: '';
-            position: absolute;
-            top: 18px;
-            left: calc(50% + 22px);
-            right: calc(-50% + 22px);
-            height: 2px;
-            background: var(--border);
-            transition: background .4s ease;
-        }
-
-        .step-item.done:not(:last-child)::after {
-            background: var(--teal);
-        }
-
-        .step-circle {
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-            background: var(--surface);
-            border: 2px solid var(--border);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 13px;
-            font-weight: 700;
-            color: var(--muted);
-            transition: all .35s ease;
-            position: relative;
-            z-index: 1;
-        }
-
-        .step-item.active .step-circle {
-            background: var(--teal);
-            border-color: var(--teal);
-            color: #fff;
-            box-shadow: 0 0 0 6px rgba(26, 188, 173, .18);
-            transform: scale(1.1);
-        }
-
-        .step-item.done .step-circle {
-            background: var(--teal);
-            border-color: var(--teal);
-            color: #fff;
-        }
-
-        .step-label {
-            font-size: 11px;
-            font-weight: 600;
-            color: var(--muted);
-            margin-top: 7px;
-            text-align: center;
-            white-space: normal;
-            max-width: 72px;
-            line-height: 1.3;
-        }
-
-        .step-item.active .step-label {
-            color: var(--teal);
-        }
-
-        .step-item.done .step-label {
-            color: var(--teal-dark);
-        }
-
-        /* ========== FORM BODY ========== */
-        .form-body {
-            padding: 32px 40px 36px;
-        }
-
-        /* ========== SECTION HEADING ========== */
-        .section-heading {
-            margin-bottom: 28px;
-            padding-bottom: 14px;
-            border-bottom: 2px solid var(--border);
-        }
-
-        .section-heading h2 {
-            font-family: 'Syne', sans-serif;
-            font-size: 20px;
-            font-weight: 800;
-            color: var(--navy);
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-bottom: 4px;
-        }
-
-        .section-heading h2 .sh-icon {
-            width: 36px;
-            height: 36px;
-            border-radius: 10px;
-            background: var(--teal-light);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 17px;
-            color: var(--teal);
-        }
-
-        .section-heading p {
-            color: var(--muted);
-            font-size: 13.5px;
-            padding-left: 46px;
-        }
-
-        /* ========== FLOATING LABEL INPUTS ========== */
-        .field-group {
-            position: relative;
-            margin-bottom: 22px;
-        }
-
-        .field-group label {
-            display: block;
-            font-size: 12.5px;
-            font-weight: 700;
-            color: var(--slate);
-            margin-bottom: 7px;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-
-        .field-group label i {
-            color: var(--teal);
-            font-size: 13px;
-        }
-
-        .field-group .form-control,
-        .field-group .form-select {
-            border: 1.8px solid var(--border);
-            border-radius: var(--radius-sm);
-            padding: 13px 18px;
-            font-size: 14px;
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            color: var(--navy);
-            background: var(--white);
-            transition: all .25s ease;
-            width: 100%;
-        }
-
-        .field-group .form-control:focus,
-        .field-group .form-select:focus {
-            border-color: var(--teal);
-            box-shadow: 0 0 0 4px rgba(26, 188, 173, .12);
-            outline: none;
-        }
-
-        .field-group .form-control::placeholder {
-            color: #b0bfc9;
-        }
-
-        /* input with icon prefix */
-        .input-icon-wrap {
-            position: relative;
-        }
-
-        .input-icon-wrap .icon-prefix {
-            position: absolute;
-            left: 15px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: var(--teal);
-            font-size: 15px;
-            pointer-events: none;
-        }
-
-        .input-icon-wrap .form-control {
-            padding-left: 42px;
-        }
-
-        .input-icon-wrap .icon-suffix {
-            position: absolute;
-            right: 14px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: var(--muted);
-            font-size: 15px;
-            cursor: pointer;
-        }
-
-        .input-icon-wrap .icon-suffix:hover {
-            color: var(--teal);
-        }
-
-        /* password strength */
-        .pw-strength {
-            margin-top: 8px;
-            display: flex;
-            gap: 5px;
-        }
-
-        .pw-bar {
-            flex: 1;
-            height: 4px;
-            border-radius: 4px;
-            background: var(--border);
-            transition: background .3s;
-        }
-
-        .pw-bar.weak {
-            background: #ef4444;
-        }
-
-        .pw-bar.medium {
-            background: #f59e0b;
-        }
-
-        .pw-bar.strong {
-            background: #10b981;
-        }
-
-        /* ========== FILE UPLOAD ========== */
-        .upload-box {
-            border: 2px dashed var(--border);
-            border-radius: var(--radius-sm);
-            padding: 28px 20px;
-            text-align: center;
-            cursor: pointer;
-            transition: all .25s ease;
-            background: var(--surface);
-        }
-
-        .upload-box:hover {
-            border-color: var(--teal);
-            background: var(--teal-light);
-        }
-
-        .upload-box i {
-            font-size: 30px;
-            color: var(--teal);
-            margin-bottom: 10px;
-            display: block;
-        }
-
-        .upload-box p {
-            font-size: 13px;
-            color: var(--muted);
-            margin: 0;
-        }
-
-        .upload-box span {
-            font-size: 12px;
-            color: var(--teal);
-            font-weight: 600;
-        }
-
-        .upload-box input[type="file"] {
-            display: none;
-        }
-
-        .upload-preview {
-            margin-top: 10px;
-            display: none;
-        }
-
-        .upload-preview img {
-            max-height: 90px;
-            border-radius: 8px;
-            object-fit: cover;
-            border: 2px solid var(--border);
-        }
-
-        .upload-preview .up-name {
-            font-size: 12px;
-            color: var(--slate);
-            margin-top: 4px;
-        }
-
-        /* ========== CITY SELECT WITH SEARCH ========== */
-        .custom-select-wrap {
-            position: relative;
-        }
-
-        .city-dropdown {
-            position: absolute;
-            top: calc(100% + 6px);
-            left: 0;
-            right: 0;
-            background: var(--white);
-            border: 1.8px solid var(--border);
-            border-radius: var(--radius-sm);
-            box-shadow: var(--shadow-lg);
-            z-index: 999;
-            max-height: 220px;
-            overflow: hidden;
-            display: none;
-            flex-direction: column;
-        }
-
-        .city-dropdown.open {
-            display: flex;
-        }
-
-        .city-dropdown .city-search {
-            padding: 10px 14px;
-            border-bottom: 1px solid var(--border);
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .city-dropdown .city-search input {
-            border: none;
-            outline: none;
-            font-size: 13px;
-            font-family: inherit;
-            flex: 1;
-            color: var(--navy);
-        }
-
-        .city-dropdown .city-search i {
-            color: var(--muted);
-            font-size: 14px;
-        }
-
-        .city-list {
-            overflow-y: auto;
-            flex: 1;
-        }
-
-        .city-list .city-opt {
-            padding: 10px 16px;
-            font-size: 13.5px;
-            color: var(--slate);
-            cursor: pointer;
-            transition: background .15s;
-        }
-
-        .city-list .city-opt:hover,
-        .city-list .city-opt.selected {
-            background: var(--teal-light);
-            color: var(--teal-dark);
-            font-weight: 600;
-        }
-
-        .city-list .city-empty {
-            padding: 14px 16px;
-            font-size: 13px;
-            color: var(--muted);
-            text-align: center;
-        }
-
-        .city-selected-display {
-            border: 1.8px solid var(--border);
-            border-radius: var(--radius-sm);
-            padding: 13px 18px;
-            font-size: 14px;
-            color: var(--navy);
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            background: var(--white);
-            transition: border-color .25s;
-            user-select: none;
-        }
-
-        .city-selected-display:hover,
-        .city-selected-display.open {
-            border-color: var(--teal);
-            box-shadow: 0 0 0 4px rgba(26, 188, 173, .12);
-        }
-
-        .city-selected-display span {
-            color: #b0bfc9;
-        }
-
-        /* ========== TYPE SELECTOR ========== */
-        .type-selector {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 18px;
-            margin: 8px 0 12px;
-        }
-
-        .type-card {
-            border: 2.5px solid var(--border);
-            border-radius: var(--radius);
-            padding: 28px 20px;
-            text-align: center;
-            cursor: pointer;
-            transition: all .3s ease;
-            background: var(--white);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .type-card::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(135deg, rgba(26, 188, 173, .06), transparent);
-            opacity: 0;
-            transition: opacity .3s;
-        }
-
-        .type-card:hover::before {
-            opacity: 1;
-        }
-
-        .type-card:hover {
-            border-color: var(--teal);
-            transform: translateY(-4px);
-            box-shadow: 0 8px 28px rgba(26, 188, 173, .18);
-        }
-
-        .type-card.selected {
-            border-color: var(--teal);
-            background: var(--teal-light);
-        }
-
-        .type-card.selected::before {
-            opacity: 1;
-        }
-
-        .type-card .tc-icon {
-            width: 64px;
-            height: 64px;
-            border-radius: 18px;
-            margin: 0 auto 16px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 28px;
-            background: var(--teal-light);
-            color: var(--teal);
-            transition: all .3s;
-        }
-
-        .type-card.selected .tc-icon {
-            background: var(--teal);
-            color: var(--white);
-            box-shadow: 0 8px 24px rgba(26, 188, 173, .35);
-        }
-
-        .type-card h3 {
-            font-family: 'Syne', sans-serif;
-            font-size: 17px;
-            font-weight: 800;
-            color: var(--navy);
-            margin-bottom: 6px;
-        }
-
-        .type-card p {
-            font-size: 12.5px;
-            color: var(--muted);
-            margin: 0;
-            line-height: 1.5;
-        }
-
-        .type-card .tc-check {
-            position: absolute;
-            top: 14px;
-            right: 14px;
-            width: 24px;
-            height: 24px;
-            border-radius: 50%;
-            background: var(--teal);
-            color: #fff;
-            display: none;
-            align-items: center;
-            justify-content: center;
-            font-size: 13px;
-        }
-
-        .type-card.selected .tc-check {
-            display: flex;
-        }
-
-        /* ========== RADIO / CHECKBOX FANCY ========== */
-        .fancy-radio-group {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-
-        .fancy-radio {
-            border: 1.8px solid var(--border);
-            border-radius: 40px;
-            padding: 9px 18px;
-            cursor: pointer;
-            font-size: 13px;
-            font-weight: 600;
-            color: var(--slate);
-            transition: all .22s;
-            display: flex;
-            align-items: center;
-            gap: 7px;
-        }
-
-        .fancy-radio:hover {
-            border-color: var(--teal);
-            color: var(--teal);
-        }
-
-        .fancy-radio input {
-            display: none;
-        }
-
-        .fancy-radio.selected {
-            background: var(--teal);
-            border-color: var(--teal);
-            color: #fff;
-        }
-
-        .fancy-radio .fr-dot {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background: var(--border);
-            transition: background .22s;
-        }
-
-        .fancy-radio.selected .fr-dot {
-            background: rgba(255, 255, 255, .6);
-        }
-
-        /* ========== PAYMENT INFO ========== */
-        .payment-box {
-            background: linear-gradient(135deg, #0d1b2a 0%, #1a3347 100%);
-            border-radius: var(--radius);
-            padding: 28px;
-            margin-bottom: 24px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .payment-box::after {
-            content: '';
-            position: absolute;
-            bottom: -30px;
-            right: -30px;
-            width: 160px;
-            height: 160px;
-            border-radius: 50%;
-            background: rgba(26, 188, 173, .12);
-        }
-
-        .payment-box h4 {
-            color: #fff;
-            font-family: 'Syne', sans-serif;
-            font-size: 17px;
-            font-weight: 800;
-            margin-bottom: 4px;
-        }
-
-        .payment-box p {
-            color: rgba(255, 255, 255, .55);
-            font-size: 13px;
-            margin-bottom: 20px;
-        }
-
-        .account-detail-row {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            background: rgba(255, 255, 255, .08);
-            border-radius: 10px;
-            padding: 14px 18px;
-            margin-bottom: 10px;
-        }
-
-        .account-detail-row i {
-            color: var(--teal);
-            font-size: 18px;
-            flex-shrink: 0;
-        }
-
-        .account-detail-row .ad-label {
-            font-size: 11px;
-            color: rgba(255, 255, 255, .45);
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: .5px;
-            margin-bottom: 2px;
-        }
-
-        .account-detail-row .ad-value {
-            font-size: 14px;
-            color: #fff;
-            font-weight: 700;
-            letter-spacing: .5px;
-        }
-
-        .amount-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background: var(--teal);
-            color: #fff;
-            border-radius: 40px;
-            padding: 10px 22px;
-            font-size: 15px;
-            font-weight: 800;
-            margin-bottom: 20px;
-            box-shadow: 0 6px 20px rgba(26, 188, 173, .4);
-        }
-
-        /* ========== NAVIGATION BUTTONS ========== */
-        .form-nav {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-top: 32px;
-            padding-top: 24px;
-            border-top: 1.5px solid var(--border);
-        }
-
-        .btn-prev {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            background: var(--surface);
-            border: 1.8px solid var(--border);
-            border-radius: 40px;
-            padding: 12px 26px;
-            font-size: 14px;
-            font-weight: 700;
-            color: var(--slate);
-            cursor: pointer;
-            transition: all .25s;
-            font-family: 'Plus Jakarta Sans', sans-serif;
-        }
-
-        .btn-prev:hover {
-            border-color: var(--teal);
-            color: var(--teal);
-        }
-
-        .btn-next {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            background: linear-gradient(135deg, var(--teal), var(--teal-dark));
-            border: none;
-            border-radius: 40px;
-            padding: 13px 32px;
-            font-size: 14px;
-            font-weight: 700;
-            color: #fff;
-            cursor: pointer;
-            transition: all .28s;
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            box-shadow: 0 8px 24px rgba(26, 188, 173, .35);
-        }
-
-        .btn-next:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 12px 32px rgba(26, 188, 173, .45);
-        }
-
-        .btn-next:active {
-            transform: translateY(0);
-        }
-
-        /* ========== STEPS PANEL ========== */
-        .wizard-step {
-            display: none;
-            animation: stepIn .4s ease both;
-        }
-
-        .wizard-step.active {
-            display: block;
-        }
-
-        @keyframes stepIn {
-            from {
-                opacity: 0;
-                transform: translateX(20px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        /* ========== SUCCESS SCREEN ========== */
-        .success-screen {
-            text-align: center;
-            padding: 60px 40px;
-        }
-
-        .success-animation {
-            width: 110px;
-            height: 110px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, var(--teal), var(--teal-dark));
-            margin: 0 auto 28px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 12px 40px rgba(26, 188, 173, .45);
-            animation: popIn .6s cubic-bezier(.34, 1.56, .64, 1) both;
-        }
-
-        .success-animation i {
-            font-size: 50px;
-            color: #fff;
-        }
-
-        @keyframes popIn {
-            from {
-                transform: scale(0);
-                opacity: 0;
-            }
-
-            to {
-                transform: scale(1);
-                opacity: 1;
-            }
-        }
-
-        .success-screen h2 {
-            font-family: 'Syne', sans-serif;
-            font-size: 28px;
-            font-weight: 800;
-            color: var(--navy);
-            margin-bottom: 10px;
-        }
-
-        .success-screen p {
-            color: var(--muted);
-            font-size: 15px;
-            max-width: 400px;
-            margin: 0 auto 28px;
-            line-height: 1.7;
-        }
-
-        /* ========== PROGRESS BAR ========== */
-        .progress-mini {
-            height: 4px;
-            background: var(--border);
-            border-radius: 4px;
-            margin: 22px 40px 0;
-        }
-
-        .progress-mini-inner {
-            height: 100%;
-            background: linear-gradient(90deg, var(--teal), var(--teal-dark));
-            border-radius: 4px;
-            transition: width .5s cubic-bezier(.4, 0, .2, 1);
-        }
-
-        /* ========== TOOLTIP ========== */
-        .form-tooltip {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 16px;
-            height: 16px;
-            border-radius: 50%;
-            background: var(--border);
-            color: var(--muted);
-            font-size: 10px;
-            cursor: help;
-            margin-left: 4px;
-        }
-
-        /* ========== DIVIDER ========== */
-        .fancy-divider {
-            display: flex;
-            align-items: center;
-            gap: 14px;
-            margin: 26px 0;
-        }
-
-        .fancy-divider hr {
-            flex: 1;
-            border-color: var(--border);
-        }
-
-        .fancy-divider span {
-            font-size: 12px;
-            font-weight: 700;
-            color: var(--muted);
-            white-space: nowrap;
-        }
-
-        /* ========== RESPONSIVE ========== */
-        @media (max-width: 768px) {
-            .form-body {
-                padding: 24px 20px 28px;
-            }
-
-            .card-header-top {
-                padding: 28px 20px 22px;
-            }
-
-            .steps-wrap {
-                padding: 20px 20px 0;
-            }
-
-            .form-nav {
-                flex-direction: column;
-                gap: 12px;
-            }
-
-            .btn-next,
-            .btn-prev {
-                width: 100%;
-                justify-content: center;
-            }
-
-            .type-selector {
-                grid-template-columns: 1fr;
-            }
-
-            .progress-mini {
-                margin: 16px 20px 0;
-            }
-
-            .card-header-top h1 {
-                font-size: 22px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .steps-wrap {
-                padding: 16px 14px 0;
-            }
-
-            .step-label {
-                font-size: 10px;
-                max-width: 56px;
-            }
-
-            .step-circle {
-                width: 30px;
-                height: 30px;
-                font-size: 12px;
-            }
-
-            .step-item:not(:last-child)::after {
-                top: 15px;
-            }
-        }
-
-        /* ========== VALIDATION ========== */
-        .field-error {
-            font-size: 11.5px;
-            color: var(--danger);
-            margin-top: 5px;
-            display: flex;
-            align-items: center;
-            gap: 4px;
-        }
-
-        .form-control.is-invalid,
-        .city-selected-display.is-invalid {
-            border-color: var(--danger) !important;
-        }
-
-        .form-control.is-valid {
-            border-color: var(--success) !important;
-        }
-
-        /* ========== MISC ========== */
-        select option {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-        }
-
-        .text-teal {
-            color: var(--teal);
-        }
-
-        .fw-700 {
-            font-weight: 700;
-        }
-
-        a {
-            color: var(--teal);
-            text-decoration: none;
-        }
-
-        a:hover {
-            text-decoration: underline;
-        }
-
-        /* Step-specific progress hint */
-        .step-badge {
-            font-size: 11px;
-            font-weight: 700;
-            color: var(--muted);
-            margin-bottom: 6px;
-        }
-
-        .step-badge span {
-            color: var(--teal);
-            font-weight: 800;
-        }
-    </style>
+    <link rel="stylesheet" href="assets/css/style2.css">
 </head>
 
 <body>
@@ -1241,7 +100,7 @@
 
                         <div class="form-nav">
                             <div></div>
-                            <button class="btn-next" onclick="goNext()">
+                            <button type="button" class="btn-next" onclick="goNext()">
                                 Continue <i class="bi bi-arrow-right"></i>
                             </button>
                         </div>
@@ -1329,7 +188,8 @@
                                     <div class="fancy-radio-group" id="genderGroup">
                                         <label class="fancy-radio" onclick="selectFancyRadio(this,'genderGroup')">
                                             <input type="radio" name="gender" value="male"
-                                                {{ old('gender') == 'male' ? 'checked' : '' }}><span class="fr-dot"></span>
+                                                {{ old('gender') == 'male' ? 'checked' : '' }}><span
+                                                class="fr-dot"></span>
                                             Male
                                         </label>
                                         <label class="fancy-radio" onclick="selectFancyRadio(this,'genderGroup')">
@@ -1340,7 +200,8 @@
                                         </label>
                                         <label class="fancy-radio" onclick="selectFancyRadio(this,'genderGroup')">
                                             <input type="radio" name="gender" value="other"
-                                                {{ old('gender') == 'other' ? 'checked' : '' }}><span class="fr-dot"></span>
+                                                {{ old('gender') == 'other' ? 'checked' : '' }}><span
+                                                class="fr-dot"></span>
                                             Other
                                         </label>
                                     </div>
@@ -1387,9 +248,10 @@
                         </div>
 
                         <div class="form-nav">
-                            <button class="btn-prev" onclick="goPrev()"><i class="bi bi-arrow-left"></i>
+                            <button type="button" class="btn-prev" onclick="goPrev()"><i
+                                    class="bi bi-arrow-left"></i>
                                 Back</button>
-                            <button class="btn-next" onclick="goNext()">Next <i
+                            <button type="button" class="btn-next" onclick="goNext()">Next <i
                                     class="bi bi-arrow-right"></i></button>
                         </div>
                     </div>
@@ -1471,9 +333,10 @@
                         </div>
 
                         <div class="form-nav">
-                            <button class="btn-prev" onclick="goPrev()"><i class="bi bi-arrow-left"></i>
+                            <button type="button" class="btn-prev" onclick="goPrev()"><i
+                                    class="bi bi-arrow-left"></i>
                                 Back</button>
-                            <button class="btn-next" onclick="goNext()">Next <i
+                            <button type="button" class="btn-next" onclick="goNext()">Next <i
                                     class="bi bi-arrow-right"></i></button>
                         </div>
                     </div>
@@ -1543,9 +406,10 @@
                         </div>
 
                         <div class="form-nav">
-                            <button class="btn-prev" onclick="goPrev()"><i class="bi bi-arrow-left"></i>
+                            <button type="button" class="btn-prev" onclick="goPrev()"><i
+                                    class="bi bi-arrow-left"></i>
                                 Back</button>
-                            <button class="btn-next" onclick="goNext()">Next <i
+                            <button type="button" class="btn-next" onclick="goNext()">Next <i
                                     class="bi bi-arrow-right"></i></button>
                         </div>
                     </div>
@@ -1578,7 +442,7 @@
                                         <div class="pw-bar" id="bar3"></div>
                                         <div class="pw-bar" id="bar4"></div>
                                     </div>
-                                    <div style="font-size:11.5px;color:var(--muted);margin-top:5px" id="pwLabel">
+                                    <div style="font-size:11.5px;color:var(--body-color);margin-top:5px" id="pwLabel">
                                         Enter a
                                         password to check strength</div>
                                 </div>
@@ -1599,7 +463,7 @@
                             </div>
                             <div class="col-12">
                                 <div
-                                    style="background:var(--teal-light);border-radius:var(--radius-sm);padding:14px 18px;font-size:13px;color:var(--teal-dark)">
+                                    style="background:rgba(28, 168, 203, .1);border-radius:var(--radius-sm);padding:14px 18px;font-size:13px;color:var(--theme-color)">
                                     <i class="bi bi-info-circle me-2"></i>
                                     Password must be at least 8 characters and include uppercase, lowercase, number and
                                     special character.
@@ -1608,9 +472,10 @@
                         </div>
 
                         <div class="form-nav">
-                            <button class="btn-prev" onclick="goPrev()"><i class="bi bi-arrow-left"></i>
+                            <button type="button" class="btn-prev" onclick="goPrev()"><i
+                                    class="bi bi-arrow-left"></i>
                                 Back</button>
-                            <button class="btn-next" onclick="goNext()">Next <i
+                            <button type="button" class="btn-next" onclick="goNext()">Next <i
                                     class="bi bi-arrow-right"></i></button>
                         </div>
                     </div>
@@ -1631,7 +496,7 @@
                                 <i class="bi bi-cash-coin"></i>
                                 Registration Fee: <strong>$1.00 USD</strong>
                             </div>
-                            <div style="font-size:13px;color:var(--muted)">One-time non-refundable registration fee.
+                            <div style="font-size:13px;color:var(--body-color)">One-time non-refundable registration fee.
                             </div>
                         </div>
 
@@ -1771,9 +636,10 @@
                         </div>
 
                         <div class="form-nav">
-                            <button class="btn-prev" onclick="goPrev()"><i class="bi bi-arrow-left"></i>
+                            <button type="button" class="btn-prev" onclick="goPrev()"><i
+                                    class="bi bi-arrow-left"></i>
                                 Back</button>
-                            <button class="btn-next" onclick="submitForm()">
+                            <button type="button" class="btn-next" onclick="submitForm()">
                                 <i class="bi bi-check2-circle"></i> Submit Registration
                             </button>
                         </div>
@@ -1810,8 +676,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
     <script>
         /* ============================================================
-               DATA
-            ============================================================ */
+                       DATA
+                    ============================================================ */
         const COUNTRIES = [
             "Afghanistan", "Albania", "Algeria", "Andorra", "Angola", "Antigua and Barbuda", "Argentina",
             "Armenia", "Australia", "Austria", "Azerbaijan", "Bahamas", "Bahrain", "Bangladesh", "Barbados",
@@ -2230,8 +1096,8 @@
             const file = input.files[0];
             if (!file) return;
 
-            box.style.borderColor = 'var(--teal)';
-            box.style.background = 'var(--teal-light)';
+            box.style.borderColor = 'var(--theme-color)';
+            box.style.background = 'rgba(28, 168, 203, .1)';
 
             if (!preview) return;
             preview.style.display = 'block';
@@ -2245,7 +1111,7 @@
                 reader.readAsDataURL(file);
             } else {
                 preview.innerHTML =
-                    `<div style="font-size:13px;color:var(--teal);padding:8px"><i class="bi bi-file-earmark-check me-2"></i>${file.name}</div>`;
+                    `<div style="font-size:13px;color:var(--theme-color);padding:8px"><i class="bi bi-file-earmark-check me-2"></i>${file.name}</div>`;
             }
         }
 
@@ -2318,10 +1184,10 @@
             document.querySelectorAll('.upload-box').forEach(box => {
                 box.addEventListener('dragover', e => {
                     e.preventDefault();
-                    box.style.borderColor = 'var(--teal)';
+                    box.style.borderColor = 'var(--theme-color)';
                 });
                 box.addEventListener('dragleave', () => {
-                    box.style.borderColor = 'var(--border)';
+                    box.style.borderColor = 'var(--gray-color)';
                 });
                 box.addEventListener('drop', e => {
                     e.preventDefault();
