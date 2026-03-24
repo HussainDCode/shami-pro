@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Tourm – Verify Your Email</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Syne:wght@700;800;900&display=swap" rel="stylesheet"/>
+  <style>
+    :root{
+      --teal:#1ABCAD;--teal-light:#e8f9f7;--teal-glow:rgba(26,188,173,.28);
+      --teal-dark:#0d9e90;--navy:#0d1b2a;--navy-mid:#1a3347;
+      --slate:#334155;--muted:#94a3b8;--surface:#f4f9f8;
+      --white:#ffffff;--border:#dde8ec;--danger:#ef4444;--success:#10b981;
+      --radius:20px;--radius-sm:12px;
+      --shadow:0 4px 24px rgba(13,27,42,.07);--shadow-lg:0 20px 60px rgba(13,27,42,.14);
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    html,body{height:100%;font-family:'Plus Jakarta Sans',sans-serif;background:var(--surface);overflow-x:hidden;}
+
+    /* LAYOUT */
+    .verify-layout{display:grid;grid-template-columns:1fr 1fr;min-height:100vh;}
+
+    /* LEFT PANEL */
+    .verify-left{position:relative;overflow:hidden;background:linear-gradient(150deg,var(--navy) 0%,var(--navy-mid) 60%,#0a2a3d 100%);display:flex;flex-direction:column;justify-content:space-between;padding:48px 52px;}
+    .left-mesh{position:absolute;inset:0;pointer-events:none;overflow:hidden;}
+    .mesh-circle{position:absolute;border-radius:50%;filter:blur(60px);animation:meshFloat 9s ease-in-out infinite alternate;}
+    .mc1{width:400px;height:400px;background:rgba(26,188,173,.18);top:-100px;right:-100px;animation-delay:0s;}
+    .mc2{width:280px;height:280px;background:rgba(26,188,173,.10);bottom:40px;left:-80px;animation-delay:3s;}
+    .mc3{width:200px;height:200px;background:rgba(255,255,255,.04);top:50%;left:25%;animation-delay:1.5s;}
+    @keyframes meshFloat{from{transform:translate(0,0) scale(1);}to{transform:translate(26px,-20px) scale(1.08);}}
+    .left-grid{position:absolute;inset:0;background-image:radial-gradient(circle,rgba(26,188,173,.25) 1px,transparent 1px);background-size:36px 36px;opacity:.35;}
+
+    /* Envelope animation */
+    .envelope-float{position:absolute;inset:0;pointer-events:none;display:flex;align-items:center;justify-content:center;}
+    .envelope-illustration{width:240px;height:240px;position:relative;animation:envelopeFloat 6s ease-in-out infinite;}
+    @keyframes envelopeFloat{0%,100%{transform:translateY(0) rotate(0deg);}50%{transform:translateY(-20px) rotate(2deg);}}
+    .env-body{width:100%;height:140px;background:rgba(255,255,255,.08);border:2px solid rgba(26,188,173,.3);border-radius:12px;position:relative;backdrop-filter:blur(12px);}
+    .env-flap{width:0;height:0;border-left:120px solid transparent;border-right:120px solid transparent;border-bottom:80px solid rgba(26,188,173,.15);position:absolute;top:-75px;left:0;border-radius:8px 8px 0 0;}
+    .env-seal{width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,var(--teal),var(--teal-dark));position:absolute;top:-24px;left:50%;transform:translateX(-50%);display:flex;align-items:center;justify-content:center;box-shadow:0 8px 24px var(--teal-glow);animation:sealPulse 2s ease-in-out infinite;}
+    @keyframes sealPulse{0%,100%{transform:translateX(-50%) scale(1);}50%{transform:translateX(-50%) scale(1.1);}}
+    .env-seal i{color:#fff;font-size:20px;}
+    .env-lines{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);display:flex;flex-direction:column;gap:8px;width:60%;}
+    .env-line{height:4px;background:rgba(26,188,173,.2);border-radius:4px;animation:lineGlow 3s ease-in-out infinite;}
+    .env-line:nth-child(1){width:100%;animation-delay:0s;}
+    .env-line:nth-child(2){width:80%;animation-delay:.5s;}
+    .env-line:nth-child(3){width:90%;animation-delay:1s;}
+    @keyframes lineGlow{0%,100%{opacity:.3;}50%{opacity:.7;}}
+
+    /* Floating particles */
+    .particles{position:absolute;inset:0;pointer-events:none;}
+    .particle{position:absolute;width:6px;height:6px;border-radius:50%;background:rgba(26,188,173,.4);animation:particleFloat 8s ease-in-out infinite;}
+    .p1{top:15%;left:10%;animation-delay:0s;}
+    .p2{top:60%;left:80%;animation-delay:2s;}
+    .p3{top:80%;left:20%;animation-delay:4s;}
+    .p4{top:30%;right:15%;animation-delay:1s;}
+    .p5{bottom:20%;left:70%;animation-delay:3s;}
+    @keyframes particleFloat{0%,100%{transform:translateY(0) scale(1);opacity:.4;}50%{transform:translateY(-30px) scale(1.3);opacity:.8;}}
+
+    /* Logo & content */
+    .left-logo{position:relative;z-index:2;display:flex;align-items:center;gap:12px;}
+    .left-logo .logo-icon{width:48px;height:48px;border-radius:14px;background:linear-gradient(135deg,var(--teal),var(--teal-dark));display:flex;align-items:center;justify-content:center;box-shadow:0 8px 24px var(--teal-glow);}
+    .left-logo .logo-icon i{color:#fff;font-size:22px;}
+    .left-logo .logo-text{font-family:'Syne',sans-serif;font-size:28px;font-weight:900;color:#fff;letter-spacing:-.5px;}
+    .left-logo .logo-text span{color:var(--teal);}
+    .left-hero{position:relative;z-index:2;}
+    .teal-line{width:48px;height:4px;background:linear-gradient(90deg,var(--teal),transparent);border-radius:4px;margin-bottom:20px;}
+    .left-hero h2{font-family:'Syne',sans-serif;font-size:clamp(26px,3vw,38px);font-weight:900;color:#fff;line-height:1.2;margin-bottom:16px;}
+    .left-hero h2 em{color:var(--teal);font-style:normal;}
+    .left-hero p{color:rgba(255,255,255,.55);font-size:15px;line-height:1.7;max-width:340px;}
+
+    /* RIGHT PANEL */
+    .verify-right{display:flex;align-items:center;justify-content:center;padding:40px 24px;background:var(--surface);position:relative;overflow:hidden;}
+    .verify-right::before{content:'';position:absolute;top:-120px;right:-120px;width:350px;height:350px;border-radius:50%;background:radial-gradient(circle,rgba(26,188,173,.07),transparent);}
+    .verify-box{width:100%;max-width:460px;position:relative;z-index:1;}
+
+    /* STATUS INDICATOR */
+    .status-ring{width:110px;height:110px;border-radius:50%;margin:0 auto 28px;display:flex;align-items:center;justify-content:center;position:relative;animation:statusPop .65s cubic-bezier(.34,1.56,.64,1) both;}
+    @keyframes statusPop{from{transform:scale(0) rotate(-10deg);opacity:0;}to{transform:scale(1) rotate(0);opacity:1;}}
+    .status-ring::before{content:'';position:absolute;inset:-8px;border-radius:50%;border:3px dashed var(--teal);opacity:.3;animation:rotateDash 20s linear infinite;}
+    @keyframes rotateDash{to{transform:rotate(360deg);}}
+    .status-ring .sr-inner{width:100%;height:100%;border-radius:50%;background:linear-gradient(135deg,var(--teal-light),rgba(26,188,173,.25));display:flex;align-items:center;justify-content:center;box-shadow:0 16px 48px rgba(26,188,173,.22);}
+    .status-ring .sr-icon{font-size:48px;color:var(--teal);}
+
+    /* HEADING */
+    .verify-heading{text-align:center;margin-bottom:32px;}
+    .vh-badge{display:inline-flex;align-items:center;gap:7px;background:var(--teal-light);color:var(--teal-dark);font-size:12px;font-weight:700;border-radius:40px;padding:6px 14px;margin-bottom:14px;border:1px solid rgba(26,188,173,.2);}
+    .verify-heading h1{font-family:'Syne',sans-serif;font-size:30px;font-weight:900;color:var(--navy);margin-bottom:8px;line-height:1.2;}
+    .verify-heading p{color:var(--muted);font-size:14px;line-height:1.7;max-width:380px;margin:0 auto;}
+    .email-display{font-size:14px;font-weight:700;color:var(--teal);margin-top:6px;}
+
+    /* OTP INPUTS */
+    .otp-section{margin:32px 0;}
+    .otp-label{text-align:center;font-size:13px;font-weight:700;color:var(--slate);margin-bottom:16px;display:flex;align-items:center;justify-content:center;gap:8px;}
+    .otp-label i{color:var(--teal);font-size:15px;}
+    .otp-group{display:flex;gap:12px;justify-content:center;margin-bottom:8px;}
+    .otp-group input{width:58px;height:64px;text-align:center;font-size:24px;font-weight:800;font-family:'Syne',sans-serif;border:2px solid var(--border);border-radius:var(--radius-sm);background:var(--white);color:var(--navy);outline:none;transition:all .22s;-moz-appearance:textfield;box-shadow:var(--shadow);}
+    .otp-group input::-webkit-outer-spin-button,.otp-group input::-webkit-inner-spin-button{-webkit-appearance:none;}
+    .otp-group input:focus{border-color:var(--teal);box-shadow:0 0 0 5px rgba(26,188,173,.15),var(--shadow);transform:translateY(-3px) scale(1.05);}
+    .otp-group input.filled{border-color:var(--teal);background:var(--teal-light);color:var(--teal-dark);}
+    .otp-group input.error{border-color:var(--danger);animation:shake .4s ease;}
+    @keyframes shake{0%,100%{transform:translateX(0);}25%{transform:translateX(-6px);}75%{transform:translateX(6px);}}
+    .otp-err{font-size:12px;color:var(--danger);text-align:center;display:none;align-items:center;justify-content:center;gap:5px;margin-top:8px;font-weight:600;}
+
+    /* BUTTON */
+    .btn-verify{width:100%;padding:16px;background:linear-gradient(135deg,var(--teal),var(--teal-dark));border:none;border-radius:40px;font-size:15px;font-weight:800;font-family:'Plus Jakarta Sans',sans-serif;color:#fff;cursor:pointer;box-shadow:0 12px 32px var(--teal-glow);transition:all .28s;display:flex;align-items:center;justify-content:center;gap:10px;margin-top:28px;}
+    .btn-verify:hover{transform:translateY(-3px);box-shadow:0 16px 42px var(--teal-glow);}
+    .btn-verify:active{transform:translateY(0);}
+    .btn-verify:disabled{opacity:.5;cursor:not-allowed;transform:none;}
+    .btn-verify.loading{pointer-events:none;opacity:.85;}
+    .btn-spinner{width:18px;height:18px;border:2.5px solid rgba(255,255,255,.3);border-top-color:#fff;border-radius:50%;animation:spin .7s linear infinite;display:none;}
+    .btn-verify.loading .btn-spinner{display:block;}
+    .btn-verify.loading .btn-text{display:none;}
+    @keyframes spin{to{transform:rotate(360deg);}}
+
+    /* TIMER & RESEND */
+    .resend-section{text-align:center;margin-top:20px;padding-top:20px;border-top:1px solid var(--border);}
+    .resend-text{font-size:13.5px;color:var(--muted);margin-bottom:10px;}
+    .timer-display{display:inline-flex;align-items:center;gap:8px;background:var(--teal-light);border:1px solid rgba(26,188,173,.25);border-radius:40px;padding:8px 18px;font-size:13px;font-weight:700;color:var(--teal-dark);margin-bottom:12px;}
+    .timer-display i{font-size:15px;}
+    .timer-display.expired{background:rgba(239,68,68,.1);border-color:rgba(239,68,68,.2);color:var(--danger);}
+    .resend-link{display:none;font-size:14px;font-weight:700;color:var(--teal);cursor:pointer;text-decoration:none;transition:all .2s;}
+    .resend-link:hover{text-decoration:underline;color:var(--teal-dark);}
+    .resend-link i{margin-right:6px;}
+
+    /* INFO BOX */
+    .info-box{background:var(--teal-light);border-radius:var(--radius-sm);border:1px solid rgba(26,188,173,.2);padding:14px 18px;font-size:13px;color:var(--teal-dark);display:flex;align-items:flex-start;gap:12px;margin-bottom:24px;}
+    .info-box i{font-size:18px;flex-shrink:0;margin-top:1px;}
+    .info-box p{margin:0;line-height:1.6;}
+
+    /* BOTTOM LINKS */
+    .verify-footer{text-align:center;margin-top:28px;}
+    .footer-link{font-size:13.5px;color:var(--muted);margin-bottom:8px;}
+    .footer-link a{color:var(--teal);font-weight:700;text-decoration:none;}
+    .footer-link a:hover{text-decoration:underline;}
+
+    /* SUCCESS STATE */
+    .success-view{display:none;text-align:center;padding:20px 0;}
+    .success-ring{width:120px;height:120px;border-radius:50%;background:linear-gradient(135deg,var(--success),#0da876);margin:0 auto 28px;display:flex;align-items:center;justify-content:center;box-shadow:0 20px 60px rgba(16,185,129,.4);animation:successPop .7s cubic-bezier(.34,1.56,.64,1) both;position:relative;}
+    @keyframes successPop{from{transform:scale(0);opacity:0;}to{transform:scale(1);opacity:1;}}
+    .success-ring::before{content:'';position:absolute;inset:-10px;border-radius:50%;border:3px solid rgba(16,185,129,.3);animation:successRipple 1.5s ease-out infinite;}
+    @keyframes successRipple{0%{transform:scale(1);opacity:1;}100%{transform:scale(1.3);opacity:0;}}
+    .success-ring i{font-size:56px;color:#fff;}
+    .success-view h2{font-family:'Syne',sans-serif;font-size:28px;font-weight:900;color:var(--navy);margin-bottom:10px;}
+    .success-view p{color:var(--muted);font-size:14px;line-height:1.7;max-width:340px;margin:0 auto 28px;}
+    .btn-continue{display:inline-flex;align-items:center;gap:10px;padding:15px 38px;background:linear-gradient(135deg,var(--teal),var(--teal-dark));color:#fff;border:none;border-radius:40px;font-size:14px;font-weight:800;font-family:'Plus Jakarta Sans',sans-serif;cursor:pointer;box-shadow:0 12px 32px var(--teal-glow);text-decoration:none;transition:all .28s;}
+    .btn-continue:hover{transform:translateY(-3px);box-shadow:0 16px 42px var(--teal-glow);}
+    .countdown-text{margin-top:16px;font-size:13px;color:var(--muted);}
+    .countdown-text strong{color:var(--teal);font-weight:800;}
+
+    /* TOAST */
+    .toast-wrap{position:fixed;bottom:28px;right:28px;z-index:9999;display:flex;flex-direction:column;gap:10px;}
+    .toast-msg{background:var(--navy);color:#fff;border-radius:14px;padding:14px 20px;font-size:13.5px;font-weight:600;display:flex;align-items:center;gap:10px;box-shadow:var(--shadow-lg);animation:toastIn .35s cubic-bezier(.34,1.56,.64,1);}
+    .toast-msg i{color:var(--teal);font-size:18px;}
+    @keyframes toastIn{from{opacity:0;transform:translateY(14px) scale(.95);}to{opacity:1;transform:none;}}
+
+    /* RESPONSIVE */
+    @media(max-width:900px){.verify-layout{grid-template-columns:1fr;}.verify-left{display:none;}.verify-right{min-height:100vh;}}
+    @media(max-width:480px){.verify-heading h1{font-size:24px;}.otp-group input{width:48px;height:56px;font-size:20px;}}
+  </style>
+</head>
+<body>
+<div class="verify-layout">
+
+  <!-- LEFT PANEL -->
+  <div class="verify-left">
+    <div class="left-mesh">
+      <div class="mesh-circle mc1"></div>
+      <div class="mesh-circle mc2"></div>
+      <div class="mesh-circle mc3"></div>
+    </div>
+    <div class="left-grid"></div>
+
+    <!-- Envelope illustration -->
+    <div class="envelope-float">
+      <div class="envelope-illustration">
+        <div class="env-flap"></div>
+        <div class="env-body">
+          <div class="env-seal"><i class="bi bi-shield-check"></i></div>
+          <div class="env-lines">
+            <div class="env-line"></div>
+            <div class="env-line"></div>
+            <div class="env-line"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Particles -->
+    <div class="particles">
+      <div class="particle p1"></div>
+      <div class="particle p2"></div>
+      <div class="particle p3"></div>
+      <div class="particle p4"></div>
+      <div class="particle p5"></div>
+    </div>
+
+    <div class="left-logo">
+      <div class="logo-icon"><i class="bi bi-compass"></i></div>
+      <div class="logo-text">Tour<span>m</span></div>
+    </div>
+
+    <div class="left-hero">
+      <div class="teal-line"></div>
+      <h2>One last step — <em>verify your email.</em></h2>
+      <p>We've sent a 6-digit code to your inbox. Enter it below to activate your Tourm account and start your adventure.</p>
+    </div>
+
+    <div style="position:relative;z-index:2;font-size:13px;color:rgba(255,255,255,.45);">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;">
+        <i class="bi bi-shield-fill-check" style="color:var(--teal);font-size:18px;"></i>
+        <span>Your data is encrypted with AES-256</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:10px;">
+        <i class="bi bi-clock-history" style="color:var(--teal);font-size:18px;"></i>
+        <span>OTP valid for 10 minutes</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- RIGHT PANEL -->
+  <div class="verify-right">
+    <div class="verify-box">
+
+      <!-- MAIN VIEW -->
+      <div id="mainView">
+        <!-- Status ring -->
+        <div class="status-ring">
+          <div class="sr-inner">
+            <i class="bi bi-envelope-open sr-icon"></i>
+          </div>
+        </div>
+
+        <!-- Heading -->
+        <div class="verify-heading">
+          <div class="vh-badge"><i class="bi bi-shield-check"></i> Email Verification</div>
+          <h1>Check Your Inbox</h1>
+          <p>We've sent a 6-digit verification code to</p>
+          <div class="email-display" id="emailDisplay">john.doe@example.com</div>
+        </div>
+
+        <!-- Info box -->
+        <div class="info-box">
+          <i class="bi bi-lightbulb-fill"></i>
+          <p><strong>Can't find it?</strong> Check your spam or junk folder. The email should arrive within 60 seconds.</p>
+        </div>
+
+        <!-- OTP section -->
+        <div class="otp-section">
+          <div class="otp-label">
+            <i class="bi bi-shield-lock-fill"></i>
+            <span>Enter Verification Code</span>
+          </div>
+          <div class="otp-group" id="otpGroup">
+            <input type="number" class="otp-inp" oninput="handleOtp(this,0)" onkeydown="otpBack(event,0)" autofocus>
+            <input type="number" class="otp-inp" oninput="handleOtp(this,1)" onkeydown="otpBack(event,1)">
+            <input type="number" class="otp-inp" oninput="handleOtp(this,2)" onkeydown="otpBack(event,2)">
+            <input type="number" class="otp-inp" oninput="handleOtp(this,3)" onkeydown="otpBack(event,3)">
+            <input type="number" class="otp-inp" oninput="handleOtp(this,4)" onkeydown="otpBack(event,4)">
+            <input type="number" class="otp-inp" oninput="handleOtp(this,5)" onkeydown="otpBack(event,5)">
+          </div>
+          <div class="otp-err" id="otpErr"><i class="bi bi-exclamation-triangle"></i> Invalid code. Please check and try again.</div>
+        </div>
+
+        <!-- Verify button -->
+        <button class="btn-verify" id="verifyBtn" onclick="handleVerify()">
+          <div class="btn-spinner"></div>
+          <span class="btn-text"><i class="bi bi-check-circle"></i> Verify Email</span>
+        </button>
+
+        <!-- Resend section -->
+        <div class="resend-section">
+          <div class="resend-text">Didn't receive the code?</div>
+          <div class="timer-display" id="timerDisplay">
+            <i class="bi bi-clock-history"></i>
+            <span id="timerText">Resend available in <strong id="timerCount">60</strong>s</span>
+          </div>
+          <a class="resend-link" id="resendLink" onclick="handleResend()">
+            <i class="bi bi-arrow-clockwise"></i> Resend Verification Code
+          </a>
+        </div>
+
+        <!-- Footer -->
+        <div class="verify-footer">
+          <div class="footer-link">Wrong email? <a href="register.html">Update your email address</a></div>
+          <div class="footer-link">Already verified? <a href="login.html">Sign in here</a></div>
+        </div>
+      </div>
+
+      <!-- SUCCESS VIEW -->
+      <div class="success-view" id="successView">
+        <div class="success-ring">
+          <i class="bi bi-check-lg"></i>
+        </div>
+        <h2>Email Verified! 🎉</h2>
+        <p>Your Tourm account is now active. You can start booking tours and exploring destinations around the world.</p>
+        <a class="btn-continue" href="login.html">
+          <i class="bi bi-box-arrow-in-right"></i> Continue to Sign In
+        </a>
+        <div class="countdown-text">Redirecting automatically in <strong id="redirectCount">5</strong>s…</div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="toast-wrap" id="toastWrap"></div>
+
+<script>
+  /* OTP HANDLING */
+  function handleOtp(inp,idx){
+    const inputs=document.querySelectorAll('.otp-inp');
+    const val=inp.value.toString();
+    if(val.length>1)inp.value=val[val.length-1];
+    inp.classList.toggle('filled',inp.value!=='');
+    inp.classList.remove('error');
+    document.getElementById('otpErr').style.display='none';
+    if(inp.value&&idx<5)inputs[idx+1].focus();
+  }
+
+  function otpBack(e,idx){
+    const inputs=document.querySelectorAll('.otp-inp');
+    if(e.key==='Backspace'&&!inputs[idx].value&&idx>0){
+      inputs[idx-1].focus();
+      inputs[idx-1].value='';
+      inputs[idx-1].classList.remove('filled');
+    }
+  }
+
+  /* VERIFY */
+  function handleVerify(){
+    const inputs=document.querySelectorAll('.otp-inp');
+    const code=Array.from(inputs).map(i=>i.value).join('');
+    const errEl=document.getElementById('otpErr');
+
+    if(code.length<6){
+      inputs.forEach(i=>{i.classList.add('error');});
+      errEl.textContent='Please enter all 6 digits';
+      errEl.style.display='flex';
+      return;
+    }
+
+    const btn=document.getElementById('verifyBtn');
+    btn.classList.add('loading');
+
+    // Simulate API call
+    setTimeout(()=>{
+      btn.classList.remove('loading');
+      
+      // Mock: accept any 6-digit code for demo
+      const isValid=code.length===6;
+
+      if(isValid){
+        // Success
+        document.getElementById('mainView').style.display='none';
+        document.getElementById('successView').style.display='block';
+        toast('Email verified successfully!','bi-check-circle');
+        startRedirectCountdown();
+      }else{
+        // Error
+        inputs.forEach(i=>i.classList.add('error'));
+        errEl.textContent='Invalid code. Please try again.';
+        errEl.style.display='flex';
+        toast('Invalid verification code','bi-exclamation-circle');
+      }
+    },1800);
+  }
+
+  /* RESEND */
+  let timerInterval=null;
+  let timerSeconds=60;
+
+  function startTimer(){
+    clearInterval(timerInterval);
+    timerSeconds=60;
+    const timerDisplay=document.getElementById('timerDisplay');
+    const timerText=document.getElementById('timerText');
+    const timerCount=document.getElementById('timerCount');
+    const resendLink=document.getElementById('resendLink');
+
+    timerDisplay.classList.remove('expired');
+    timerDisplay.style.display='inline-flex';
+    resendLink.style.display='none';
+
+    timerInterval=setInterval(()=>{
+      timerSeconds--;
+      timerCount.textContent=timerSeconds;
+      
+      if(timerSeconds<=0){
+        clearInterval(timerInterval);
+        timerDisplay.classList.add('expired');
+        timerText.innerHTML='<strong>Code expired</strong> — resend below';
+        setTimeout(()=>{
+          timerDisplay.style.display='none';
+          resendLink.style.display='inline-block';
+        },1500);
+      }
+    },1000);
+  }
+
+  function handleResend(){
+    const inputs=document.querySelectorAll('.otp-inp');
+    inputs.forEach(i=>{i.value='';i.classList.remove('filled','error');});
+    document.getElementById('otpErr').style.display='none';
+    toast('New verification code sent!','bi-envelope-check');
+    startTimer();
+    setTimeout(()=>inputs[0].focus(),100);
+  }
+
+  /* REDIRECT COUNTDOWN */
+  function startRedirectCountdown(){
+    let count=5;
+    const countEl=document.getElementById('redirectCount');
+    const interval=setInterval(()=>{
+      count--;
+      if(countEl)countEl.textContent=count;
+      if(count<=0){
+        clearInterval(interval);
+        window.location.href='login.html';
+      }
+    },1000);
+  }
+
+  /* TOAST */
+  function toast(msg,icon='bi-info-circle'){
+    const wrap=document.getElementById('toastWrap');
+    const t=document.createElement('div');
+    t.className='toast-msg';
+    t.innerHTML=`<i class="bi ${icon}"></i>${msg}`;
+    wrap.appendChild(t);
+    setTimeout(()=>{
+      t.style.opacity='0';
+      t.style.transition='opacity .3s';
+      setTimeout(()=>t.remove(),300);
+    },3500);
+  }
+
+  /* PASTE SUPPORT */
+  document.addEventListener('DOMContentLoaded',()=>{
+    const inputs=document.querySelectorAll('.otp-inp');
+    inputs[0]?.addEventListener('paste',e=>{
+      e.preventDefault();
+      const data=(e.clipboardData||window.clipboardData).getData('text').replace(/\D/g,'');
+      [...data.substring(0,6)].forEach((ch,i)=>{
+        if(inputs[i]){
+          inputs[i].value=ch;
+          inputs[i].classList.add('filled');
+        }
+      });
+      inputs[Math.min(data.length,5)].focus();
+    });
+
+    // Start timer on load
+    startTimer();
+
+    // Get email from URL param if exists
+    const params=new URLSearchParams(window.location.search);
+    const email=params.get('email');
+    if(email)document.getElementById('emailDisplay').textContent=email;
+  });
+</script>
+</body>
+</html>
