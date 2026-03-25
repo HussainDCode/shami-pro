@@ -9,6 +9,6 @@ class SouldevDashboardController extends Controller
 {
     public function index(): View
     {
-        return view('admin.souldev');
+        return view('admin.index');
     }
 }

@@ -13,7 +13,7 @@ Auth::routes();
 Route::get('/', [HomeController::class, 'index'])->name('frontend.index');
 
 Route::middleware(['auth', 'admin'])->group(function () {
-    Route::get('/souldev', [SouldevDashboardController::class, 'index'])->name('admin.souldev');
+    Route::get('/souldev', [SouldevDashboardController::class, 'index'])->name('admin.layout.master');
 });
 
 Route::middleware('guest')->group(function () {
