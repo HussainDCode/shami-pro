@@ -222,7 +222,7 @@
                             <li><a href="home-forest.html">Home Forest</a></li>
                         </ul>
                     </li>
-                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="/about-us">About Us</a></li>
                     <li class="menu-item-has-children">
                         <a href="#">Destination</a>
                         <ul class="sub-menu">
@@ -280,7 +280,7 @@
                         </ul>
                     </li>
                     <li>
-                        <a href="contact.html">Contact us</a>
+                        <a href="/contact-us">Contact us</a>
                     </li>
                 </ul>
             </div>
@@ -290,7 +290,7 @@
     <!--==============================
  Header Area
 ==============================-->
-    @include('frontend.layout.navbar')
+    @include('frontend.layout.header')
 
 
     @yield('content')

@@ -27,7 +27,7 @@
                             <div class="header-links">
                                 <ul>
                                     <li class="d-none d-md-inline-block"><a href="faq.html">FAQ</a></li>
-                                    <li class="d-none d-md-inline-block"><a href="contact.html">Support</a></li>
+                                    <li class="d-none d-md-inline-block"><a href="/contact-us">Support</a></li>
                                     @guest
                                     <li>
                                         <a href="{{ route('login') }}">
@@ -332,7 +332,7 @@
                                             </li>
                                         </ul> --}}
                                     </li>
-                                    <li><a href="about.html">About Us</a></li>
+                                    <li><a href="/about-us">About Us</a></li>
                                     <li>
                                     {{-- <li class="menu-item-has-children"> --}}
                                         <a href="#">Destination</a>
@@ -391,7 +391,7 @@
                                         </ul>
                                     </li>
                                     <li>
-                                        <a href="contact.html">Contact us</a>
+                                        <a href="/contact-us">Contact us</a>
                                     </li>
                                 </ul>
                             </nav>

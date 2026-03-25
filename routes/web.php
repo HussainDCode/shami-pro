@@ -11,6 +11,9 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 
 Route::get('/', [HomeController::class, 'index'])->name('frontend.index');
+Route::get('/about-us', [HomeController::class, 'aboutUs'])->name('frontend.about-us');
+Route::get('/contact-us', [HomeController::class, 'contactUs'])->name('frontend.contact-us');
+
 
 Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/souldev', [SouldevDashboardController::class, 'index'])->name('admin.layout.master');
